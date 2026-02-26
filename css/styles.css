@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root{
   --bg:#0f0c08;
   --panel:#17120d;
@@ -8,8 +10,8 @@
   --gold2:#e3bd55;
   --line:rgba(201,162,58,.32);
   --max:1200px;
-  --serif: ui-serif, "Georgia", "Times New Roman", serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --serif: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -122,8 +124,9 @@ nav a.active{
 }
 
 .h1{
-  font-family:var(--serif);
-  letter-spacing:.10em;
+  font-family:var(--sans);
+  letter-spacing:.04em;
+  font-weight:600;
   font-size:1.6rem;
 }
 
@@ -204,9 +207,9 @@ nav a.active{
 }
 
 .doc h1,.doc h2,.doc h3{
-  font-family:var(--serif);
-  letter-spacing:.05em;
-  margin:16px 0 8px 0;
+  font-family:var(--sans);
+  letter-spacing:.02em;
+  font-weight:600;
 }
 
 .doc h1{font-size:2rem;margin-top:0}
