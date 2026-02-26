@@ -87,8 +87,6 @@ Core is applied.
 The Constitution must not drift in response to experimentation.  
 It is the law.
 
----
-
 [^1]: See [R01](references.html#r01-nist-ai-risk-management-framework-ai-rmf-10).
 [^2]: See [R02](references.html#r02-isoiec-238942023-ai-risk-management-guidance).
 
