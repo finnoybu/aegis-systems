@@ -1,0 +1,119 @@
+---
+title: Protocol 4 — Constraint Declaration Protocol
+description: Before action, scope and tool boundaries must be declared — execution without declared constraints is denied
+sidebar:
+  order: 5
+---
+
+*Before action, scope and tool boundaries must be declared. Execution without
+declared constraints is denied.*
+
+---
+
+## Protocol
+
+Before any governed execution begins, the following constraint elements must be
+explicitly declared and recorded in governance state:
+
+1. **Objective** — the stated purpose of the execution; what the task is authorized to accomplish
+2. **Scope boundaries** — the specific resources, systems, data, and external surfaces within reach
+3. **Tool permissions** — the explicit list of tools that may be invoked during execution
+4. **Data handling rules** — how information may be accessed, processed, retained, and transmitted
+5. **Termination conditions** — the criteria under which the task is considered complete, and the conditions under which it must stop regardless of completion status
+
+The constraint declaration must be evaluated against the capability registry before
+execution begins. Any declared tool or resource that the acting agent does not hold
+an explicit, unrevoked grant for must be denied before execution proceeds. The
+constraint envelope is machine-evaluable — it is a structured declaration, not prose.
+
+:::danger
+Execution without a declared constraint envelope is constitutionally invalid.
+A system that begins execution before the constraint declaration is complete and
+verified is not a system operating with incomplete governance. It is a system
+operating outside governance.
+:::
+
+---
+
+## Purpose
+
+The Constraint Declaration Protocol is the operational mechanism by which Doctrine
+Article I — Constraint Before Capability is enforced. The doctrine establishes that
+constraint precedes capability. This protocol establishes what a complete constraint
+declaration must contain and when it must be produced.
+
+The protocol also establishes the scope within which all subsequent governance
+decisions are made. The policy engine evaluates actions against the declared
+constraint envelope — not against a general model of what the agent is probably
+trying to accomplish. An action that is technically within the agent's capability
+grants but outside the declared constraint envelope for the current task is denied.
+The constraint envelope is not a hint. It is the governance boundary for the task.
+
+---
+
+## In Practice
+
+When an AEGIS-governed agent receives a task, the constraint declaration is submitted
+to the governance layer as part of the execution initiation request. The governance
+layer validates each element: the objective is recorded as the audit anchor for the
+execution; scope boundaries are evaluated against information access capabilities in
+the registry; tool permissions are checked against capability grants; data handling
+rules are evaluated against information sovereignty policies; termination conditions
+are recorded as the completion criteria for the audit record.
+
+If any element of the constraint declaration references a capability or resource for
+which the agent does not hold an explicit grant, the execution initiation is denied.
+The denial is specific — it identifies which element of the constraint declaration
+failed and why — enabling the requesting system to correct the declaration and
+resubmit with an appropriate scope.
+
+During execution, any action that would require exceeding the declared constraint
+envelope — accessing a resource outside scope, invoking a tool not in the declared
+permissions — is denied by the governance layer. The constraint envelope is re-evaluated
+against each action proposal. It does not expand during execution without a formal
+constraint mutation event, which itself requires a State Dump and governance
+re-evaluation.
+
+:::note
+Constraint mutations during execution — legitimate expansions of scope that arise
+because the task requires access not anticipated in the initial declaration — are
+governed events. They require a formal constraint mutation request, governance
+re-evaluation, and a State Dump capturing the pre-mutation and post-mutation
+constraint envelopes. They cannot be approved by the agent itself.
+:::
+
+---
+
+## Failure Mode
+
+Execution without a constraint declaration is the most fundamental governance
+failure mode — it is the absence of the boundary within which all other governance
+operates. In practice, this failure often presents not as the complete absence of
+constraints but as constraint declarations that are incomplete, ambiguous, or
+unevaluated against the capability registry. An agent with a constraint declaration
+that says "access necessary data" has a constraint declaration with no governance
+value — it declares nothing that the governance layer can evaluate, verify, or
+enforce. The Constraint Declaration Protocol requires machine-evaluable constraints
+precisely because ambiguous constraints are not constraints — they are placeholders
+that governance cannot act on.
+
+:::caution
+Ambiguous constraint declarations are not better than no constraint declaration.
+They are worse — they create the appearance of a governance boundary without the
+substance. A governance layer that accepts ambiguous constraint declarations has
+accepted an unevaluable input and produced a governance decision without a basis.
+:::
+
+---
+
+## Relationship to Principles and Constitution
+
+The Constraint Declaration Protocol directly implements [Principle 1 — Bounded
+Execution](/principles/principle-1): the five required elements of a constraint
+declaration operationalize the five elements that Bounded Execution requires every
+task to define. It enforces [Constitutional Article I — Bounded Capability](/constitution/article-i):
+the capability registry check against the declared constraint envelope is the
+mechanism by which undefined capabilities are denied before evaluation begins.
+And it supports [Constitutional Article IX — Deny by Default](/constitution/article-ix):
+missing scope is one of the four preconditions whose absence produces immediate
+denial at the governance admission boundary.

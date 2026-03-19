@@ -1,0 +1,115 @@
+---
+title: Principle 7 — Separation of Layers
+description: Each architectural layer constrains the one below it — no lower layer may override a higher one
+sidebar:
+  order: 8
+---
+
+*Each architectural layer constrains the one below it. Oversight constrains governance.
+Governance constrains execution. Execution constrains artifacts. No lower layer may
+override a higher one.*
+
+---
+
+## Principle
+
+The AEGIS architecture is organized into layers, each of which holds authority over
+the layers below it and is constrained by the layers above it:
+
+- **Oversight** constrains governance — human authority defines the boundaries within which the governance layer operates
+- **Governance** constrains execution — the governance layer determines what the execution layer is permitted to do
+- **Execution** constrains artifacts — only actions that governance has authorized can produce canonical artifacts
+
+No lower layer may override a higher one. An execution event cannot override a
+governance decision. A governance decision cannot override an oversight requirement.
+An artifact cannot retroactively authorize the execution that produced it.
+
+This is the architectural expression of constitutional supremacy — not as a policy
+preference, but as a structural property of the system.
+
+---
+
+## Meaning
+
+Separation of Layers is the structural principle that makes every other principle
+enforceable. Constraint declaration (Principle 1) is only meaningful if the
+governance layer can enforce it against the execution layer. Threat classification
+(Principle 2) is only meaningful if the governance layer can apply it before
+execution reaches infrastructure. Versioned authority (Principle 3) is only
+meaningful if no lower layer can modify governance state without going through
+the governance layer.
+
+The principle draws on the established security theory of complete mediation —
+every access to every object must be checked for authorization. In the AEGIS
+context, every action by every agent at every layer must be evaluated by the
+layer above it before it executes. No direct path exists from a lower layer to
+infrastructure that bypasses a higher layer's authority.
+
+This also explains why the governance runtime must be structurally external to
+the AI systems it governs. A governance layer that shares execution context with
+the system it governs is not a higher layer — it is a component of the same layer.
+A component cannot constrain itself. Separation of Layers requires that the
+constraint authority be architecturally distinct from the system being constrained.
+
+---
+
+## In Practice
+
+The AEGIS system stack makes Separation of Layers concrete. The agent reasoning
+layer (L2) produces proposals only — it cannot authorize or execute capability
+directly. The governance layer (L3) evaluates proposals and produces decisions.
+The tool proxy layer (L4) executes only what the governance layer has approved.
+The operating system and infrastructure layers (L5, L6) receive only what the
+tool proxy has forwarded.
+
+Forbidden paths are explicitly defined: L2 to L5 direct execution is prohibited.
+L1 or L2 direct write access to the policy store is prohibited. L0 direct access
+to the capability registry internals is prohibited. These are not policy rules that
+can be overridden by a governance decision — they are architectural constraints
+that the system is designed to make impossible.
+
+:::tip
+The separation of layers is also the structural basis for the AEGIS trust model.
+Trust at each layer is bounded by the constraints imposed by the layer above.
+An agent that earns high operational trust does not thereby earn the ability to
+bypass governance. Trust expands the range of what governance will approve —
+it does not eliminate the requirement for governance approval.
+:::
+
+---
+
+## Failure Mode
+
+A system without enforced layer separation is a system where any component can
+potentially act with the authority of any other component. In practice, this
+manifests as execution components that can directly invoke infrastructure operations,
+agents that can write to their own policy definitions, and tools that can modify
+the capability registry that governs their invocation. Each of these is a path
+by which the lower layer overrides the higher — and each of them is a path by
+which the governance boundary is eliminated. The boundary between layers is not
+a logging checkpoint. It is the structural mechanism by which governance authority
+is enforced. When it fails, governance fails.
+
+:::caution
+A governance bypass is not always a deliberate attack. It can be a performance
+optimization ("just call the API directly"), an integration convenience ("the
+agent already has the credentials"), or a debug facility that was never removed
+from production. The separation of layers must be enforced architecturally —
+not by policy, not by convention, and not by the good judgment of developers
+who understand why it matters.
+:::
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Separation of Layers operationalizes [Doctrine Article II — Governance Before
+Execution](/doctrine/article-ii): the structural guarantee that governance evaluates
+before execution is the enforcement of layer separation — the governance layer
+cannot be bypassed because the architecture does not permit direct execution paths
+that skip it. It directly grounds [Constitutional Article III — Deterministic
+Enforcement](/constitution/article-iii): the requirement that the governance runtime
+be structurally external to the AI systems it governs is a requirement for layer
+separation. And it underpins [Constitutional Article X — Constitutional Supremacy](/constitution/article-x):
+the constitution is architecturally supreme when no lower layer can override a
+higher one. When layer separation fails, constitutional supremacy fails with it.

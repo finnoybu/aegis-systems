@@ -1,0 +1,51 @@
+---
+title: Protocols
+description: Seven binding operational rules that implement AEGIS constitutional requirements
+sidebar:
+  order: 1
+---
+
+*Doctrine defines what must be true. Principles define how systems must behave.
+Protocols define what must happen.*
+
+---
+
+Protocols operationalize principles. Where principles translate doctrine into
+behavioral commitments, protocols translate those commitments into binding
+operational procedures. Each protocol defines a specific sequence of actions
+that must occur — and must be recorded — for a governed execution event to be
+constitutionally complete.
+
+Protocols are binding. They are not best practices. They are not recommended
+procedures. They are the minimum operational requirements for compliance with
+the constitutional articles and principles they implement. A system that skips
+a protocol step is not a system with an incomplete process. It is a non-compliant
+system.
+
+Each protocol violation invalidates the execution legitimacy of the event it
+governs. An escalation that bypasses the Threat Escalation Protocol is not an
+escalation with procedural gaps — it is an unauthorized escalation. A state
+mutation that occurs without the State Dump Protocol is not a mutation with
+incomplete documentation — it is a mutation without governance record.
+
+---
+
+## The Seven Protocols
+
+| # | Protocol | One-Line Statement |
+|---|---|---|
+| [1](/protocols/protocol-1) | **State Dump Protocol** | Any governance mutation must regenerate authoritative state — version, mode, threat posture, authority, protocol set, and artifact index |
+| [2](/protocols/protocol-2) | **Mode Transition Protocol** | All operational mode transitions must be explicit, logged, and authority-bound — silent transitions are invalid |
+| [3](/protocols/protocol-3) | **Threat Escalation Protocol** | Escalation requires explicit request, reclassification, approval, isolation assessment, and audit preparation — escalation by inference is prohibited |
+| [4](/protocols/protocol-4) | **Constraint Declaration Protocol** | Before action, scope and tool boundaries must be declared — execution without declared constraints is denied |
+| [5](/protocols/protocol-5) | **Authority Binding Protocol** | All artifacts must include authority context, threat level, version reference, and scope declaration — unbound output is non-canonical |
+| [6](/protocols/protocol-6) | **Audit Integrity Protocol** | Execution must produce durable trace artifacts including mode, threat, authority, tools invoked, state delta, and artifact references |
+| [7](/protocols/protocol-7) | **Isolation Protocol** | Level 5 operations require physical or network isolation and operator presence |
+
+---
+
+:::note
+Violation of any protocol invalidates the execution legitimacy of the governed
+event. Partial compliance is non-compliance. A system that follows six of seven
+protocols is a non-compliant system with six compliant procedures.
+:::
