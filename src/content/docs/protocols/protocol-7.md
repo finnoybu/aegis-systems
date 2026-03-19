@@ -1,0 +1,131 @@
+---
+title: Protocol 7 — Isolation Protocol
+description: Level 5 operations require physical or network isolation and operator presence
+sidebar:
+  order: 8
+---
+
+*Level 5 operations require physical or network isolation and operator presence.*
+
+---
+
+## Protocol
+
+Execution at Threat Level 5 (Detached Execution) requires all of the following
+before any action proceeds:
+
+1. **Isolation confirmation** — physical or network isolation of the execution environment must be confirmed as established and in effect
+2. **Operator presence** — a human operator must be physically or virtually present for the duration of the elevated execution
+3. **Dual-control authorization** — two independent human authorities must have approved the escalation to Level 5; single-party approval is constitutionally insufficient
+4. **Pre-isolation state dump** — a complete State Dump capturing the governance state immediately before isolation must be generated and verified
+5. **Audit channel verification** — the audit channel must be confirmed as available within the isolated environment; isolated execution without audit capability is prohibited
+6. **Rollback definition** — a defined rollback strategy must be documented before Level 5 execution begins, specifying the conditions under which execution must be halted and how the system returns to its prior state
+
+:::danger
+Level 5 execution without confirmed isolation is constitutionally prohibited.
+Isolation is not a precautionary measure that can be waived under operational
+pressure. It is a hard structural requirement. An isolated execution that loses
+isolation during execution must halt immediately.
+:::
+
+---
+
+## Purpose
+
+Threat Level 5 — Detached Execution — represents the highest-consequence operational
+context in the AEGIS threat framework. At this level, the system may interact with
+high-consequence infrastructure, execute operations with significant or irreversible
+effects, and operate with elevated authority that cannot be easily recalled once
+exercised. The Isolation Protocol exists because the cost of governance failure at
+Level 5 is proportionally higher than at any other level — and because the structural
+controls that prevent governance failure at lower levels are not sufficient at Level 5.
+
+Physical or network isolation ensures that the elevated execution cannot affect
+systems or data outside its defined scope — that if something goes wrong, the blast
+radius is bounded. Operator presence ensures that a human is in a position to
+observe, intervene, and halt execution if it deviates from the authorized scope.
+Dual-control authorization ensures that no single party can authorize the highest-
+consequence operations alone — the same principle that governs nuclear launch
+authorization, high-value financial transactions, and other irreversible high-stakes
+actions.
+
+These are not belt-and-suspenders redundancies. They are distinct structural controls
+addressing distinct failure modes: isolation bounds the impact of unexpected behavior;
+operator presence enables real-time intervention; dual-control authorization prevents
+single-point authorization failures.
+
+---
+
+## In Practice
+
+The Isolation Protocol is triggered as part of the Threat Escalation Protocol
+(Protocol 3) when the requested threat level is 5. The isolation assessment step
+in the escalation workflow evaluates the feasibility and requirements for isolation
+specific to the execution context. If isolation is infeasible — if the execution
+environment cannot be isolated from production systems, or if the required isolation
+cannot be established within the available infrastructure — the escalation is denied.
+Isolation feasibility is not a soft constraint that can be satisfied by a reduced
+isolation posture. It is a binary requirement.
+
+Once isolation is established, the audit channel within the isolated environment
+must be verified before execution begins. An isolated execution environment that
+cannot write audit records does not satisfy the completion condition for governance —
+and execution that cannot produce a durable audit record cannot conclude in compliance.
+
+Operator presence is continuous — not just at the initiation of Level 5 execution,
+but throughout. An operator who is present for escalation approval but absent during
+execution has not satisfied the operator presence requirement. The operator must
+be in a position to observe execution and intervene if necessary for the duration
+of the Level 5 execution window.
+
+:::caution
+The rollback definition is not optional for Level 5 operations. It must specify:
+the conditions under which execution must be halted regardless of completion status,
+the steps required to return the system to its pre-escalation state, and the
+authority required to initiate rollback. A Level 5 execution without a defined
+rollback strategy has no defined exit path if something goes wrong.
+:::
+
+---
+
+## Failure Mode
+
+The failure mode for Level 5 operations without isolation is not hypothetical —
+it is the scenario that Detached Execution is specifically designed to prevent: a
+high-authority, high-consequence execution that affects systems outside its declared
+scope because no isolation boundary prevented it. Without physical or network
+isolation, the execution's blast radius is bounded only by the governance layer's
+enforcement of the constraint envelope. A constraint envelope enforcement failure
+at Level 5, without isolation, can affect production infrastructure, sensitive data,
+or high-consequence systems that were never part of the authorized scope.
+
+Isolation is the last structural defense at the highest-consequence operational level.
+It is not a governance control — it is the physical boundary that limits what
+governance failures can reach.
+
+:::note
+Level 5 execution is intentionally difficult to authorize. The dual-control
+requirement, isolation requirement, and operator presence requirement are designed
+to make Level 5 operations rare, deliberate, and well-documented. If the governance
+architecture is functioning correctly, the vast majority of operations will never
+reach Level 5. When they do, the Isolation Protocol ensures they occur under the
+maximum available structural protection.
+:::
+
+---
+
+## Relationship to Principles and Constitution
+
+The Isolation Protocol implements [Doctrine Article IV — Oversight Before Autonomy](/doctrine/article-iv):
+at the highest threat level, physical isolation and operator presence are the
+structural mechanisms by which oversight proportional to consequence is enforced.
+It directly enforces [Constitutional Article IV — Human Oversight](/constitution/article-iv):
+the constitutional requirement for escalation pathways to human authority culminates
+at Level 5 with operator presence and dual-control authorization. It connects to
+[Constitutional Article XI — Escalation Discipline](/constitution/article-xi):
+the Isolation Protocol is the final step in the escalation workflow at Level 5,
+and its requirements are the strictest expression of the escalation discipline
+principle. And it applies [Constitutional Article IX — Deny by Default](/constitution/article-ix):
+if isolation cannot be confirmed, if operator presence cannot be established, or
+if the audit channel is unavailable within the isolated environment, Level 5
+execution is denied.

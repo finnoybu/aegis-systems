@@ -1,0 +1,106 @@
+---
+title: Article I — Constraint Before Capability
+description: Constraint is not the limitation of intelligence — it is the condition under which intelligence becomes trustworthy
+sidebar:
+  order: 2
+---
+
+*Constraint is not the limitation of intelligence. It is the condition under which
+intelligence becomes trustworthy.*
+
+---
+
+## Doctrine
+
+Constraint precedes capability in every governed system. Before an intelligent system
+is permitted to act, the boundaries of its action must be declared. Scope must be
+defined. Interfaces must be enumerated. Tools must be bounded. External surfaces must
+be identified. Failure conditions must be explicit.
+
+If constraint cannot be expressed, execution is denied.
+
+This is not a precaution. It is a structural premise. A system operating without
+declared constraints is not a constrained system operating loosely — it is an
+ungoverned system. The absence of declared constraint is itself a governance failure,
+not a governance gap.
+
+---
+
+## Meaning
+
+The doctrine of Constraint Before Capability draws on three established traditions
+of constraint in system design.
+
+In systems engineering, constraint prevents undefined behavior — a system that can
+enter undefined states cannot be reasoned about, cannot be tested, and cannot be
+made safe.[^1] In security engineering, least privilege prevents abuse of access —
+a system that holds only the permissions necessary for its declared task cannot
+escalate beyond it.[^1] In constitutional governance, separation of powers prevents
+concentration of authority — no single actor holds enough authority to act without
+the check of another.[^2]
+
+AEGIS extends these principles to artificial intelligence. The capability registry
+is the structural expression of this doctrine: it enumerates what is permitted, and
+everything outside it is denied. The constraint envelope is the operational expression:
+before any execution begins, scope, tools, external surfaces, and termination
+conditions must be declared. Execution without a constraint envelope is constitutionally
+invalid.
+
+---
+
+## In Practice
+
+Before any governed action begins, the AEGIS governance layer requires a constraint
+declaration. This declaration specifies the objective, the scope boundaries, the
+tool permissions, the data handling rules, and the termination conditions for the
+task. The capability registry verifies that each declared tool and resource is
+within the actor's explicit grant. Any capability not in the registry is denied
+before evaluation begins.
+
+This is the first structural checkpoint in the governance pipeline — before policy
+evaluation, before risk scoring, before authority binding. It is not possible to
+reach later governance stages without passing through constraint declaration. An
+agent that cannot declare its constraints cannot execute. An agent that declares
+constraints it does not hold grants for is denied at the registry boundary.
+
+:::tip
+Constraint declaration is not documentation — it is a governance precondition.
+The constraint envelope must be machine-evaluable, not prose. Scope boundaries
+must be enforceable at runtime, not advisory.
+:::
+
+---
+
+## Failure Mode
+
+A system that executes without declared constraints is not operating within loose
+governance — it is operating outside governance entirely. The practical consequence
+is an agent with undefined execution boundaries: it may invoke tools that were
+never authorized, access resources outside its intended scope, and produce
+side effects that cannot be attributed to any declared purpose. When something
+goes wrong — and with undefined boundaries, something will — the governance record
+cannot reconstruct what the agent was permitted to do, because no boundary was
+ever declared. Constraint Before Capability is not about limiting what capable
+systems can do. It is about ensuring that what they do can be accounted for.
+
+:::danger
+Execution without a declared constraint envelope is constitutionally invalid.
+It is not a degraded mode of operation. It is the absence of governance.
+:::
+
+---
+
+## Relationship to Constitution
+
+Constraint Before Capability is the doctrinal foundation of [Article I — Bounded
+Capability](/constitution/article-i). The constitutional requirement that every
+capability be explicitly defined, registered, and granted is the architectural
+enforcement of this doctrine. It also grounds [Article IX — Deny by Default](/constitution/article-ix):
+the inability to declare constraints is a form of ambiguity — and in the presence
+of ambiguity, execution does not proceed.
+
+---
+
+[^1]: J. H. Saltzer and M. D. Schroeder, "The protection of information in computer systems," *Proc. IEEE*, vol. 63, no. 9, pp. 1278–1308, Sep. 1975, doi: 10.1109/PROC.1975.9939. See [REFERENCES.md](/references).
+
+[^2]: J. Madison, "Federalist No. 51," in *The Federalist Papers*, 1788. [Online]. Available: <https://avalon.law.yale.edu/18th_century/fed51.asp> See [REFERENCES.md](/references).
