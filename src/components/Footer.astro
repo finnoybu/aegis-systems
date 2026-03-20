@@ -1,38 +1,25 @@
 ---
 const year = new Date().getFullYear();
-const version = import.meta.env.AEGIS_VERSION ?? 'dev';
-
-const nav = [
-  { label: 'Constitution', href: '/constitution/' },
-  { label: 'Doctrine', href: '/doctrine/' },
-  { label: 'Principles', href: '/principles/' },
-  { label: 'Protocols', href: '/protocols/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Contact', href: '/contact/' },
-  { label: 'Legal', href: '/legal/' },
-  { label: 'Terms', href: '/legal/terms/' },
-  { label: 'Privacy', href: '/legal/privacy/' },
-];
+const buildDate = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
 ---
 
 <footer class="site-footer">
-  <nav class="footer-nav" aria-label="Footer navigation">
-    {nav.map((link) => (
-      <a href={link.href}>{link.label}</a>
-    ))}
-  </nav>
-  <hr class="footer-divider" />
   <div class="footer-inner">
     <div class="footer-left">
       <span class="footer-author">
         Built and maintained by <a href="https://finnoybu.github.io/">Ken Tannenbaum</a>
       </span>
-      <span class="footer-meta">Version: {version}</span>
+      <span class="footer-meta">Last updated: {buildDate}</span>
     </div>
     <div class="footer-right">
       <span>© {year} <a href="/legal/">AEGIS Initiative</a>. All Rights Reserved.</span>
-      <span class="footer-meta">This site is operated by AEGIS Operations LLC</span>
-      <span class="footer-meta">under license from AEGIS Initiative.</span>
+      <span class="footer-legal">
+        <a href="/legal/cookies/">Cookies</a>
+        <span class="footer-sep">|</span>
+        <a href="/legal/privacy/">Privacy</a>
+        <span class="footer-sep">|</span>
+        <a href="/legal/terms/">Terms</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -40,35 +27,11 @@ const nav = [
 <style>
   .site-footer {
     border-top: 1px solid var(--color-border-subtle);
+    margin-top: 2rem;
     padding: 1.25rem 1.5rem;
     font-size: 0.875rem;
     color: var(--color-text-secondary);
     background-color: var(--color-bg);
-  }
-
-  .footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 1.5rem;
-    padding-bottom: 1rem;
-  }
-
-  .footer-nav a {
-    color: var(--color-text-secondary);
-    text-decoration: underline;
-    white-space: nowrap;
-    font-size: 0.875rem;
-  }
-
-  .footer-nav a:hover {
-    color: var(--color-accent);
-  }
-
-  .footer-divider {
-    border: none;
-    border-top: 1px solid var(--color-border-subtle);
-    margin: 0 0 1rem;
   }
 
   .footer-inner {
@@ -84,6 +47,7 @@ const nav = [
     flex-direction: column;
     gap: 0.2rem;
     align-items: center;
+    order: 2; /* author below copyright when stacked */
   }
 
   .footer-right {
@@ -91,6 +55,7 @@ const nav = [
     flex-direction: column;
     gap: 0.2rem;
     align-items: center;
+    order: 1; /* copyright above author when stacked */
   }
 
   .footer-author a {
@@ -99,11 +64,38 @@ const nav = [
   }
 
   .footer-meta {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
   }
 
-  @media (min-width: 768px) {
+  .footer-legal {
+    font-size: 0.8125rem;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-meta {
+      font-size: 0.75rem;
+    }
+    .footer-legal {
+      font-size: 0.75rem;
+    }
+  }
+
+  .footer-legal a {
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-sep {
+    color: var(--color-text-muted);
+    margin: 0 0.25rem;
+  }
+
+  @media (min-width: 1024px) {
     .footer-inner {
       flex-direction: row;
       justify-content: space-between;
@@ -113,11 +105,13 @@ const nav = [
 
     .footer-left {
       align-items: flex-start;
+      order: 1; /* author left on desktop */
     }
 
     .footer-right {
       align-items: flex-end;
       text-align: right;
+      order: 2; /* copyright right on desktop */
     }
   }
 </style>

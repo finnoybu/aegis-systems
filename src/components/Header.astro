@@ -1,4 +1,5 @@
 ---
+import AegisLogo from './AegisLogo.astro';
 const version = import.meta.env.AEGIS_VERSION ?? 'dev';
 const isCalVer = /^v\d{2}\.\d+\.\d+/.test(version);
 let versionHref = '#';
@@ -16,7 +17,7 @@ if (isCalVer) {
 
     <!-- Left: Logo + Title -->
     <a href="/" class="site-title">
-      <img src="/AEGIS_logo.svg" alt="" width="24" height="24" class="site-logo" />
+      <AegisLogo size={32} />
       <span class="site-name">AEGIS™ Constitution</span>
     </a>
 
@@ -97,12 +98,13 @@ if (isCalVer) {
 </header>
 
 <style>
+  /* ── Main header — dark chrome ── */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 100;
     background-color: var(--header-bg);
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--header-border);
     height: 3.5rem;
   }
 
@@ -113,6 +115,7 @@ if (isCalVer) {
     height: 100%;
     padding: 0 1rem;
     gap: 1rem;
+    max-width: 100%;
   }
 
   .site-title {
@@ -120,22 +123,27 @@ if (isCalVer) {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--header-text);
     font-family: "Inter", system-ui, sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.25rem;
     white-space: nowrap;
     flex-shrink: 0;
+    transition: color 0.15s;
   }
 
   .site-title:hover {
-    color: var(--color-accent);
+    color: #0084e7;
   }
 
-  .site-logo {
-    width: 24px;
-    height: 24px;
+  .site-title :global(.aegis-logo) {
     flex-shrink: 0;
+  }
+
+  /* Override logo colors for dark header context */
+  .site-title :global(.aegis-logo) {
+    --color-brand-gray: var(--header-text);
+    --color-accent: var(--subheader-bg);
   }
 
   .header-tools {
@@ -155,15 +163,15 @@ if (isCalVer) {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: var(--header-text-muted);
     flex-shrink: 0;
     text-decoration: none;
     border-radius: 4px;
   }
 
   .tool-btn:hover {
-    color: var(--color-accent);
-    background-color: var(--color-bg-muted);
+    color: var(--header-text);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .tool-btn svg {
@@ -184,7 +192,7 @@ if (isCalVer) {
   .version-badge {
     display: none;
     font-size: 0.75rem;
-    color: var(--color-text-muted);
+    color: var(--header-text-muted);
     text-decoration: none;
     font-family: monospace;
     letter-spacing: 0.02em;
@@ -193,15 +201,15 @@ if (isCalVer) {
   }
 
   .version-badge:hover {
-    color: var(--color-accent);
+    color: var(--header-text);
     text-decoration: underline;
   }
 
   .version-badge--dev {
-    color: var(--color-text-muted);
+    color: var(--header-text-muted);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .search-btn { display: none; }
     .menu-btn { display: none; }
     .version-badge { display: inline; }
@@ -215,10 +223,10 @@ if (isCalVer) {
     padding: 0.25rem 0.625rem;
     height: 2rem;
     background: none;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: var(--header-text-muted);
     font-size: 0.8125rem;
     font-family: "Inter", system-ui, sans-serif;
     font-weight: 500;
@@ -229,13 +237,13 @@ if (isCalVer) {
   }
 
   :global(.toc-btn:hover) {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: var(--header-text);
+    color: var(--header-text);
   }
 
   :global(.toc-btn[aria-expanded="true"]) {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: var(--header-text);
+    color: var(--header-text);
   }
 
   :global(.toc-btn svg) {
@@ -247,7 +255,7 @@ if (isCalVer) {
     transform: rotate(180deg);
   }
 
-  @media (min-width: 768px) and (max-width: 1366px) {
+  @media (min-width: 1024px) and (max-width: 1366px) {
     :global(.toc-btn) {
       display: flex;
     }
