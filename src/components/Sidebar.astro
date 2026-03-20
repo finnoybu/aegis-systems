@@ -1,4 +1,15 @@
 ---
+const version = import.meta.env.AEGIS_VERSION ?? 'dev';
+const isCalVer = /^v\d{2}\.\d+\.\d+/.test(version);
+let versionHref = '#';
+if (isCalVer) {
+  const match = version.match(/^v(\d+)\.(\d+)\.(\d+)/);
+  if (match) {
+    const [, year, month, day] = match;
+    versionHref = `/releases/${year}/${month}/${day}`;
+  }
+}
+
 const pathname = Astro.url.pathname;
 
 const nav = [
@@ -77,6 +88,19 @@ function isGroupActive(items: { slug: string }[]): boolean {
 
 <nav class="sidebar" id="sidebar" aria-label="Documentation navigation">
   <div class="sidebar-inner">
+
+    <!-- Search bar — wide only (hidden on mobile) -->
+    <div class="sidebar-search">
+      <button class="sidebar-search-btn" id="search-bar-open" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10.8" cy="10.8" r="9.6"/>
+          <path d="M22.8 22.8l-5.208-5.208"/>
+        </svg>
+        <span>Search</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+    </div>
+
     {nav.map((group) => (
       <details class="nav-group" open={isGroupActive(group.items)}>
         <summary class="nav-group-label">
@@ -101,6 +125,15 @@ function isGroupActive(items: { slug: string }[]): boolean {
       </details>
     ))}
   </div>
+
+  <!-- Version badge — mobile only, shown in sidebar footer -->
+  <div class="sidebar-version">
+    {isCalVer ? (
+      <a href={versionHref} class="sidebar-version-badge" aria-label={`Version ${version} — view release notes`}>{version}</a>
+    ) : (
+      <span class="sidebar-version-badge">{version}</span>
+    )}
+  </div>
 </nav>
 
 <!-- Mobile overlay -->
@@ -108,7 +141,7 @@ function isGroupActive(items: { slug: string }[]): boolean {
 
 <style>
   .sidebar {
-    width: 22rem;
+    width: 320px;
     flex-shrink: 0;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--color-border-subtle);
@@ -116,6 +149,8 @@ function isGroupActive(items: { slug: string }[]): boolean {
     position: sticky;
     top: 3.5rem;
     height: calc(100vh - 3.5rem);
+    display: flex;
+    flex-direction: column;
 
     /* Mobile: hidden by default */
     display: none;
@@ -123,6 +158,46 @@ function isGroupActive(items: { slug: string }[]): boolean {
 
   .sidebar-inner {
     padding: 1rem 0;
+    flex: 1;
+  }
+
+  /* Search bar — shown at 768px+, hidden on mobile */
+  .sidebar-search {
+    display: none;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .sidebar-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-family: inherit;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .sidebar-search-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .sidebar-search-btn kbd {
+    margin-left: auto;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-family: inherit;
   }
 
   .nav-group {
@@ -135,7 +210,7 @@ function isGroupActive(items: { slug: string }[]): boolean {
     justify-content: space-between;
     padding: 0.75rem 1.25rem;
     cursor: pointer;
-    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     font-weight: 600;
     font-size: 0.875rem;
     color: var(--color-text);
@@ -187,6 +262,26 @@ function isGroupActive(items: { slug: string }[]): boolean {
     font-weight: 500;
   }
 
+  /* Version badge in sidebar footer — mobile only */
+  .sidebar-version {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .sidebar-version-badge {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-family: monospace;
+    letter-spacing: 0.02em;
+  }
+
+  .sidebar-version-badge:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
   .sidebar-overlay {
     display: none;
     position: fixed;
@@ -195,22 +290,28 @@ function isGroupActive(items: { slug: string }[]): boolean {
     z-index: 50;
   }
 
-  /* Wide screens: show sidebar */
+  /* Wide screens: show sidebar, hide sidebar version badge */
   @media (min-width: 768px) {
     .sidebar {
+      display: flex;
+    }
+    .sidebar-search {
       display: block;
+    }
+    .sidebar-version {
+      display: none;
     }
   }
 
   /* Mobile: sidebar as drawer */
   .sidebar.open {
-    display: block;
+    display: flex;
     position: fixed;
     top: 3.5rem;
     left: 0;
     height: calc(100vh - 3.5rem);
     z-index: 60;
-    width: min(22rem, 85vw);
+    width: min(320px, 85vw);
   }
 
   .sidebar-overlay.open {
