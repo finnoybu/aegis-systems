@@ -58,7 +58,7 @@ Organizations may verify constitutional compliance through:
 A system that does not enforce these constitutional requirements is not an
 AEGIS-compliant system, regardless of what it claims about itself.
 
-:::danger
+:::prohibition
 Partial compliance is non-compliance. A system that enforces nine articles and
 bypasses two is a non-compliant system with nine compliant features. Compliance
 is binary. The governance boundary either holds or it does not.

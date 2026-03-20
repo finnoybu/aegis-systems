@@ -70,7 +70,7 @@ escalation request, the reclassification decision, the approving authority,
 the isolation plan, and the constraint envelope in effect during elevated
 execution.
 
-:::danger
+:::prohibition
 At Threat Level 5 (Detached Execution), dual-control authorization is required.
 Single-party escalation approval is constitutionally insufficient at this level —
 regardless of the authority level of the approving party. This is not a configurable

@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-:::note
+:::doctrine
 *Renamed from "Data Protection" in v0.2.0. Protection describes a posture — sovereignty establishes jurisdiction. Information access is a governed capability subject to the same grant, revocation, and audit requirements as any other action. The title change reflects that framing.*
 :::
 
@@ -45,7 +45,7 @@ underlying dataset. An agent authorized to query a system does not thereby gain
 authorization to exfiltrate its contents. Each access is a governed act requiring
 its own explicit authorization.
 
-:::caution
+:::constraint
 An agent authorized to read a summary does not thereby hold authorization to
 read the underlying dataset. An agent authorized to query a system does not
 thereby hold authorization to exfiltrate its contents. Each access is a separate

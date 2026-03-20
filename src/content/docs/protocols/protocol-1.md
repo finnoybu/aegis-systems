@@ -45,7 +45,7 @@ the governance posture, the authority context, the constraint envelope, the poli
 version. Audit without State Dump lacks environmental integrity. State Dump without
 Audit lacks behavioral trace. Both are required for canonical execution.
 
-:::tip
+:::application
 Think of the State Dump as the governance system's equivalent of a flight data
 recorder snapshot. When something goes wrong, the audit record tells you what
 the system did. The State Dump tells you what the system was authorized to do —
@@ -87,7 +87,7 @@ detectable. This tamper-evidence property is the structural basis for the
 reproducibility guarantee: a State Dump whose integrity hash verifies correctly
 can be trusted to reflect the governance state at the time it was captured.
 
-:::caution
+:::constraint
 State Dumps must be tamper-evident once written. An implementation that permits
 modification of a State Dump after creation has removed the reproducibility
 guarantee that makes the State Dump meaningful. Tamper-evidence is a structural
@@ -108,7 +108,7 @@ activity. When the State Dump Protocol is not followed, the governance record lo
 its forensic value precisely when forensic value is most needed — during incident
 analysis, compliance review, and escalation audit.
 
-:::danger
+:::prohibition
 This is constitutionally prohibited. A governance system that cannot reproduce
 the state in which an action occurred cannot claim governance legitimacy over
 that action. State Dump is the structural memory of governance. Without it,

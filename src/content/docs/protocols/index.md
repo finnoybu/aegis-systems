@@ -44,7 +44,7 @@ incomplete documentation — it is a mutation without governance record.
 
 ---
 
-:::note
+:::doctrine
 Violation of any protocol invalidates the execution legitimacy of the governed
 event. Partial compliance is non-compliance. A system that follows six of seven
 protocols is a non-compliant system with six compliant procedures.

@@ -20,7 +20,7 @@ An action that cannot be audited did not happen within the AEGIS governance
 boundary. An action that happened outside the audit record happened outside
 governance. These are not distinctions of degree. They are constitutional categories.
 
-:::danger
+:::prohibition
 If audit cannot be written, execution does not proceed. This is not a policy
 preference. It is a constitutional requirement. A governance pipeline that
 cannot write its audit record is not a degraded governance pipeline. It is

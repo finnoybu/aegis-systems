@@ -24,7 +24,7 @@ If audit cannot be written — if the audit channel is unavailable, if the minim
 audit fields cannot be captured, if the record cannot be durably stored — execution
 does not conclude. The task is not complete. The governance pipeline is open.
 
-:::danger
+:::prohibition
 This is constitutionally required, not operationally configurable. Audit is a
 completion condition, not a logging side effect. The governance pipeline is not
 complete when a decision is issued. It is complete when the decision, the context
@@ -72,7 +72,7 @@ entirely — not just audit record creation. A governance runtime that cannot ve
 the availability of the audit channel must not permit high-risk actions to begin,
 because it cannot satisfy the completion condition that would allow them to conclude.
 
-:::note
+:::doctrine
 The minimum audit record fields are defined in the sub-specifications. Implementations
 may capture additional fields, but may not omit required ones. An audit record
 missing required fields is an incomplete audit record — which means the execution

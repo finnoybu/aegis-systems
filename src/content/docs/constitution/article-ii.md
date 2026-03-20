@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-:::note
+:::doctrine
 *Renamed from "Authority Verification" in v0.2.0. Verification is one step in the chain — binding is the complete requirement: identity established, authority level confirmed, scope declared, threat posture matched, and every element bound to the audit artifact. The title change reflects the full architectural scope.*
 :::
 
@@ -63,7 +63,7 @@ as non-negotiable audit fields.
 Authority context must travel with the action through the full evaluation pipeline
 and be bound to the audit artifact at completion.
 
-:::danger
+:::prohibition
 Unbound execution is constitutionally invalid. It cannot be approved, escalated,
 or deferred. It must be denied. An action without attributable authority has no
 governance basis and no place in a compliant system.

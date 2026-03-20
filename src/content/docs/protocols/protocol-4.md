@@ -26,7 +26,7 @@ execution begins. Any declared tool or resource that the acting agent does not h
 an explicit, unrevoked grant for must be denied before execution proceeds. The
 constraint envelope is machine-evaluable — it is a structured declaration, not prose.
 
-:::danger
+:::prohibition
 Execution without a declared constraint envelope is constitutionally invalid.
 A system that begins execution before the constraint declaration is complete and
 verified is not a system operating with incomplete governance. It is a system
@@ -74,7 +74,7 @@ against each action proposal. It does not expand during execution without a form
 constraint mutation event, which itself requires a State Dump and governance
 re-evaluation.
 
-:::note
+:::doctrine
 Constraint mutations during execution — legitimate expansions of scope that arise
 because the task requires access not anticipated in the initial declaration — are
 governed events. They require a formal constraint mutation request, governance
@@ -97,7 +97,7 @@ enforce. The Constraint Declaration Protocol requires machine-evaluable constrai
 precisely because ambiguous constraints are not constraints — they are placeholders
 that governance cannot act on.
 
-:::caution
+:::constraint
 Ambiguous constraint declarations are not better than no constraint declaration.
 They are worse — they create the appearance of a governance boundary without the
 substance. A governance layer that accepts ambiguous constraint declarations has

@@ -76,7 +76,7 @@ audit record. The replay completeness requirement is a production certification
 criterion: a deployment that cannot replay its governance decisions cannot claim
 its governance record is defensible.
 
-:::tip
+:::application
 Versioning is most valuable when something has gone wrong. In a post-incident
 analysis, the question is always: what governance state was in effect when this
 action was authorized? If that question can be answered from the audit record,
@@ -97,7 +97,7 @@ distinction matters enormously in regulated environments, in post-incident analy
 and in any context where governance is expected to provide accountability rather
 than documentation.
 
-:::caution
+:::constraint
 Governance state that changes without a version increment has drifted without
 record. Drift without record is not a documentation gap — it is a doctrine
 violation. The governance record must always reflect the governance state. When

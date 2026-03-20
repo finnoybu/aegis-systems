@@ -66,7 +66,7 @@ was produced. That record is the structural basis for trust. It is not dependent
 the model's behavior being consistently good. It is dependent on the governance
 architecture functioning as specified.
 
-:::tip
+:::application
 Transparency is not just for auditors. Operators who can inspect policy decisions
 can identify misconfiguration, correct thresholds, and improve governance with
 evidence. Opaque systems accumulate governance drift silently.
@@ -87,7 +87,7 @@ regulated environments, declarations of intent are not compliance. Transparency
 Before Trust is the doctrine that closes the gap between governance that exists and
 governance that can be proven to exist.
 
-:::caution
+:::constraint
 A governance system that cannot explain its decisions cannot be audited. A system
 that cannot be audited cannot demonstrate compliance. Opaque enforcement is
 constitutionally impermissible — not inconvenient. Impermissible.

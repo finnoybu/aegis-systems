@@ -21,7 +21,7 @@ before any action proceeds:
 5. **Audit channel verification** — the audit channel must be confirmed as available within the isolated environment; isolated execution without audit capability is prohibited
 6. **Rollback definition** — a defined rollback strategy must be documented before Level 5 execution begins, specifying the conditions under which execution must be halted and how the system returns to its prior state
 
-:::danger
+:::prohibition
 Level 5 execution without confirmed isolation is constitutionally prohibited.
 Isolation is not a precautionary measure that can be waived under operational
 pressure. It is a hard structural requirement. An isolated execution that loses
@@ -78,7 +78,7 @@ execution has not satisfied the operator presence requirement. The operator must
 be in a position to observe execution and intervene if necessary for the duration
 of the Level 5 execution window.
 
-:::caution
+:::constraint
 The rollback definition is not optional for Level 5 operations. It must specify:
 the conditions under which execution must be halted regardless of completion status,
 the steps required to return the system to its pre-escalation state, and the
@@ -103,7 +103,7 @@ Isolation is the last structural defense at the highest-consequence operational 
 It is not a governance control — it is the physical boundary that limits what
 governance failures can reach.
 
-:::note
+:::doctrine
 Level 5 execution is intentionally difficult to authorize. The dual-control
 requirement, isolation requirement, and operator presence requirement are designed
 to make Level 5 operations rare, deliberate, and well-documented. If the governance

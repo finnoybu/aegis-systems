@@ -58,7 +58,7 @@ The governance runtime must be structurally external to the AI systems it govern
 It must not share execution context, memory space, or compute boundary with the
 agent under governance.
 
-:::danger
+:::prohibition
 This is constitutionally prohibited. A single bypass path from agent to
 infrastructure nullifies the entire governance architecture. Complete mediation
 is not a design preference — it is the structural guarantee that makes every

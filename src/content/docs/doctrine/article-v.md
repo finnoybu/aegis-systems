@@ -71,7 +71,7 @@ about whether to permit elevated execution. A precondition failure is a signal t
 the governance system itself is not operating correctly. Those are different problems
 requiring different responses.
 
-:::note
+:::doctrine
 Deny by Default applies to all actions, regardless of their apparent risk level.
 A low-risk action evaluated without a verifiable authority context is not a
 low-risk action with a minor compliance gap. It is an ungoverned action.
@@ -91,7 +91,7 @@ They cannot demonstrate that any action was outside the governance boundary, bec
 there was no boundary — only a list of things that were specifically denied.
 Deny by Default is the doctrine that makes the governance boundary real.
 
-:::danger
+:::prohibition
 This is constitutionally prohibited. A system that defaults to permission under
 uncertainty does not have weak governance. It has no governance boundary — only
 a list of exceptions. The governance boundary is defined by what is denied in

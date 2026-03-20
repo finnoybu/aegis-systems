@@ -57,7 +57,7 @@ Grant revocation takes effect immediately. Revoked grants produce denial.
 The capability registry must be version-controlled, cryptographically signed, and
 auditable. Modifications require explicit authorization.
 
-:::caution
+:::constraint
 Grant revocation takes effect immediately. There is no grace period. Revoked
 grants produce denial on the next evaluation — not at the end of the current
 session, not after a restart. Immediately.

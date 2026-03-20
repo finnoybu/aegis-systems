@@ -63,7 +63,7 @@ reach later governance stages without passing through constraint declaration. An
 agent that cannot declare its constraints cannot execute. An agent that declares
 constraints it does not hold grants for is denied at the registry boundary.
 
-:::tip
+:::application
 Constraint declaration is not documentation — it is a governance precondition.
 The constraint envelope must be machine-evaluable, not prose. Scope boundaries
 must be enforceable at runtime, not advisory.
@@ -83,7 +83,7 @@ cannot reconstruct what the agent was permitted to do, because no boundary was
 ever declared. Constraint Before Capability is not about limiting what capable
 systems can do. It is about ensuring that what they do can be accounted for.
 
-:::danger
+:::prohibition
 Execution without a declared constraint envelope is constitutionally invalid.
 It is not a degraded mode of operation. It is the absence of governance.
 :::

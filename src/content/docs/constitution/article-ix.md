@@ -68,7 +68,7 @@ Systems must not implement partial governance — processing some preconditions
 while bypassing others based on risk level or action type. All four preconditions
 apply to all actions.
 
-:::tip
+:::application
 Precondition failures do not route to escalation. They are not edge cases
 requiring human judgment about whether to proceed. They are governance system
 failures requiring operator investigation into why a precondition was absent.

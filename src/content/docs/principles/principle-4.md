@@ -24,7 +24,7 @@ Transitions between modes are explicit governance events. Every mode transition 
 - Bind to threat posture where applicable
 - Produce a State Dump when the transition affects execution posture
 
-:::danger
+:::prohibition
 Silent mode mutation is prohibited. A system that can change its operational mode
 without producing a record of the transition can change its governance posture
 without accountability. Silent transitions are not a performance optimization.
@@ -72,7 +72,7 @@ changes, any threat posture changes, and references to associated State Dumps.
 If the transition logging fails, the transition is invalid — the system remains
 in its prior mode until the transition can be recorded.
 
-:::note
+:::doctrine
 Implementations may define additional modes beyond the four canonical ones, but
 any additional mode must be explicitly declared, versioned, and documented with
 its transition rules. Undeclared modes are non-compliant — they represent governance

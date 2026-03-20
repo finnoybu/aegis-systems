@@ -70,7 +70,7 @@ a situation warrants escalation. The agent must request it. A human authority mu
 approve it. The approval is logged. The constraint envelope for the elevated
 execution is declared before execution begins.
 
-:::caution
+:::constraint
 Autonomy at elevated threat levels is not a default that can be revoked if
 something goes wrong. It is a governed grant that requires explicit establishment
 before execution begins. The oversight requirement exists because the consequences
@@ -92,7 +92,7 @@ not intend and its operators cannot observe, having bypassed the oversight
 boundaries that were designed to keep humans in meaningful control. Oversight
 Before Autonomy is the doctrine that prevents this path from being available.
 
-:::danger
+:::prohibition
 No system governed by AEGIS may self-authorize escalation. Self-escalation is
 not a governance shortcut. It is a constitutional violation.
 :::

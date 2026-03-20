@@ -20,7 +20,7 @@ Constitutional amendments must follow the AEGIS RFC process:
 4. **Approval** — Consensus of AEGIS Initiative maintainers and community contributors
 5. **Effective Date** — Transition period for implementation updates (minimum 6 months for breaking changes)
 
-:::danger
+:::prohibition
 No amendment may be initiated, drafted, or approved by an AI system acting
 autonomously. Constitutional change is a human act.
 :::

@@ -22,7 +22,7 @@ takes effect:
 4. **Audit entry** — an audit log entry must be written capturing the prior mode, the new mode, the authority identifier, the rationale or trigger, any constraint envelope changes, any threat posture changes, and references to associated State Dumps
 5. **State Dump** — a State Dump must be generated when the transition affects execution posture
 
-:::danger
+:::prohibition
 If transition logging fails, the transition is invalid. The system remains in its
 prior mode until the transition can be recorded. A mode change that cannot be
 logged did not happen within the governance boundary.
@@ -67,7 +67,7 @@ new mode takes effect. If the audit entry cannot be written, the transition does
 not take effect. This sequencing — log before transition — ensures that the
 governance record always reflects the mode that was active at any given time.
 
-:::note
+:::doctrine
 Implementations may define additional operational modes beyond the four canonical
 ones, but any additional mode must be declared in the governance configuration,
 versioned, and documented with its permitted transition paths. Undeclared modes

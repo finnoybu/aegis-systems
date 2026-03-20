@@ -68,7 +68,7 @@ to the capability registry internals is prohibited. These are not policy rules t
 can be overridden by a governance decision — they are architectural constraints
 that the system is designed to make impossible.
 
-:::tip
+:::application
 The separation of layers is also the structural basis for the AEGIS trust model.
 Trust at each layer is bounded by the constraints imposed by the layer above.
 An agent that earns high operational trust does not thereby earn the ability to
@@ -90,7 +90,7 @@ which the governance boundary is eliminated. The boundary between layers is not
 a logging checkpoint. It is the structural mechanism by which governance authority
 is enforced. When it fails, governance fails.
 
-:::caution
+:::constraint
 A governance bypass is not always a deliberate attack. It can be a performance
 optimization ("just call the API directly"), an integration convenience ("the
 agent already has the credentials"), or a debug facility that was never removed

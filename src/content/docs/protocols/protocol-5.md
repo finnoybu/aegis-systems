@@ -68,7 +68,7 @@ is unbound output. It cannot be incorporated into the canonical record of a
 governed execution. If it needs to be used in a subsequent governed context, it
 must be evaluated as an untrusted input, not as a governed artifact.
 
-:::tip
+:::application
 Authority binding is especially important for long-running executions where the
 threat level or authority context may change during execution. Each artifact must
 be bound to the governance context in effect at the time of its production —
@@ -93,7 +93,7 @@ individual case may seem minor. Cumulatively, they represent a portion of the
 system's output that exists outside the governance record — and that portion tends
 to grow as the system scales.
 
-:::caution
+:::constraint
 An artifact referenced in a subsequent governance decision carries that decision's
 authority binding only if it was itself a governed artifact at the time of
 production. An unbound artifact introduced into a governed decision chain

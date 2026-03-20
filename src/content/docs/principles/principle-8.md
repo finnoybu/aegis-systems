@@ -21,7 +21,7 @@ four of the following:
 - **Approval** — a human authority at the appropriate oversight level must approve the escalation
 - **Documentation** — the complete escalation event must be recorded in the audit trail
 
-:::danger
+:::prohibition
 Escalation by inference is prohibited without exception. A system that determines,
 on its own, that the situation warrants operating at a higher threat level and
 proceeds accordingly has self-authorized its own governance boundary expansion.
@@ -77,7 +77,7 @@ If threat posture is ambiguous, the escalation is denied. If isolation is infeas
 the escalation is denied. If the audit channel is unavailable, the escalation is
 denied. These denials are applications of Deny by Default, not exceptions to it.
 
-:::note
+:::doctrine
 Escalation denial is logged with the same fidelity as escalation approval.
 A pattern of repeated escalation denials for the same agent or the same
 task class is a governance signal — it indicates that the agent is regularly
@@ -99,7 +99,7 @@ The practical result is a system that operates with human oversight as an
 exception rather than a requirement — consulted when the system determines
 consultation is warranted, bypassed when the system determines it is not.
 
-:::caution
+:::constraint
 The value of the escalation discipline is not in the cases where the agent
 would have made the right call anyway. It is in the cases where it would not
 have — and in the structural guarantee that even in those cases, a human

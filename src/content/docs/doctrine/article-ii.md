@@ -64,7 +64,7 @@ evaluation begins. If governance state cannot be established — if the operatio
 mode is undefined, if the threat posture is unclassifiable, if the authority
 context is missing — the request is denied at the boundary.
 
-:::tip
+:::application
 Governance state is not static. It changes when threat level escalates, when
 authority context changes, and when policy is updated. The governance layer
 always evaluates against the current state — not the state at session start.
@@ -84,7 +84,7 @@ anything except the highest-risk actions, it has ceased to be governance and bec
 an exception handler for edge cases. Governance Before Execution is the structural
 commitment that prevents this normalization from beginning.
 
-:::danger
+:::prohibition
 This is constitutionally prohibited. An action that executes before governance
 evaluates it is not a governed action. It is an ungoverned action that was
 subsequently logged.

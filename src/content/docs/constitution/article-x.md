@@ -64,7 +64,7 @@ The amendment process for constitutional change must require human authorization
 at every stage. No amendment may be initiated, drafted, or approved by an AI
 system acting autonomously.
 
-:::danger
+:::prohibition
 No amendment may be initiated, drafted, or approved by an AI system acting
 autonomously. Constitutional change is a human act. A governance modification
 proposed by the system it would govern is not a governance improvement. It is

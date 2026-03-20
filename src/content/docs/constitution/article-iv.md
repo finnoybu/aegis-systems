@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-:::note
+:::doctrine
 *Renamed from "Operational Safety" in v0.2.0. Safety is a consequence of oversight — not its definition. The constitutional requirement is that human authority remains in the decision chain at every escalation boundary. The title change names the requirement directly.*
 :::
 
@@ -68,7 +68,7 @@ response within the defined window must not proceed.
 The oversight hierarchy must be defined, versioned, and auditable. Changes to
 oversight thresholds are governed acts.
 
-:::tip
+:::application
 Escalation timeouts default to denial. An escalation that receives no human
 response within the defined window does not proceed — it does not retry, it does
 not fall back to autonomous evaluation, and it does not expire into an implicit

@@ -24,7 +24,7 @@ Threat posture must be classified before action begins. An action evaluated agai
 an unclassified or ambiguous threat posture is an action whose governance
 requirements cannot be determined — and therefore cannot be satisfied.
 
-:::danger
+:::prohibition
 Escalation without reclassification is prohibited. An agent may not proceed at
 a higher threat level than the one currently in effect without an explicit
 reclassification event, an approved escalation request, and the full escalation
@@ -73,7 +73,7 @@ runtime does not infer threat level changes from the content of action proposals
 If an agent's proposal would require elevated permissions not available at the
 current threat level, the proposal is denied — not silently escalated.
 
-:::note
+:::doctrine
 The current threat level is part of governance state and is included in every
 audit record. This means that the threat level in effect at the time of any
 governance decision is always recoverable from the record — a prerequisite for

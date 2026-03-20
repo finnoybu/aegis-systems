@@ -41,7 +41,7 @@ Version control for governance logic is not a convenience — it is a constituti
 requirement. Governance state must be reproducible from a version identifier.
 Unversioned governance is ungoverned governance.
 
-:::caution
+:::constraint
 Unversioned governance is ungoverned governance. A policy that cannot be identified
 by version cannot be verified as the policy that was in effect when a specific
 decision was made. A governance record without versioning is a record of activity,

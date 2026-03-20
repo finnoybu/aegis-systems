@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-:::note
+:::doctrine
 *Renamed from "Federation Cooperation" in v0.2.0. Cooperation is voluntary — defense is an obligation. A threat observed by one deployment will reach others. Participation in federated governance networks is a constitutional requirement, not an operational preference.*
 :::
 
@@ -50,7 +50,7 @@ inactivity, reflecting the operational reality that stale intelligence is
 unreliable intelligence. Security signals and reputation signals are structurally
 separated — accumulated reputation cannot soften a security gate.
 
-:::caution
+:::constraint
 This constraint is architectural, not configurable. Security signals and
 reputation signals must be structurally separated. A publisher with a high
 reputation score cannot use that reputation to reduce the weight of a security
