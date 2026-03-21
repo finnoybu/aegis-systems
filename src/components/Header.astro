@@ -1,5 +1,7 @@
 ---
 import AegisLogo from './AegisLogo.astro';
+import Search from './Search.astro';
+
 const version = import.meta.env.AEGIS_VERSION ?? 'dev';
 const isCalVer = /^v\d{2}\.\d+\.\d+/.test(version);
 let versionHref = '#';
@@ -7,7 +9,7 @@ if (isCalVer) {
   const match = version.match(/^v(\d+)\.(\d+)\.(\d+)/);
   if (match) {
     const [, year, month, day] = match;
-    versionHref = `/releases/${year}/${month}/${day}`;
+    versionHref = `/releases/${year}/${month}/#release--v${year}${month}${day}`;
   }
 }
 ---
@@ -21,17 +23,8 @@ if (isCalVer) {
       <span class="site-name">AEGIS™ Constitution</span>
     </a>
 
-    <!-- Center: Search bar (hidden on mobile) -->
-    <div class="header-search">
-      <button class="header-search-btn" id="search-bar-open" aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="10.8" cy="10.8" r="9.6"/>
-          <path d="M22.8 22.8l-5.208-5.208"/>
-        </svg>
-        <span>Search</span>
-        <kbd>Ctrl K</kbd>
-      </button>
-    </div>
+    <!-- Center: Search (owns its own button + modal) -->
+    <Search />
 
     <!-- Right: Tools -->
     <div class="header-tools">
@@ -83,14 +76,14 @@ if (isCalVer) {
         </svg>
       </button>
 
-      <!-- Version badge — hidden on mobile, shown at 768px+ -->
+      <!-- Version badge — hidden on mobile, shown at 1024px+ -->
       {isCalVer ? (
         <a href={versionHref} class="version-badge" aria-label={`Version ${version} — view release notes`}>{version}</a>
       ) : (
         <span class="version-badge version-badge--dev">{version}</span>
       )}
 
-      <!-- Mobile menu button — hidden at 768px+ -->
+      <!-- Mobile menu button — hidden at 1024px+ -->
       <button
         class="tool-btn menu-btn"
         id="sidebar-toggle"
@@ -110,7 +103,8 @@ if (isCalVer) {
 </header>
 
 <style>
-  /* ── Main header — dark chrome ── */
+  /* ── Main header ─────────────────────────────────────────────── */
+
   .site-header {
     position: sticky;
     top: 0;
@@ -129,6 +123,8 @@ if (isCalVer) {
     gap: 1rem;
     max-width: 100%;
   }
+
+  /* ── Logo ────────────────────────────────────────────────────── */
 
   .site-title {
     display: flex;
@@ -150,9 +146,7 @@ if (isCalVer) {
   }
 
   @media (min-width: 400px) {
-    .site-name {
-      display: inline;
-    }
+    .site-name { display: inline; }
   }
 
   .site-title:hover {
@@ -161,57 +155,10 @@ if (isCalVer) {
 
   .site-title :global(.aegis-logo) {
     flex-shrink: 0;
-  }
-
-  /* Shield matches header text, diamond stays brand blue */
-  .site-title :global(.aegis-logo) {
     --color-brand-gray: var(--header-text);
   }
 
-  /* ── Search bar — visible at 1024px+ ── */
-  .header-search {
-    display: none;
-    flex: 1;
-    max-width: 25rem;
-  }
-
-  .header-search-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    cursor: pointer;
-    color: var(--header-text);
-    font-size: 0.875rem;
-    font-family: inherit;
-    white-space: nowrap;
-    text-align: left;
-  }
-
-  .header-search-btn:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-
-  .header-search-btn kbd {
-    margin-left: auto;
-    font-size: 0.75rem;
-    padding: 0.1rem 0.3rem;
-    background: var(--color-bg-subtle);
-    border: 1px solid var(--color-border);
-    border-radius: 3px;
-    font-family: inherit;
-  }
-
-  @media (min-width: 1024px) {
-    .header-search {
-      display: block;
-    }
-  }
+  /* ── Right tools ─────────────────────────────────────────────── */
 
   .header-tools {
     display: flex;
@@ -234,6 +181,7 @@ if (isCalVer) {
     flex-shrink: 0;
     text-decoration: none;
     border-radius: 4px;
+    transition: color 0.15s;
   }
 
   .tool-btn:hover {
@@ -246,15 +194,9 @@ if (isCalVer) {
     flex-shrink: 0;
   }
 
-  .search-btn {
-    display: flex;
-  }
+  .search-btn { display: flex; }
+  .menu-btn { display: flex; }
 
-  .menu-btn {
-    display: flex;
-  }
-
-  /* Hidden on mobile, shown at 768px+ */
   .version-badge {
     display: none;
     font-size: 0.75rem;
@@ -281,7 +223,8 @@ if (isCalVer) {
     .version-badge { display: inline; }
   }
 
-  /* ── On This Page button — injected by TableOfContents.astro ── */
+  /* ── ToC button (injected by TableOfContents.astro) ──────────── */
+
   :global(.toc-btn) {
     display: none;
     align-items: center;
@@ -302,11 +245,7 @@ if (isCalVer) {
     transition: border-color 0.15s, color 0.15s;
   }
 
-  :global(.toc-btn:hover) {
-    border-color: var(--header-text);
-    color: var(--header-text);
-  }
-
+  :global(.toc-btn:hover),
   :global(.toc-btn[aria-expanded="true"]) {
     border-color: var(--header-text);
     color: var(--header-text);
@@ -322,9 +261,7 @@ if (isCalVer) {
   }
 
   @media (min-width: 1024px) and (max-width: 1366px) {
-    :global(.toc-btn) {
-      display: flex;
-    }
+    :global(.toc-btn) { display: flex; }
   }
 </style>
 
@@ -364,10 +301,10 @@ if (isCalVer) {
     applyTheme(next);
   }
 
-  const btn = document.getElementById('theme-toggle');
-  if (btn) {
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
     updateIcon(getStoredTheme());
-    btn.addEventListener('click', cycleTheme);
+    themeBtn.addEventListener('click', cycleTheme);
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {

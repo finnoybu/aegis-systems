@@ -196,12 +196,36 @@
       const a = document.createElement('a');
       a.href = `#${id}`;
       a.textContent = text;
-      a.addEventListener('click', () => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+
         // Close dropdown on click
         const dropdown = document.getElementById('toc-dropdown');
         if (dropdown) dropdown.hidden = true;
         const btn = document.getElementById('toc-btn');
         if (btn) btn.setAttribute('aria-expanded', 'false');
+
+        // Find the heading and the HR above it
+        const heading = document.getElementById(id);
+        if (!heading) return;
+
+        let scrollTarget: Element = heading;
+        let prev = heading.previousElementSibling;
+        // Walk back past empty text nodes / whitespace elements
+        while (prev && prev.tagName !== 'HR' && prev.textContent?.trim() === '') {
+          prev = prev.previousElementSibling;
+        }
+        if (prev && prev.tagName === 'HR') {
+          scrollTarget = prev;
+        }
+
+        // Scroll so the HR (or heading) sits just below the header
+        const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 64;
+        const targetTop = scrollTarget.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+        // Update URL hash without jumping
+        history.pushState(null, '', `#${id}`);
       });
       li.appendChild(a);
       listEl.appendChild(li);
