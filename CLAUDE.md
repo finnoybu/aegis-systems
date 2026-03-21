@@ -1,6 +1,6 @@
 # CLAUDE.md — aegis-constitution
 
-*Instructions for Claude Code — 2026-03-20*
+*Instructions for Claude Code — 2026-03-21*
 
 ---
 
@@ -52,8 +52,14 @@ individual article files in `src/content/docs/constitution/`.
 │   │   ├── AEGIS_wordmark_dark.svg
 │   │   └── AEGIS_wordmark_light.svg
 │   ├── components/              ← Astro layout components
+│   │   ├── AegisLogo.astro
+│   │   ├── AegisWordmark.astro
+│   │   ├── Aside.astro
+│   │   ├── Breadcrumb.astro
 │   │   ├── Footer.astro
 │   │   ├── Header.astro
+│   │   ├── PrevNext.astro
+│   │   ├── Search.astro
 │   │   ├── Sidebar.astro
 │   │   └── TableOfContents.astro
 │   ├── layouts/
@@ -70,7 +76,7 @@ individual article files in `src/content/docs/constitution/`.
 │   │       ├── protocols/       ← Protocols (index + 7 protocols)
 │   │       ├── about/           ← About page
 │   │       ├── contact/         ← Contact page
-│   │       ├── legal/           ← Legal pages (privacy, terms, cookies, copyright, disclaimer, impressum)
+│   │       ├── legal/           ← Legal pages (9 pages — see below)
 │   │       └── releases/        ← Release notes
 │   └── content.config.ts        ← Astro content collection config — do not edit
 ```
@@ -94,6 +100,24 @@ individual article files in `src/content/docs/constitution/`.
 | `constitution/compliance.md` | Constitutional Compliance | Live |
 | `constitution/amendments.md` | Amendments + version history | Live |
 | `constitution/interpretation.md` | Interpretation rules | Live |
+
+### Legal Pages
+
+| File | Topic | Data owned |
+|---|---|---|
+| `legal/index.md` | Copyright, Trademark & License | Copyright notice, trademark declarations, Apache 2.0 license |
+| `legal/terms.md` | Terms of Use | ToS, prohibited activities, dispute resolution |
+| `legal/privacy.md` | Privacy Policy | Full privacy notice, data practices, rights |
+| `legal/acceptable-use.md` | Acceptable Use Policy | Automated access, content restrictions, AI training, compliance claims |
+| `legal/accessibility.md` | Accessibility Statement | WCAG 2.1 AA conformance, evaluation date |
+| `legal/dmca.md` | DMCA & Takedown | Designated agent, takedown/counter-notification |
+| `legal/disclaimer.md` | Disclaimer | Liability disclaimer |
+| `legal/cookies.md` | Cookie Policy | Cookie types, Cloudflare cookies |
+| `legal/impressum.md` | Impressum | Corporate structure, canonical contact, responsible person, jurisdiction |
+
+Legal pages follow a single-source ownership model. Each page owns its topic; other pages
+cross-reference rather than restate. Contact info (mailing address + email) appears inline
+in Privacy and Terms where legally required; Impressum is the canonical source for all contacts.
 
 ---
 
@@ -124,8 +148,10 @@ This was corrected in v0.2.0. Do not reintroduce "immutable" in any content.
 | Article table | `README.md` + `constitution/index.md` — must stay in sync |
 | Version history | `constitution/amendments.md` |
 | Normative references | Inline footnotes in individual article files |
-| Site config / sidebar | `astro.config.mjs` |
+| Site config | `astro.config.mjs` |
+| Sidebar navigation | `src/components/Sidebar.astro` (doc nav + legal nav) |
 | Brand assets | `src/assets/` |
+| Fonts | `public/fonts/` (self-hosted woff2 — no Google Fonts dependency) |
 
 ---
 
@@ -287,16 +313,46 @@ review of README, index, and CLAUDE.md to ensure consistency.
 
 | Element | Value |
 |---|---|
-| AEGIS Blue | `#0084e7` (RGB) / `#397ec2` (CMYK) |
-| AEGIS Gray | `#777777` (RGB) / `#787878` (CMYK) |
-| AEGIS Dark | `#161616` (RGB) / `#171717` (CMYK) |
-| White | `#ffffff` |
-| Heading / UI font | Inter |
-| Body font | Open Sans |
-| Logo (navbar) | `src/assets/AEGIS_logo_aegis-constitution.svg` |
-| Wordmark (neutral) | `src/assets/AEGIS_wordmark.svg` |
-| Wordmark (dark bg) | `src/assets/AEGIS_wordmark_dark.svg` |
-| Wordmark (light bg) | `src/assets/AEGIS_wordmark_light.svg` |
+| AEGIS Blue (brand) | `#0084e7` (RGB) / `#397ec2` (CMYK) — print and non-theme contexts |
+| AEGIS Blue (light theme) | `#005ea2` — USWDS primary |
+| AEGIS Blue (dark theme) | `#73b3e7` — USWDS primary-light |
+| AEGIS Gray (non-theme) | `#757575` (gray-50) — print and non-theme contexts |
+| AEGIS Gray (light theme) | `#5c5c5c` (gray-60) — muted text on light |
+| AEGIS Gray (dark theme) | `#adadad` (gray-30) — muted text on dark |
+| Heading / UI font | IBM Plex Sans (weight 400) |
+| Body font | Poppins (weight 300) |
+| Logo (navbar) | `src/components/AegisLogo.astro` (inline SVG, theme-aware) |
+| Wordmark | `src/components/AegisWordmark.astro` (inline SVG, theme-aware) |
+| Wordmark (static) | `src/assets/AEGIS_wordmark.svg` (neutral), `_dark.svg`, `_light.svg` |
+
+### Grayscale — USWDS-aligned
+
+Based on the U.S. Web Design System (USWDS) gray tokens. Aligns with NIST and IEEE SA sites.
+
+| USWDS Token | Hex | Light theme role | Dark theme role |
+|---|---|---|---|
+| white | `#ffffff` | Page background | — |
+| gray-5 | `#f0f0f0` | Subtle backgrounds | Text (primary) |
+| gray-10 | `#e6e6e6` | Chrome (header/sidebar) | — |
+| gray-20 | `#c9c9c9` | Borders | Text (secondary) |
+| gray-30 | `#adadad` | — | Text (muted), brand gray |
+| gray-40 | `#919191` | — | — |
+| gray-50 | `#757575` | Non-theme / print gray | Non-theme / print gray |
+| gray-60 | `#5c5c5c` | Text (muted), brand gray | Borders |
+| gray-70 | `#454545` | Text (secondary) | Chrome (header/sidebar) |
+| gray-80 | `#2e2e2e` | — | Subtle backgrounds |
+| gray-90 | `#1b1b1b` | Text (primary) | Page background |
+
+### Bluescale — USWDS-aligned
+
+| USWDS Token | Hex | Role |
+|---|---|---|
+| primary-darker | `#162e51` | Dark theme low accent |
+| primary-dark | `#1a4480` | Light theme high accent |
+| primary | `#005ea2` | Light theme accent |
+| brand | `#0084e7` | AEGIS brand blue (decorative, print) |
+| primary-light | `#73b3e7` | Dark theme accent |
+| primary-lighter | `#d9e8f6` | Light theme low accent |
 
 Brand assets are protected. Do not modify colors, fonts, or logos without explicit
 instruction. Changes to brand assets must trigger a review of README, index, and
@@ -310,7 +366,7 @@ Footer is implemented in `src/components/Footer.astro`. Required elements:
 
 - **Authorship:** Built and maintained by Ken Tannenbaum (linked to GitHub Pages)
 - **Timestamp:** Last updated: YYYY.MM.DD (build)
-- **Copyright:** © 2026 AEGIS Initiative. All Rights Reserved. (linked to legal index)
-- **Legal links:** Cookies | Privacy | Terms (direct links to legal pages)
+- **Copyright:** © 2026 AEGIS Initiative. All Rights Reserved.
+- **Links:** About | Contact (→ Impressum) | Legal (→ legal index)
 
 Desktop: two-column (authorship left, copyright/legal right). Narrow screens: stacked centered.

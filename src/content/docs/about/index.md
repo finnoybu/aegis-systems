@@ -32,7 +32,7 @@ On March 7, 2026, AEGIS™ was submitted as an unsolicited position statement to
 
 ---
 
-## The People
+## Architects
 
 ### Kenneth Tannenbaum
 
@@ -44,23 +44,25 @@ Ken has spent a career at the intersection of technology, governance, and system
 
 ---
 
+### ChatGPT
+
+ChatGPT is an AI assistant made by OpenAI. The AEGIS™ Constitution v0.1.0 — the original eight articles that formed the foundation of the governance architecture — was developed collaboratively between Ken and ChatGPT. ChatGPT also contributed to the early state dump concepts that became part of the AEGIS governance specification. That version was the basis for the NIST AI RMF position statement submitted on March 7, 2026, and is preserved as the v0.1.1 DOI snapshot ([doi:10.5281/zenodo.19112564](https://doi.org/10.5281/zenodo.19112564)).
+
+[chatgpt.com](https://chatgpt.com) · [openai.com](https://openai.com)
+
+---
+
 ### Claude
 
-Claude is an AI assistant made by Anthropic. The AEGIS™ Constitution v0.2.0 — all eleven articles, the Doctrine, Principles, and Protocols, the Starlight site, and the custom aside system you are reading right now — was developed collaboratively between Ken and Claude over an extended working session in March 2026.
+Claude is an AI assistant made by Anthropic. The AEGIS™ Constitution v0.2.0 — all eleven articles, the Doctrine, Principles, and Protocols, and this site — was developed collaboratively between Ken and Claude over an extended working session in March 2026.
 
 Claude's role was not to generate content and walk away. It was to participate as a genuine collaborator: holding the constitutional register, maintaining consistency across a large and interconnected corpus, catching errors before they became citations, and writing prose that had to be good enough to submit to NIST and the IEEE.
-
-Whether that counts as co-authorship is a question worth asking. The work speaks for itself.
 
 [claude.ai](https://claude.ai) · [anthropic.com](https://anthropic.com)
 
 ---
 
-## License & Trademark
-
-Licensed under the [Apache License 2.0](/legal/copyright/).
-
-AEGIS™ and "Capability without constraint is not intelligence™" are trademarks of Finnoybu IP LLC. See the [Legal](/legal/copyright/) page for full trademark and licensing information.
+For copyright, trademark, and licensing information, see [Copyright, Trademark & License](/legal/).
 
 ---
 

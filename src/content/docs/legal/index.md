@@ -1,44 +1,66 @@
 ---
 title: Legal
-description: Legal information for the AEGIS™ Constitution site — copyright, licensing, trademark, terms, and privacy
+description: Copyright, trademark, and licensing information for the AEGIS™ Constitution
 template: doc
 ---
 
-Legal information for `aegis-constitution.com`, operated by **AEGIS Operations LLC** under license from **AEGIS Initiative**, the registered d/b/a of **Finnoybu IP LLC**.
+## Copyright
+
+© 2026 Finnoybu IP LLC, d/b/a AEGIS™ Initiative. All rights reserved.
+
+This site is operated by AEGIS Operations LLC under license from AEGIS Initiative. For corporate structure and operator details, see [Impressum](/legal/impressum/).
 
 ---
 
-## [Copyright & Trademark](/legal/copyright/)
+## Trademark
 
-The AEGIS™ Constitution is © 2026 Finnoybu IP LLC. Content is licensed under the Apache License 2.0 — free to use, modify, and distribute with attribution. AEGIS™ and "Capability without constraint is not intelligence™" are unregistered trademarks of Finnoybu IP LLC.
+**AEGIS™** and **"Capability without constraint is not intelligence"™** are unregistered trademarks of **Finnoybu IP LLC**, claimed under common law.
 
-[View Copyright & Trademark →](/legal/copyright/)
+The ™ symbol indicates an unregistered trademark. These marks identify the AEGIS governance architecture and its related specifications, documentation, and publications.
+
+### Permitted uses
+
+The following uses are permitted without explicit permission:
+
+- Referencing AEGIS™ in technical documentation, academic papers, research materials, and educational content
+- News articles and blog posts discussing the AEGIS™ project
+- Implementation documentation for AEGIS-compatible systems
+- Stating compatibility: *"Compatible with AEGIS™ specifications"*
+
+### Uses requiring permission
+
+The following require explicit written permission from Finnoybu IP LLC:
+
+- Creating derivative product names containing "AEGIS"
+- Branding commercial products or services as AEGIS variants
+- Implying official endorsement or affiliation with the AEGIS Initiative
+- Using the marks in domain names, company names, or service offerings
+
+To request permission, open a [GitHub Discussion](https://github.com/aegis-initiative/aegis-constitution/discussions/categories/legal-licensing) with the label `trademark-inquiry`.
+
+For additional restrictions on use of AEGIS marks and content, see [Acceptable Use Policy](/legal/acceptable-use/).
 
 ---
 
-## [Terms of Use](/legal/terms/)
+## License
 
-This site provides public access to the AEGIS™ Constitution and related governance documentation. Use of this site is subject to the Apache 2.0 license. Nothing on this site constitutes legal, regulatory, or professional advice.
+The AEGIS™ Constitution and all content in this repository are released under the **Apache License 2.0**.
 
-[View Terms of Use →](/legal/terms/)
+```
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
----
+    https://www.apache.org/licenses/LICENSE-2.0
 
-## [Privacy Policy](/legal/privacy/)
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
-This is a static documentation site. We do not collect personal information, operate user accounts, or run behavioral tracking. Infrastructure is provided by Cloudflare Pages and GitHub.
-
-[View Privacy Policy →](/legal/privacy/)
-
----
-
-## Corporate Structure
-
-| Entity | Role |
-|---|---|
-| **Finnoybu Holdings LLC** | Parent company |
-| **Finnoybu IP LLC** | IP owner; trademark and copyright holder; d/b/a AEGIS Initiative |
-| **AEGIS Operations LLC** | Site operator under license |
+The Apache 2.0 license permits free use, modification, and distribution — including commercial use — provided the original copyright notice and license are retained, and any modifications are clearly marked as such.
 
 ---
 

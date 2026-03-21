@@ -12,13 +12,13 @@ const buildDate = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
       <span class="footer-meta">Last updated: {buildDate}</span>
     </div>
     <div class="footer-right">
-      <span>© {year} <a href="/legal/">AEGIS Initiative</a>. All Rights Reserved.</span>
+      <span>© {year} AEGIS Initiative. All Rights Reserved.</span>
       <span class="footer-legal">
-        <a href="/legal/cookies/">Cookies</a>
+        <a href="/about/">About</a>
         <span class="footer-sep">|</span>
-        <a href="/legal/privacy/">Privacy</a>
+        <a href="/legal/impressum/#contact">Contact</a>
         <span class="footer-sep">|</span>
-        <a href="/legal/terms/">Terms</a>
+        <a href="/legal/">Legal</a>
       </span>
     </div>
   </div>
@@ -82,7 +82,7 @@ const buildDate = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
   }
 
   .footer-legal a {
-    color: var(--color-text-secondary);
+    color: var(--color-accent);
     text-decoration: underline;
   }
 

@@ -4,11 +4,9 @@ description: Cookie policy for the AEGIS™ Constitution site
 template: doc
 ---
 
-*Last updated: March 17, 2026*
+*Last updated: March 21, 2026*
 
-This Cookie Policy explains how Aegis Operations LLC ("we," "us," or "our") uses cookies and similar technologies to recognize you when you visit our website at [aegis-constitution.com](https://aegis-constitution.com) ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.
-
-In some cases, we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.
+This Cookie Policy explains how cookies and similar technologies are used on `aegis-constitution.com`. For broader data practices, see [Privacy Policy](/legal/privacy/).
 
 ---
 
@@ -38,17 +36,11 @@ We may update this Cookie Policy from time to time. The date at the top of this 
 
 ---
 
-## Contact Us
+## Contact
 
-Questions about this Cookie Policy may be directed to:
-
-**Aegis Operations LLC**  
-[privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com)  
-P.O. Box 235  
-Lovettsville, VA 20180-0235  
-United States
+For questions about this Cookie Policy, see [Impressum](/legal/impressum/#contact) for contact details.
 
 ---
 
-*AEGIS™* | *"Capability without constraint is not intelligence"™*  
+*AEGIS™* | *"Capability without constraint is not intelligence"™*
 *AEGIS Initiative — Finnoybu IP LLC*

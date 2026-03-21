@@ -1,0 +1,159 @@
+---
+title: Component Showcase
+description: Visual inventory of all site components for accessibility verification
+template: doc
+sidebar:
+  hidden: true
+---
+import Aside from '../../../components/Aside.astro';
+
+This page displays every visual component used across `aegis-constitution.com` with generic content. Use it to verify accessibility, contrast, and visual consistency.
+
+<a href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Faegis-constitution.com%2Flegal%2Fcomponents%2F&category=accessibility" target="_blank" rel="noopener noreferrer" class="lighthouse-btn">Run Lighthouse Accessibility Audit ↗</a>
+
+<style>{`
+.lighthouse-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+[data-theme="dark"] .lighthouse-btn {
+  color: #161616;
+}
+`}</style>
+
+---
+
+## Typography
+
+### Heading Level 2
+
+#### Heading Level 3
+
+This is body text in Poppins (weight 300). It demonstrates the default paragraph styling with a line-height of 1.7 and the standard text color against the page background.
+
+**Bold text** appears at weight 600. *Italic text* uses the italic variant. ***Bold italic*** combines both.
+
+This is `inline code` within a paragraph.
+
+---
+
+## Links
+
+A [standard link](/legal/components/) appears in accent blue with an underline. On hover, it transitions to the high-accent color.
+
+[Link to an external site](https://example.com) — external links use the same styling.
+
+---
+
+## Table
+
+| Column A | Column B | Column C |
+|---|---|---|
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+| Row 2, Cell 1 | Row 2, Cell 2 | Row 2, Cell 3 |
+| Row 3, Cell 1 | Row 3, Cell 2 | Row 3, Cell 3 |
+
+---
+
+## Blockquote
+
+> This is a blockquote. It is used for notices, pull quotes, and emphasized passages throughout the site.
+
+---
+
+## Horizontal Rule
+
+Content above a horizontal rule.
+
+---
+
+Content below a horizontal rule.
+
+---
+
+## Ordered List
+
+1. First item in an ordered list
+2. Second item with **bold emphasis**
+3. Third item with a [link](/legal/components/)
+
+## Unordered List
+
+- First item in an unordered list
+- Second item with *italic emphasis*
+- Third item with `inline code`
+
+---
+
+## Footnotes
+
+This sentence has a footnote reference[^1]. This one has another[^2].
+
+[^1]: This is the first footnote definition. It appears in the footnotes section below with a back-reference arrow.
+
+[^2]: This is the second footnote definition. The `[ # ]` superscript format and back-reference underline are both visible here.
+
+---
+
+## Code Block
+
+```
+{
+  "component": "code-block",
+  "language": "json",
+  "purpose": "Demonstrates fenced code block styling"
+}
+```
+
+---
+
+## Asides
+
+<Aside type="doctrine" title="Doctrine">
+
+This is a **doctrine** aside. It uses accent blue for the border and title, with a light blue background.
+
+</Aside>
+
+<Aside type="application" title="Application">
+
+This is an **application** aside. It uses green for the border and title, with a light green background.
+
+</Aside>
+
+<Aside type="constraint" title="Constraint">
+
+This is a **constraint** aside. It uses amber for the border and title, with a light amber background.
+
+</Aside>
+
+<Aside type="prohibition" title="Prohibition">
+
+This is a **prohibition** aside. It uses red for the border and title, with a light red background.
+
+</Aside>
+
+---
+
+## Color Pairings
+
+**Primary text on background** — this is `--color-text` on `--color-bg`.
+
+<span style="color:var(--color-text-secondary)">**Secondary text on background** — this is `--color-text-secondary` on `--color-bg`.</span>
+
+<span style="color:var(--color-text-muted)">**Muted text on background** — this is `--color-text-muted` on `--color-bg`.</span>
+
+<span style="color:var(--color-accent)">**Accent text on background** — this is `--color-accent` on `--color-bg`.</span>
+
+---
+
+*AEGIS™* | *"Capability without constraint is not intelligence"™*
+*AEGIS Initiative — Finnoybu IP LLC*

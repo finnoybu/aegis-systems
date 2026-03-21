@@ -1,8 +1,336 @@
 ---
-import DocLayout from '../layouts/DocLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AegisWordmark from '../components/AegisWordmark.astro';
 ---
 
-<DocLayout title="AEGIS™ Constitution">
-  <h1>AEGIS™ Constitution</h1>
-  <p>The canonical governance charter for constrained intelligence.</p>
-</DocLayout>
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AEGIS™ Constitution</title>
+    <meta name="description" content="The canonical governance charter for constrained intelligence — versioned, citeable, and openly licensed" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={new URL('/', Astro.site).toString()} />
+
+    <link rel="preload" href="/fonts/ibmplexsans-variablefont_wdthwght-webfont.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-light-webfont.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('aegis-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = stored || preferred;
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+
+    <main class="splash">
+      <div class="hero">
+        <div class="hero-text">
+          <h1 class="hero-title">AEGIS™ Constitution</h1>
+          <p class="hero-tagline">The canonical governance charter for constrained intelligence — versioned, citeable, and openly licensed</p>
+          <div class="hero-actions">
+            <a href="/constitution/" class="btn btn-primary">
+              Read the Constitution
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://github.com/aegis-initiative/aegis-constitution" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              View on GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-wordmark">
+          <AegisWordmark width={400} />
+        </div>
+      </div>
+    </main>
+
+    <div class="splash-footer">
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  /* ── Self-hosted Fonts ─────────────────────────────────────── */
+  @font-face {
+    font-family: "IBM Plex Sans";
+    src: url("/fonts/ibmplexsans-variablefont_wdthwght-webfont.woff2") format("woff2");
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Sans";
+    src: url("/fonts/ibmplexsans-italic-variablefont_wdthwght-webfont.woff2") format("woff2");
+    font-weight: 100 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/poppins-light-webfont.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/poppins-regular-webfont.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/poppins-medium-webfont.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/poppins-semibold-webfont.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ── Reset (same as DocLayout) ─────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root,
+  [data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-text: #1b1b1b;
+    --color-text-secondary: #454545;
+    --color-text-muted: #5c5c5c;
+    --color-accent: #005ea2;
+    --color-accent-high: #1a4480;
+    --color-border: #c9c9c9;
+    --color-border-subtle: #e6e6e6;
+    --header-bg: #fafafa;
+    --header-border: #777777;
+    --header-text: #707070;
+    --header-text-muted: #707070;
+    --sidebar-bg: #ffffff;
+    --search-modal-bg: rgba(10, 22, 40, 0.5);
+    --search-dialog-bg: #ffffff;
+    --search-border: #d4d4d4;
+    --search-accent: #0062a5;
+    --search-text: #161616;
+    --search-shortcut-bg: #eeeeee;
+  }
+
+  [data-theme="dark"] {
+    --color-bg: #1b1b1b;
+    --color-text: #f0f0f0;
+    --color-text-secondary: #c9c9c9;
+    --color-text-muted: #adadad;
+    --color-accent: #73b3e7;
+    --color-accent-high: #a3cef1;
+    --color-border: #5c5c5c;
+    --color-border-subtle: #2e2e2e;
+    --header-bg: #000000;
+    --header-border: #000000;
+    --header-text: #e8e8e8;
+    --header-text-muted: #999999;
+    --sidebar-bg: #161616;
+    --search-modal-bg: rgba(10, 22, 40, 0.7);
+    --search-dialog-bg: #161616;
+    --search-border: #3a3a3a;
+    --search-accent: #4da6f0;
+    --search-text: #e8e8e8;
+    --search-shortcut-bg: #2a2a2a;
+  }
+
+  /* Hide mobile menu button — no sidebar on splash */
+  .menu-btn {
+    display: none !important;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 300;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--color-accent-high);
+  }
+</style>
+
+<style>
+  /* ── Splash layout ─────────────────────────────────────────── */
+  .splash {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    max-width: 72rem;
+    width: 100%;
+  }
+
+  .hero-text {
+    flex: 1;
+    max-width: 36rem;
+  }
+
+  .hero-title {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 3.875rem;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    padding: 0.875rem 1.75rem;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    background-color: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-high);
+    color: #ffffff;
+  }
+
+  .btn-secondary {
+    padding: 0.875rem 1rem;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+
+  .btn-secondary:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* ── Wordmark ──────────────────────────────────────────────── */
+  .hero-wordmark {
+    flex-shrink: 0;
+    --color-brand-gray: #757575;
+  }
+
+  .hero-wordmark :global(.aegis-wordmark) {
+    display: block;
+  }
+
+  /* ── Footer wrapper ────────────────────────────────────────── */
+  .splash-footer {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Responsive ────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      max-width: 100%;
+    }
+
+    .hero-title {
+      font-size: 2.875rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.125rem;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-wordmark {
+      order: -1;
+    }
+
+    .hero-wordmark :global(.aegis-wordmark) {
+      width: 280px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+    }
+
+    .hero-wordmark :global(.aegis-wordmark) {
+      width: 200px;
+      height: auto;
+    }
+  }
+</style>
