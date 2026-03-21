@@ -142,6 +142,17 @@ if (isCalVer) {
     white-space: nowrap;
     flex-shrink: 0;
     transition: color 0.15s;
+    overflow: hidden;
+  }
+
+  .site-name {
+    display: none;
+  }
+
+  @media (min-width: 400px) {
+    .site-name {
+      display: inline;
+    }
   }
 
   .site-title:hover {
