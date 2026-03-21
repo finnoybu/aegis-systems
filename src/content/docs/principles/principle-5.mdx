@@ -74,12 +74,16 @@ artifact and the audit record. This bidirectional binding ensures that for any
 canonical artifact, the governance context can be recovered, and for any governance
 decision, the artifacts it authorized can be identified.
 
+
 <Aside type="constraint">
+
 Ephemeral context is explicitly non-authoritative. An agent that relies on ephemeral
 context as the basis for subsequent decisions is operating on unverified, unaudited
 state. Decisions that reference ephemeral context rather than canonical record are
 governance decisions without an authoritative basis.
+
 </Aside>
+
 ---
 
 ## Failure Mode
@@ -93,11 +97,15 @@ it is being used for; and the audit record becomes incomplete — it describes w
 the governance layer authorized, but not what the agent actually had access to
 when it made its proposals.
 
+
 <Aside type="prohibition">
+
 Hidden retention violates constitutional integrity. A system that retains
 information outside the declared memory architecture is not an AI system with
 a supplemental memory — it is an AI system operating with ungoverned state.
+
 </Aside>
+
 ---
 
 ## Relationship to Doctrine and Constitution

@@ -17,14 +17,26 @@ if (isCalVer) {
 
     <!-- Left: Logo + Title -->
     <a href="/" class="site-title">
-      <AegisLogo size={32} />
+      <AegisLogo size={48} />
       <span class="site-name">AEGIS™ Constitution</span>
     </a>
+
+    <!-- Center: Search bar (hidden on mobile) -->
+    <div class="header-search">
+      <button class="header-search-btn" id="search-bar-open" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10.8" cy="10.8" r="9.6"/>
+          <path d="M22.8 22.8l-5.208-5.208"/>
+        </svg>
+        <span>Search</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+    </div>
 
     <!-- Right: Tools -->
     <div class="header-tools">
 
-      <!-- Search (icon — mobile only) -->
+      <!-- Search icon (mobile only) -->
       <button class="tool-btn search-btn" id="search-open" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="10.8" cy="10.8" r="9.6"/>
@@ -105,7 +117,7 @@ if (isCalVer) {
     z-index: 100;
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
-    height: 3.5rem;
+    height: 4rem;
   }
 
   .header-inner {
@@ -124,26 +136,70 @@ if (isCalVer) {
     gap: 0.5rem;
     text-decoration: none;
     color: var(--header-text);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     white-space: nowrap;
     flex-shrink: 0;
     transition: color 0.15s;
   }
 
   .site-title:hover {
-    color: #0084e7;
+    color: var(--color-accent);
   }
 
   .site-title :global(.aegis-logo) {
     flex-shrink: 0;
   }
 
-  /* Override logo colors for dark header context */
+  /* Shield matches header text, diamond stays brand blue */
   .site-title :global(.aegis-logo) {
     --color-brand-gray: var(--header-text);
-    --color-accent: var(--subheader-bg);
+  }
+
+  /* ── Search bar — visible at 1024px+ ── */
+  .header-search {
+    display: none;
+    flex: 1;
+    max-width: 25rem;
+  }
+
+  .header-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--header-text);
+    font-size: 0.875rem;
+    font-family: inherit;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .header-search-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .header-search-btn kbd {
+    margin-left: auto;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-family: inherit;
+  }
+
+  @media (min-width: 1024px) {
+    .header-search {
+      display: block;
+    }
   }
 
   .header-tools {
@@ -163,20 +219,19 @@ if (isCalVer) {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--header-text-muted);
+    color: var(--header-text);
     flex-shrink: 0;
     text-decoration: none;
     border-radius: 4px;
   }
 
   .tool-btn:hover {
-    color: var(--header-text);
-    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-accent);
   }
 
   .tool-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     flex-shrink: 0;
   }
 
@@ -192,7 +247,7 @@ if (isCalVer) {
   .version-badge {
     display: none;
     font-size: 0.75rem;
-    color: var(--header-text-muted);
+    color: var(--header-text);
     text-decoration: none;
     font-family: monospace;
     letter-spacing: 0.02em;
@@ -201,12 +256,12 @@ if (isCalVer) {
   }
 
   .version-badge:hover {
-    color: var(--header-text);
+    color: var(--color-accent);
     text-decoration: underline;
   }
 
   .version-badge--dev {
-    color: var(--header-text-muted);
+    color: var(--color-text-muted);
   }
 
   @media (min-width: 1024px) {
@@ -228,7 +283,7 @@ if (isCalVer) {
     cursor: pointer;
     color: var(--header-text-muted);
     font-size: 0.8125rem;
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
     font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;

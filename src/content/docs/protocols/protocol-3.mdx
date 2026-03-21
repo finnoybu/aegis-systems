@@ -23,12 +23,16 @@ following sequence. No step may be skipped. Partial completion is non-compliance
 5. **Constraint rebinding** — the constraint envelope must be updated to reflect the permissions and boundaries appropriate to the new threat level
 6. **State dump and audit preparation** — a State Dump capturing the pre-escalation governance state must be generated, and the audit channel must be verified as available before elevated execution begins
 
+
 <Aside type="prohibition">
+
 Escalation by inference is prohibited without exception. A system that proceeds
 at a higher threat level without completing this protocol has self-authorized
 its own governance boundary expansion. That is a constitutional violation, not
 a procedural shortcut.
+
 </Aside>
+
 ---
 
 ## Purpose
@@ -69,13 +73,17 @@ Escalation is denied — not deferred — if any precondition fails: authority
 insufficient, threat posture ambiguous, isolation infeasible, audit channel
 unavailable. These are applications of Deny by Default, not special cases.
 
+
 <Aside type="constraint">
+
 Isolation assessment is not a checkbox. At Threat Level 5, isolation is a hard
 requirement — physical or network isolation must be confirmed as feasible and in
 place before elevated execution begins. An isolation assessment that concludes
 isolation is infeasible produces escalation denial, not a reduced isolation
 requirement.
+
 </Aside>
+
 ---
 
 ## Failure Mode

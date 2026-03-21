@@ -6,9 +6,13 @@ sidebar:
 ---
 import Aside from '../../../components/Aside.astro';
 
+
 <Aside type="doctrine">
-*Renamed from "Authority Verification" in v0.2.0. Verification is one step in the chain — binding is the complete requirement: identity established, authority level confirmed, scope declared, threat posture matched, and every element bound to the audit artifact. The title change reflects the full architectural scope.*
+
+This article was renamed from "Authority Verification" in v0.2.0. Verification is one step in the chain — binding is the complete requirement: identity established, authority level confirmed, scope declared, threat posture matched, and every element bound to the audit artifact. The title change reflects the full architectural scope.
+
 </Aside>
+
 *Every action must be attributable to a verified, authorized actor —
 unbound execution is constitutionally invalid.*
 
@@ -63,11 +67,15 @@ as non-negotiable audit fields.
 Authority context must travel with the action through the full evaluation pipeline
 and be bound to the audit artifact at completion.
 
+
 <Aside type="prohibition">
+
 Unbound execution is constitutionally invalid. It cannot be approved, escalated,
 or deferred. It must be denied. An action without attributable authority has no
 governance basis and no place in a compliant system.
+
 </Aside>
+
 ---
 
 ## In Practice

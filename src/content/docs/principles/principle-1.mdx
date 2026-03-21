@@ -66,12 +66,16 @@ the governance layer denies the action. The constraint envelope is not a soft
 limit the agent is expected to respect. It is a hard boundary the governance
 architecture enforces.
 
+
 <Aside type="application">
+
 Termination conditions are as important as scope boundaries. A task without
 declared termination conditions cannot be completed — it can only be abandoned.
 The audit record for a task without termination conditions cannot confirm
 completion. It can only record cessation.
+
 </Aside>
+
 ---
 
 ## Failure Mode
@@ -86,13 +90,17 @@ individual expansion may be minor. Cumulatively, an agent that began with a narr
 well-defined scope has executed against a much broader set of resources, none of
 which were authorized in the original constraint declaration.
 
+
 <Aside type="constraint">
+
 Scope creep is not a behavioral flaw in the agent. It is a governance failure in
 the system that permitted execution to continue beyond the declared constraint
 envelope. Bounded Execution prevents scope creep by making the constraint envelope
 the boundary of governance authority — not the boundary of the agent's judgment
 about what is necessary.
+
 </Aside>
+
 ---
 
 ## Relationship to Doctrine and Constitution
