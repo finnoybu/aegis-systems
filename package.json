@@ -7,13 +7,20 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
+    "postbuild": "cp -r dist/pagefind public/",
     "preview": "astro preview",
+    "pdf": "node scripts/generate-pdf.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.2",
     "@pagefind/default-ui": "^1.4.0",
     "astro": "^6.0.8"
+  },
+  "devDependencies": {
+    "mime-types": "^3.0.2",
+    "pagefind": "^1.4.0",
+    "puppeteer": "^24.40.0"
   }
 }

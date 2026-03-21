@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   stroke="currentColor"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   class="lucide lucide-download-icon lucide-download"
+   version="1.1"
+   id="svg3"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <path
+     d="M 12,15.600002 V 1.1999995"
+     id="path1"
+     style="stroke-width:2.4" />
+  <path
+     d="m 22.800001,15.600002 v 4.800001 A 2.4000002,2.4000004 0 0 1 20.4,22.800004 H 3.5999997 A 2.4000002,2.4000004 0 0 1 1.1999995,20.400003 v -4.800001"
+     id="path2"
+     style="stroke-width:2.4" />
+  <path
+     d="M 5.9999998,9.6000014 12,15.600002 18.000001,9.6000014"
+     id="path3"
+     style="stroke-width:2.4" />
+</svg>

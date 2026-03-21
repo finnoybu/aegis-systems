@@ -6,7 +6,7 @@ template: doc
 
 ## Copyright
 
-© 2026 Finnoybu IP LLC, d/b/a AEGIS™ Initiative. All rights reserved.
+© 2026 AEGIS Initiative. All rights reserved.
 
 This site is operated by AEGIS Operations LLC under license from AEGIS Initiative. For corporate structure and operator details, see [Impressum](/legal/impressum/).
 
