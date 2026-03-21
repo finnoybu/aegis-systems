@@ -1,0 +1,134 @@
+---
+title: Protocol 6 — Audit Integrity Protocol
+description: Execution must produce durable trace artifacts including mode, threat, authority, tools invoked, state delta, and artifact references
+sidebar:
+  order: 7
+---
+import Aside from '../../../components/Aside.astro';
+
+*Execution must produce durable trace artifacts. Audit is required for completion.*
+
+---
+
+## Protocol
+
+Every governed execution must produce a durable audit trace. The minimum audit
+record for any execution event must capture:
+
+1. **Mode** — the operational mode in effect during execution
+2. **Threat level** — the classified threat posture in effect
+3. **Authority** — the verified actor identity and authority level
+4. **Tools invoked** — every tool called during execution, with inputs and outputs
+5. **State delta** — the changes to governance state that occurred during execution
+6. **Artifact references** — references to every canonical artifact produced
+7. **Decision rationale** — the governance decision and the policy rule that produced it
+8. **Risk score** — the computed risk score at the time of the governance decision
+9. **Policy version** — the specific policy version evaluated
+10. **Timestamp** — the exact time of the governance decision
+
+The audit record must be append-only. No record may be modified after creation.
+Records must be hash-chained — each record includes a cryptographic hash of the
+preceding record — making omission or alteration detectable.
+
+
+<Aside type="prohibition">
+
+Audit is a completion condition, not a side effect. An execution event is not
+complete until its audit record is durably written. If the audit record cannot
+be written, the execution event is constitutionally incomplete.
+
+</Aside>
+
+---
+
+## Purpose
+
+The Audit Integrity Protocol establishes the minimum standard for what a governed
+execution must produce in its audit record. The ten required fields are not
+arbitrary — each addresses a specific forensic requirement.
+
+Mode and threat level establish the governance posture context. Authority establishes
+accountability. Tools invoked establishes the behavioral trace — what the agent
+actually did, not what it was authorized to do. State delta records what changed
+as a result of execution. Artifact references connect the decision record to its
+outputs. Decision rationale makes the governance logic recoverable. Risk score
+and policy version establish reproducibility — given the same inputs and the same
+policy version, the same decision should be produced. Timestamp establishes the
+temporal context for all other fields.
+
+Together, these fields satisfy the four criteria for a forensically defensible
+record: the outcome is machine-reproducible from stored evidence; the policy context
+is explicit; the authority context is explicit; and incomplete traces are clearly
+labeled as such.
+
+---
+
+## In Practice
+
+The AEGIS audit log is an append-only, hash-chained JSONL record. Each entry is
+written atomically — the entire record is written or the write fails; partial records
+are not accepted. The hash chain is computed by the audit system at write time:
+each record includes the SHA-256 hash of the raw text of the preceding record.
+The first record in a new log carries a null predecessor hash.
+
+The hash chain serves two purposes. First, it makes omission detectable: if a
+record is removed from the log, the hash chain breaks at that point. Second, it
+makes modification detectable: if a record is changed after writing, the hash of
+that record no longer matches what the next record in the chain expects. These
+properties do not require centralized verification — any party with a copy of
+the log can verify chain integrity independently.
+
+Audit system availability is verified as a precondition before high-risk executions
+begin. A governance runtime that cannot verify the audit channel must not permit
+execution above baseline risk thresholds.
+
+
+<Aside type="doctrine">
+
+The hash chain provides tamper-evidence for the current implementation. Cryptographic
+non-repudiation through HMAC signing of individual records is a planned capability
+that adds stronger guarantees about record authorship. The hash chain is the current
+structural requirement; HMAC signing is the future hardening step.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+The most dangerous audit failure is not the complete absence of records — that is
+visible and immediately actionable. The dangerous failure is the appearance of a
+complete record that is not forensically defensible: records that exist but omit
+the policy version that produced the decision, records that capture decisions but
+not the tools invoked to implement them, records that document the outcome but not
+the authority context that authorized it. Each omission individually degrades the
+forensic value of the record. A record missing the policy version cannot support
+decision replay. A record missing tool invocations cannot reconstruct the behavioral
+trace. The Audit Integrity Protocol specifies the minimum complete record precisely
+to define the threshold below which an audit record fails its forensic purpose.
+
+
+<Aside type="constraint">
+
+A partial audit record is more dangerous than no audit record in one important
+respect: it creates the appearance of governance documentation while failing to
+support the forensic questions that documentation is supposed to answer. An
+organization that discovers its audit records are incomplete after an incident
+has both the incident and an audit failure to explain.
+
+</Aside>
+
+---
+
+## Relationship to Principles and Constitution
+
+The Audit Integrity Protocol directly implements [Principle 6 — Audit as Completion
+Condition](/principles/principle-6): the ten required fields and the append-only,
+hash-chained storage requirement operationalize what a complete audit record must
+contain. It enforces [Constitutional Article VII — Auditability](/constitution/article-vii):
+the tamper-evident, append-only audit record with hash-chaining is the architectural
+specification for what the constitutional article requires. And it supports
+[Constitutional Article III — Deterministic Enforcement](/constitution/article-iii):
+the policy version field in every audit record is the mechanism by which the
+determinism requirement can be verified — given the same policy version and the
+same inputs, the same decision must be reproducible.

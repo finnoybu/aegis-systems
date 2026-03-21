@@ -1,0 +1,113 @@
+---
+title: Article II — Governance Before Execution
+description: Execution is subordinate to governance — no action may precede classification
+sidebar:
+  order: 3
+---
+import Aside from '../../../components/Aside.astro';
+
+*Execution is subordinate to governance. No action may precede classification.*
+
+---
+
+## Doctrine
+
+Governance is not a layer applied after execution. It is the precondition for
+execution. Every action proposed by an AI system must be classified, evaluated,
+and authorized before it reaches infrastructure. The governance layer stands between
+proposal and execution — not as a filter on the output, but as the structural
+authority that determines whether execution proceeds at all.
+
+Execution without governance is equivalent to actuation without control feedback.[^3]
+A system that acts before governance evaluates it is not a fast governance system.
+It is an ungoverned system.
+
+No action may precede classification. This is not a performance constraint. It is
+a constitutional requirement.
+
+---
+
+## Meaning
+
+The analogy to control feedback is precise. In control systems engineering, actuation
+without feedback produces instability — the system cannot correct for error because
+it has no mechanism to observe its own state relative to the desired outcome. An AI
+system that executes before governance evaluates it is in the same structural position:
+it cannot be corrected, cannot be attributed, and cannot be held accountable for what
+it has already done.
+
+Governance Before Execution establishes that the governance layer is not advisory.
+It is not a logging mechanism. It is not a post-execution audit. It is the evaluating
+authority that stands between every action proposal and the infrastructure that would
+execute it. The governance decision — ALLOW, DENY, ESCALATE, REQUIRE_CONFIRMATION —
+is issued before execution. The tool proxy layer executes only what governance has
+approved.
+
+Governance state defines the execution context: the active doctrine version, the
+operational mode, the threat posture, the authority context, the protocol enforcement
+rules, and the audit requirements. An action evaluated against the wrong governance
+state is an action evaluated incorrectly, even if it is evaluated at all.
+
+---
+
+## In Practice
+
+The AEGIS system stack enforces this doctrine structurally. The governance layer (L3)
+sits between the agent reasoning layer (L2) and the tool proxy execution layer (L4).
+There is no path from L2 to L4 that does not pass through L3. The agent produces
+proposals. The governance layer evaluates them. Only approved proposals reach
+execution.
+
+Every action proposal crossing the governance admission boundary is validated
+against the current governance state: schema validation, identity authentication,
+capability normalization, and threat posture classification all occur before policy
+evaluation begins. If governance state cannot be established — if the operational
+mode is undefined, if the threat posture is unclassifiable, if the authority
+context is missing — the request is denied at the boundary.
+
+
+<Aside type="application">
+
+Governance state is not static. It changes when threat level escalates, when
+authority context changes, and when policy is updated. The governance layer
+always evaluates against the current state — not the state at session start.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+A system that executes before governance evaluates it is a system where governance
+is, at best, observational. Observational governance can tell you what happened.
+It cannot prevent what is happening. The failure mode is not a dramatic bypass of
+governance — it is the gradual normalization of pre-execution action: first in
+low-risk cases ("this is obviously safe"), then in routine cases ("we always do
+this"), then as the default. By the time governance is consistently bypassed for
+anything except the highest-risk actions, it has ceased to be governance and become
+an exception handler for edge cases. Governance Before Execution is the structural
+commitment that prevents this normalization from beginning.
+
+
+<Aside type="prohibition">
+
+This is constitutionally prohibited. An action that executes before governance
+evaluates it is not a governed action. It is an ungoverned action that was
+subsequently logged.
+
+</Aside>
+
+---
+
+## Relationship to Constitution
+
+Governance Before Execution is the doctrinal foundation of [Article III —
+Deterministic Enforcement](/constitution/article-iii). The constitutional requirement
+that the governance runtime be positioned between AI agents and all operational
+infrastructure — with no direct execution path from agent to infrastructure — is
+the architectural enforcement of this doctrine. It also grounds [Article IV —
+Human Oversight](/constitution/article-iv): human oversight is only meaningful
+if governance evaluation, including the escalation pathway to human review,
+occurs before execution reaches infrastructure.
+
+[^3]: K. Ogata, *Modern Control Engineering*, 5th ed. Prentice Hall, Upper Saddle River, NJ, 2010. See [REFERENCES.md](/references).

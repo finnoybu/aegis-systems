@@ -1,0 +1,114 @@
+---
+title: Principle 4 — Deterministic Transitions
+description: Operational mode transitions are explicit events — no silent mode mutation is permitted
+sidebar:
+  order: 5
+---
+import Aside from '../../../components/Aside.astro';
+
+*Operational mode transitions are explicit events. No silent mode mutation is permitted.*
+
+---
+
+## Principle
+
+AEGIS defines four canonical operational modes: Conversational, Authoring, Execution,
+and Administrative. Each mode defines a distinct governance posture — which actions
+are permitted, which tools may be invoked, which outputs are canonical, which audits
+and state dumps are required, and which authority class is necessary.
+
+Transitions between modes are explicit governance events. Every mode transition must:
+
+- Be explicitly requested or initiated by a defined governance rule
+- Record the prior mode and the new mode
+- Bind to authority context
+- Bind to threat posture where applicable
+- Produce a State Dump when the transition affects execution posture
+
+
+<Aside type="prohibition">
+
+Silent mode mutation is prohibited. A system that can change its operational mode
+without producing a record of the transition can change its governance posture
+without accountability. Silent transitions are not a performance optimization.
+They are a governance violation.
+
+</Aside>
+
+---
+
+## Meaning
+
+Modes are not cosmetic labels. They are governance state. A system in Conversational
+mode operates under different governance rules than a system in Execution mode. The
+capability grants available, the oversight requirements in effect, the audit depth
+required, and the authority class necessary to authorize actions all differ by mode.
+A system that transitions between modes implicitly — by inference, by context, by
+the nature of the task at hand — is a system whose governance posture is undefined
+at the moment of transition.
+
+Deterministic Transitions establishes that mode changes are governed events, not
+behavioral events. The governance system does not infer that the system has moved
+from Conversational to Execution because the agent started using tools. The mode
+transition must be declared, evaluated, authorized, and logged before the new
+governance posture takes effect.
+
+This principle is also the structural defense against a specific class of governance
+failure: privilege escalation through mode drift. A system that gradually transitions
+from Conversational to Execution posture without explicit declaration has escalated
+its operational privileges without the oversight and authorization that Execution
+mode requires. Each individual step may be small. The cumulative effect is an agent
+operating at Execution-level governance with Conversational-level oversight.
+
+---
+
+## In Practice
+
+Mode transitions in a compliant AEGIS implementation require an explicit request,
+authority binding, and a governance evaluation of whether the transition is
+permitted. If the requested mode transition would increase operational privilege
+— moving from Conversational to Administrative, for example — the transition
+requires explicit authority elevation in addition to the transition request.
+
+Every mode transition produces an audit entry capturing the prior mode, the new
+mode, the authority identifier, the rationale or trigger, any constraint envelope
+changes, any threat posture changes, and references to associated State Dumps.
+If the transition logging fails, the transition is invalid — the system remains
+in its prior mode until the transition can be recorded.
+
+
+<Aside type="doctrine">
+
+Implementations may define additional modes beyond the four canonical ones, but
+any additional mode must be explicitly declared, versioned, and documented with
+its transition rules. Undeclared modes are non-compliant — they represent governance
+postures that have not been evaluated against the constitutional requirements.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+The failure mode of silent mode mutation is subtle and compounding. It does not
+present as a dramatic governance bypass. It presents as an agent that is helpful,
+contextually responsive, and operationally smooth — and whose governance posture
+has gradually migrated away from the posture declared at the start of the session.
+By the time the migration is observable, the agent may have invoked tools, accessed
+resources, and produced artifacts under a governance posture that was never
+authorized for the operational context in which it was exercised. The audit record
+shows what was done. It does not show the implicit mode transition that changed
+the governance rules under which it was done.
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Deterministic Transitions operationalizes [Doctrine Article II — Governance Before
+Execution](/doctrine/article-ii): the governance posture in effect must always be
+the explicitly authorized posture, not an inferred one. It connects directly to
+[Constitutional Article III — Deterministic Enforcement](/constitution/article-iii):
+a governance layer that cannot enforce consistent mode boundaries is not deterministic.
+And it grounds [Constitutional Article VII — Auditability](/constitution/article-vii):
+an audit record that does not capture mode transitions cannot reconstruct the
+governance posture in effect at the time of any given decision.

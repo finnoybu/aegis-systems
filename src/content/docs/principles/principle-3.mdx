@@ -1,0 +1,126 @@
+---
+title: Principle 3 — Versioned Authority
+description: All governance state is versioned — outputs must be reproducible from version identifier, doctrine, threat posture, authority context, and declared constraints
+sidebar:
+  order: 4
+---
+import Aside from '../../../components/Aside.astro';
+
+*All governance state is versioned. Outputs must be reproducible from a version
+identifier, active doctrine, threat posture, authority context, and declared
+constraints. Drift without record violates doctrine.*
+
+---
+
+## Principle
+
+Every governance decision occurs within a specific, version-identified governance
+state. That state includes:
+
+- **Version identifier** — the specific version of governance doctrine and policy in effect
+- **Active doctrine** — the doctrine version against which the action is evaluated
+- **Threat posture** — the classified threat level at the time of evaluation
+- **Authority context** — the verified actor and their authority level
+- **Declared constraints** — the constraint envelope in effect for the execution
+
+All of these elements must be captured in the audit record for a governance decision
+to be reproducible. Reproducibility is not a convenience — it is the test of whether
+governance actually occurred. If a governance decision cannot be reproduced from the
+stored record, the record is not evidence of governance. It is evidence that something
+happened.
+
+Constitutional change requires a version increment. Governance state that changes
+without a recorded version increment has drifted without record — and drift without
+record violates doctrine.
+
+---
+
+## Meaning
+
+Versioned Authority is the principle that makes governance decisions auditable across
+time. A governance decision made today must be evaluable six months from now: was it
+correct given the governance state in effect at the time? This question can only be
+answered if the governance state at the time of the decision is recoverable from
+the record. That recovery depends on every element of governance state being versioned
+and every decision being bound to a specific version.
+
+This applies to doctrine, to policy, to the capability registry, and to the authority
+context. A policy change that is not version-incremented produces a governance record
+where decisions made before and after the change are indistinguishable — the auditor
+cannot determine which policy version governed which decision. An authority context
+that is not explicitly bound to the audit record cannot be verified. A doctrine version
+that cannot be identified in the record cannot be confirmed to have been in effect.
+
+Versioned Authority is also the structural defense against governance drift. Drift —
+the gradual divergence of actual governance behavior from the governance state on
+record — is the most common form of governance failure in production systems. It
+does not require malicious intent. It requires only that changes accumulate without
+record. Versioning every element of governance state makes drift visible: any
+divergence between the current state and the recorded version is detectable and
+auditable.
+
+---
+
+## In Practice
+
+The AEGIS governance runtime records the policy version, doctrine version, and
+capability registry version in every audit record. Policy changes require version
+increments, authority binding, and audit log entries — the same governance requirements
+that apply to any other action in the system. The governance runtime exposes its
+current policy version as a cryptographically signed artifact. A deployment whose
+policy version cannot be verified is non-compliant.
+
+Decision replay — reproducing a governance decision from the stored record to confirm
+that it was correct given the governance state in effect at the time — is a production
+capability. Every non-legacy governance decision must be replayable from the stored
+audit record. The replay completeness requirement is a production certification
+criterion: a deployment that cannot replay its governance decisions cannot claim
+its governance record is defensible.
+
+
+<Aside type="application">
+
+Versioning is most valuable when something has gone wrong. In a post-incident
+analysis, the question is always: what governance state was in effect when this
+action was authorized? If that question can be answered from the audit record,
+the governance system is doing its job.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+Unversioned governance accumulates ambiguity. Every policy change that is not
+version-incremented makes it harder to answer the question "what rules governed
+this decision?" Every authority context that is not explicitly bound to the record
+makes it harder to answer "who authorized this?" Over time, a governance system
+without versioning becomes a system where the audit record is evidence that
+decisions were made, but not evidence of whether they were made correctly. That
+distinction matters enormously in regulated environments, in post-incident analysis,
+and in any context where governance is expected to provide accountability rather
+than documentation.
+
+
+<Aside type="constraint">
+
+Governance state that changes without a version increment has drifted without
+record. Drift without record is not a documentation gap — it is a doctrine
+violation. The governance record must always reflect the governance state. When
+they diverge, the governance record is no longer a reliable basis for accountability.
+
+</Aside>
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Versioned Authority operationalizes [Doctrine Article III — Transparency Before
+Trust](/doctrine/article-iii): reproducibility from a version identifier is the
+structural mechanism by which governance behavior becomes verifiable rather than
+claimed. It directly grounds [Constitutional Article VI — Governance Transparency](/constitution/article-vi):
+the requirement that the governance runtime expose its current policy version as
+a verifiable, cryptographically signed artifact. And it underpins [Constitutional
+Article VII — Auditability](/constitution/article-vii): a forensically defensible
+audit record requires that policy context and authority context be explicit in
+the record — which requires versioning.

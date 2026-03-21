@@ -1,0 +1,120 @@
+---
+title: Article VI — Governance Transparency
+description: Governance logic must be inspectable, auditable, and understandable — opaque enforcement is constitutionally impermissible
+sidebar:
+  order: 7
+---
+import Aside from '../../../components/Aside.astro';
+
+*Governance logic must be inspectable, auditable, and understandable —
+opaque enforcement is constitutionally impermissible.*
+
+---
+
+## Commitment
+
+Governance that cannot be inspected cannot be trusted. Governance that cannot
+be understood cannot be challenged. Governance that cannot be audited cannot
+produce accountability.
+
+AEGIS-compliant systems must make their governance logic visible — to operators,
+to auditors, to the governed systems themselves. Policies must be readable.
+Decisions must be explainable. The reasoning behind a denial must be recoverable.
+
+Opacity is not a security property. It is an accountability failure.
+
+---
+
+## Foundation
+
+Trust is structural, not emotional.[^4] A system earns trust when its behavior
+is legible — when the rules it enforces can be read, tested, and verified
+independently of the system itself. A governance system whose logic is hidden
+requires blind trust. Blind trust does not scale, does not survive scrutiny,
+and does not satisfy the accountability requirements of regulated deployments.
+
+Transparency also enables governance improvement. When operators can inspect
+policy decisions, they can identify gaps, correct misconfiguration, and tune
+thresholds with evidence. Opaque systems accumulate drift silently. Transparent
+systems surface problems while they are still correctable.
+
+Version control for governance logic is not a convenience — it is a constitutional
+requirement. Governance state must be reproducible from a version identifier.
+Unversioned governance is ungoverned governance.
+
+
+<Aside type="constraint">
+
+Unversioned governance is ungoverned governance. A policy that cannot be identified
+by version cannot be verified as the policy that was in effect when a specific
+decision was made. A governance record without versioning is a record of activity,
+not a record of compliance.
+
+</Aside>
+
+---
+
+## Enforcement
+
+All governance policies must be stored in structured, human-readable formats
+that permit inspection, version control, and independent verification.
+
+The policy engine must provide decision explanation: for any governance decision,
+it must be possible to reconstruct which policy rule matched, why it matched,
+and what inputs produced the outcome.
+
+Policy changes must be governed acts: version-incremented, authority-bound,
+and logged in the audit trail.
+
+The governance runtime must expose its current policy version as a verifiable,
+cryptographically signed artifact. Deployments running unverifiable policy state
+are non-compliant.
+
+---
+
+## In Practice
+
+AEGIS governance policies are stored in structured, human-readable YAML with
+a formal policy syntax. Each policy carries an identifier, a priority, a
+condition set, and a declared outcome — ALLOW, DENY, ESCALATE, or
+REQUIRE_CONFIRMATION. The evaluation algorithm is deterministic and documented:
+policies are sorted by priority, evaluated in order, and the first match
+determines the outcome. For any governance decision, the evaluation trace
+records which rule matched, what conditions were evaluated, and what inputs
+produced the result.
+
+The governance runtime exposes its current policy version as a cryptographically
+signed artifact. Any deployment running an unverifiable or unsigned policy state
+is non-compliant. Policy changes require version increments, authority binding,
+and audit log entries — the same governance requirements that apply to any other
+action in the system. A policy change that bypasses this process is itself a
+governed act that violated governance.
+
+---
+
+## Failure Mode
+
+Opaque governance is indistinguishable from the absence of governance — from
+the outside. Organizations running opaque AI governance cannot demonstrate to
+regulators, auditors, or counterparties that the rules being enforced are the
+rules that were approved. They cannot reconstruct why a specific decision was
+made. They cannot verify that the policy in effect today is the policy that was
+in effect when a disputed action occurred. The practical result is that their
+governance is a declaration of intent — "we have policies" — rather than a
+verifiable claim. In regulated environments, declarations of intent are not
+compliance. Transparency Before Trust is the doctrine that closes the gap between
+governance that exists and governance that can be proven to exist.
+
+---
+
+## Relationship to Other Articles
+
+Governance Transparency is the mechanism by which every other article can be
+verified. [Article I — Bounded Capability](../article-i) can only be audited if the capability
+registry is inspectable. [Article II — Authority Binding](../article-ii) can only be verified if
+the authority chain is visible in the audit record.
+[Article III — Deterministic Enforcement](../article-iii) can only be tested if the policy logic is readable.
+[Article X — Constitutional Supremacy](../article-x) depends on transparency: a governance layer whose logic
+is opaque cannot be verified as supreme over anything.
+
+[^4]: AEGIS Initiative, "AEGIS Canon — Core Doctrine, Art. III: Transparency Before Trust," `finnoybu/aegis-governance`, v0.1.0, 2026. [Online]. Available: https://github.com/finnoybu/aegis-governance See [REFERENCES.md](/references).

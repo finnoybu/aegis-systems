@@ -1,0 +1,121 @@
+---
+title: Principle 5 — Structured Persistence
+description: Persistence is not incidental — only canonical export defines authoritative record, hidden retention violates constitutional integrity
+sidebar:
+  order: 6
+---
+import Aside from '../../../components/Aside.astro';
+
+*Persistence is not incidental. Only canonical export defines authoritative record.
+Hidden retention violates constitutional integrity.*
+
+---
+
+## Principle
+
+Memory in a governed AI system is not a passive byproduct of execution. It is a
+governed resource — subject to the same explicit declaration, authority binding,
+and audit requirements as any other action. AEGIS defines three memory layers:
+
+1. **Ephemeral working context** — short-lived, non-authoritative working state that is not durable and may be discarded
+2. **Structured session memory** — bounded contextual state within declared session scope, scoped to threat level and authority context
+3. **Canonical export** — the durable, authoritative record; the only layer that defines what happened
+
+Only canonical export is authoritative. A governance decision that exists in ephemeral
+context but was never written to canonical export did not happen within the governance
+record. An artifact produced during execution that was not canonically exported is
+not a governed artifact — it is a side effect.
+
+Hidden retention — persistence that occurs outside the declared memory architecture —
+violates constitutional integrity. It is not a minor compliance gap. It is the creation
+of an ungoverned record that exists outside the audit trail.
+
+---
+
+## Meaning
+
+The distinction between ephemeral context, structured session memory, and canonical
+export is not a technical implementation detail. It is a governance distinction.
+Each layer has different authority requirements, different audit implications, and
+different governance status.
+
+Ephemeral context is working memory — the agent's ability to hold state within a
+task. It is explicitly non-authoritative: nothing in ephemeral context is part of
+the governance record. Structured session memory is bounded and scoped — it exists
+within declared session boundaries and is governed by the authority context and
+threat level of that session. It is not canonical, but it is constrained.
+
+Canonical export is where governance responsibility concludes. It is the record of
+what the task produced, under what authority, at what threat level, with what
+constraint envelope. It is version-referenced, authority-bound, and audit-linked.
+It is the only output of execution that carries constitutional status.
+
+Hidden retention violates constitutional integrity because it creates persistence
+outside this architecture — memory that was never declared, never scoped, never
+authority-bound, and never audited. A system with hidden retention is a system
+with a shadow record that the governance architecture cannot observe, evaluate,
+or audit.
+
+---
+
+## In Practice
+
+In a compliant AEGIS implementation, every artifact produced during execution is
+labeled with its governance context before it is written: version reference, threat
+posture, authority context, scope declaration, and constraint envelope. This labeling
+is not metadata added after the fact — it is part of the artifact's canonical form.
+An artifact without governance labeling is not a canonical artifact. It cannot be
+referenced in subsequent governance decisions, cannot be included in the audit record,
+and cannot be treated as an authoritative output of the execution.
+
+Canonical export triggers an audit record entry. The connection between the artifact
+and the governance decision that authorized its production is explicit in both the
+artifact and the audit record. This bidirectional binding ensures that for any
+canonical artifact, the governance context can be recovered, and for any governance
+decision, the artifacts it authorized can be identified.
+
+
+<Aside type="constraint">
+
+Ephemeral context is explicitly non-authoritative. An agent that relies on ephemeral
+context as the basis for subsequent decisions is operating on unverified, unaudited
+state. Decisions that reference ephemeral context rather than canonical record are
+governance decisions without an authoritative basis.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+The failure mode of unstructured persistence is the emergence of an unofficial
+record that supplements or supplants the official one. An agent that retains
+information in ways not declared in the constraint envelope is an agent operating
+with a memory architecture that governance cannot observe. This creates two risks:
+the agent may act on retained information that was never authorized for the purpose
+it is being used for; and the audit record becomes incomplete — it describes what
+the governance layer authorized, but not what the agent actually had access to
+when it made its proposals.
+
+
+<Aside type="prohibition">
+
+Hidden retention violates constitutional integrity. A system that retains
+information outside the declared memory architecture is not an AI system with
+a supplemental memory — it is an AI system operating with ungoverned state.
+
+</Aside>
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Structured Persistence operationalizes [Doctrine Article I — Constraint Before
+Capability](/doctrine/article-i) in the memory domain: persistence must be declared
+before it is exercised, just as capabilities must be declared before they are granted.
+It directly grounds [Constitutional Article V — Information Sovereignty](/constitution/article-v):
+the requirement that information access be a governed capability applies to retention
+as much as to access — an agent that can retain information without governance
+authorization has bypassed information sovereignty. And it supports [Constitutional
+Article VII — Auditability](/constitution/article-vii): an audit record that does
+not capture what was retained cannot reconstruct what the agent knew when it acted.

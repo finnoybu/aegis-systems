@@ -1,0 +1,131 @@
+---
+title: Article VII — Auditability
+description: Every governance decision and executed action must produce a tamper-evident, append-only audit record — audit failure blocks execution
+sidebar:
+  order: 8
+---
+import Aside from '../../../components/Aside.astro';
+
+*Every governance decision and executed action must produce a tamper-evident,
+append-only audit record — audit failure blocks execution.*
+
+---
+
+## Commitment
+
+Execution without a durable, tamper-evident audit record is incomplete.
+
+Not merely suboptimal. Not merely non-compliant. Constitutionally incomplete.
+
+An action that cannot be audited did not happen within the AEGIS governance
+boundary. An action that happened outside the audit record happened outside
+governance. These are not distinctions of degree. They are constitutional categories.
+
+
+<Aside type="prohibition">
+
+If audit cannot be written, execution does not proceed. This is not a policy
+preference. It is a constitutional requirement. A governance pipeline that
+cannot write its audit record is not a degraded governance pipeline. It is
+a non-compliant one.
+
+</Aside>
+
+---
+
+## Foundation
+
+Accountability without auditability is a declaration of intent, not a structural
+guarantee. The audit trail is the governance system's memory — the record of
+what was proposed, what was decided, what executed, and what resulted.
+
+A tamper-evident record is not the same as an immutable one. Tamper-evidence
+means that any alteration of the record after the fact is detectable. This is
+achieved through append-only storage, hash-chaining, and cryptographic integrity
+verification — not through claims of immutability that the architecture cannot
+enforce.
+
+The audit trail must be forensically defensible. A defensible record is one
+from which: the outcome is machine-reproducible from stored evidence; the policy
+context is explicit; the authority context is explicit; and incomplete traces
+are clearly labeled as such.[^5]
+
+Audit is a completion condition, not a logging side effect. The governance
+pipeline is not complete when a decision is issued. It is complete when the
+decision, the context that produced it, and the execution result that followed
+it are durably recorded.
+
+---
+
+## Enforcement
+
+Every governance decision — ALLOW, DENY, ESCALATE, REQUIRE_CONFIRMATION — must
+produce an audit record regardless of outcome. Denied requests are audited.
+Escalated requests are audited. Confirmations are audited.
+
+Audit records must be append-only. No record may be modified after creation.
+Hash-chaining must link each record to its predecessor, making omission or
+alteration detectable.
+
+Audit system failure must block execution for operations above baseline risk
+thresholds. A governance runtime that cannot write audit records must not
+allow high-risk actions to proceed.
+
+The minimum audit record must capture: action identifier, actor identity,
+capability referenced, governance decision, decision rationale, risk score,
+policy version evaluated, and timestamp.
+
+Audit records must be retained according to organizational policy with a
+minimum retention floor defined in the sub-specifications.
+
+---
+
+## In Practice
+
+The AEGIS audit log is an append-only, hash-chained JSONL record. Each entry
+includes the SHA-256 hash of the preceding record, binding the chain together
+such that any omission or modification after the fact is detectable on
+verification. The minimum record captures: action identifier, actor identity,
+capability referenced, governance decision, decision rationale, risk score,
+policy version evaluated, and timestamp. Records produced by denied requests
+carry the same fields as records produced by allowed ones — the audit trail
+does not distinguish between outcomes in its structural requirements.
+
+Audit system failure is not a graceful degradation condition. For operations
+above baseline risk thresholds, a governance runtime that cannot write audit
+records must not allow execution to proceed. The audit channel is verified as
+a precondition before policy evaluation begins — it is one of the four
+conditions that must be confirmed before any action is evaluated (see Article IX).
+A governance system operating without a functioning audit channel is a
+governance system operating outside the constitutional boundary.
+
+---
+
+## Failure Mode
+
+A system with an incomplete or manipulable audit record cannot be held
+accountable for anything that happened outside the verified chain. The failure
+mode is not the absence of logs — organizations that produce no logs know they
+have no logs. The dangerous failure mode is the appearance of auditability
+without its substance: logs that can be modified, logs that omit denied requests,
+logs that record outcomes but not the policy context that produced them. A
+forensic investigation of such a system cannot establish whether the governance
+record reflects what actually happened or a curated version of it. Tamper-evidence
+through hash-chaining and append-only enforcement is not a cryptographic nicety.
+It is the mechanism by which the audit trail earns the right to be called evidence.
+
+---
+
+## Relationship to Other Articles
+
+Auditability is the completion condition for the entire governance pipeline.
+[Article III — Deterministic Enforcement](../article-iii) requires it — reproducible decisions
+are only meaningful if the decision record is trustworthy.
+[Article II — Authority Binding](../article-ii) depends on it — the authority chain is only verifiable through
+the audit record. [Article IX — Deny by Default](../article-ix) enforces it as a precondition —
+if the audit channel is unavailable, execution does not proceed. Every
+constitutional guarantee in this document is ultimately verifiable only through
+the audit trail. Without it, the constitution describes a system that may or
+may not exist.
+
+[^5]: AEGIS Initiative, "AEGIS Canon — State Dump Protocol §5: Integrity Requirements," `finnoybu/aegis-governance`, v0.1.0, 2026. [Online]. Available: https://github.com/finnoybu/aegis-governance See [REFERENCES.md](/references).

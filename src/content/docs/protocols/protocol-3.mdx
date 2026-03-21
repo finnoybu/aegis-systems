@@ -1,0 +1,114 @@
+---
+title: Protocol 3 — Threat Escalation Protocol
+description: Escalation requires explicit request, reclassification, approval, isolation assessment, and audit preparation — escalation by inference is prohibited
+sidebar:
+  order: 4
+---
+import Aside from '../../../components/Aside.astro';
+
+*Escalation requires explicit request, reclassification, approval, isolation
+assessment, and audit preparation. Escalation by inference is prohibited.*
+
+---
+
+## Protocol
+
+Escalation to a higher threat level requires completion of all six steps in the
+following sequence. No step may be skipped. Partial completion is non-compliance.
+
+1. **Explicit request** — the escalation must be formally requested; inferred or implicit escalation is prohibited
+2. **Threat reclassification** — the governance layer must formally reclassify the threat posture to the requested level
+3. **Authority approval** — a human authority at the oversight level appropriate to the requested threat level must explicitly approve the escalation
+4. **Isolation assessment** — the feasibility and requirements for isolation at the new threat level must be evaluated and documented
+5. **Constraint rebinding** — the constraint envelope must be updated to reflect the permissions and boundaries appropriate to the new threat level
+6. **State dump and audit preparation** — a State Dump capturing the pre-escalation governance state must be generated, and the audit channel must be verified as available before elevated execution begins
+
+
+<Aside type="prohibition">
+
+Escalation by inference is prohibited without exception. A system that proceeds
+at a higher threat level without completing this protocol has self-authorized
+its own governance boundary expansion. That is a constitutional violation, not
+a procedural shortcut.
+
+</Aside>
+
+---
+
+## Purpose
+
+The six-step escalation workflow is not administrative overhead. Each step addresses
+a specific governance requirement that is elevated in importance at higher threat
+levels.
+
+The explicit request requirement ensures that the governance layer receives a
+formal signal — not an inference from context — that an elevation is being sought.
+Reclassification ensures the correct governance rules are engaged. Authority approval
+ensures a human is in the decision loop before greater consequences become possible.
+Isolation assessment ensures the execution environment is appropriate for the
+elevated threat level. Constraint rebinding ensures the new constraint envelope
+matches the new threat level — not the prior one. State dump and audit preparation
+ensure the governance record is complete before elevated execution begins.
+
+At higher threat levels, the cost of governance failure increases. The six-step
+protocol is proportional to that cost: each step is a checkpoint that a governance
+failure would have to bypass to produce an unauthorized outcome.
+
+---
+
+## In Practice
+
+When an escalation request reaches the governance layer, it is evaluated against
+the current governance state. The requesting actor must hold authority sufficient
+for the requested level. The threat posture reclassification must be formally
+recorded in governance state. The human approval must come from an authority at
+the appropriate oversight level — which varies by threat level.
+
+At Threat Level 4, dual oversight is required. At Threat Level 5, dual-control
+authorization is required: two independent human authorities must approve before
+execution proceeds. This is an absolute constitutional requirement — no configuration
+can reduce it to single-party approval at Level 5.
+
+Escalation is denied — not deferred — if any precondition fails: authority
+insufficient, threat posture ambiguous, isolation infeasible, audit channel
+unavailable. These are applications of Deny by Default, not special cases.
+
+
+<Aside type="constraint">
+
+Isolation assessment is not a checkbox. At Threat Level 5, isolation is a hard
+requirement — physical or network isolation must be confirmed as feasible and in
+place before elevated execution begins. An isolation assessment that concludes
+isolation is infeasible produces escalation denial, not a reduced isolation
+requirement.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+An escalation that bypasses any step of this protocol is not a governed escalation.
+It is an unauthorized elevation of operational authority. The practical failure mode
+is not malicious circumvention — it is operational pressure. Under time pressure,
+the isolation assessment seems skippable. Under trust pressure, the dual-approval
+requirement seems excessive for a trusted operator. Under system pressure, the
+state dump seems like an administrative formality. Each skipped step individually
+seems minor. Collectively, they produce an escalation that occurred without the
+structural protections the protocol exists to enforce — precisely in the conditions
+where those protections are most needed.
+
+---
+
+## Relationship to Principles and Constitution
+
+The Threat Escalation Protocol directly implements [Principle 8 — Escalation
+Discipline](/principles/principle-8) and [Principle 2 — Explicit Threat
+Classification](/principles/principle-2): the explicit request, reclassification,
+and approval requirements operationalize the prohibition on escalation by inference.
+It implements [Constitutional Article XI — Escalation Discipline](/constitution/article-xi)
+and [Constitutional Article IV — Human Oversight](/constitution/article-iv):
+the procedural requirements for how human oversight is exercised at each escalation
+boundary are defined here. And it is a direct application of [Constitutional
+Article IX — Deny by Default](/constitution/article-ix): unmet escalation
+preconditions produce denial.

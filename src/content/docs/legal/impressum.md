@@ -1,10 +1,8 @@
 ---
 title: Impressum
-description: Legal disclosure for the AEGIS™ Constitution site
+description: Legal disclosure — site operator, corporate structure, and contact information
 template: doc
 ---
-
-## Legal Disclosure
 
 Pursuant to applicable transparency and information obligations, the following information is provided regarding the operator of this site.
 
@@ -12,25 +10,23 @@ Pursuant to applicable transparency and information obligations, the following i
 
 ## Site Operator
 
-**Aegis Operations LLC**  
+**AEGIS Operations LLC**  
 P.O. Box 235  
 Lovettsville, VA 20180-0235  
 United States
 
 ---
 
-## Parent & IP Owner
+## Corporate Structure
 
-**Finnoybu Holdings LLC** (parent)  
-**Finnoybu IP LLC** d/b/a **AEGIS Initiative** (intellectual property owner)
+| Entity | Role |
+|---|---|
+| **Finnoybu Holdings LLC** | Parent company |
+| **Finnoybu IP LLC** | IP owner; trademark and copyright holder; d/b/a AEGIS Initiative |
+| **AEGIS Operations LLC** | Operating entity; site operator under license |
+| **AEGIS Initiative** | Registered fictitious name (d/b/a) of Finnoybu IP LLC</br>It is the public-facing brand under which the AEGIS™ governance</br>architecture is developed, maintained, and published.|
 
----
-
-## Contact
-
-**General inquiries:** [hello@aegis-constitution.com](mailto:hello@aegis-constitution.com)  
-**Legal & privacy:** [legal@aegis-constitution.com](mailto:legal@aegis-constitution.com)  
-**Privacy requests:** [privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com)
+For copyright, trademark, and licensing details, see [Copyright, Trademark & License](/legal/).
 
 ---
 
@@ -42,23 +38,26 @@ Principal Architect, AEGIS™ Initiative
 
 ---
 
-## Jurisdiction & Governing Law
+## Contact
 
-This site is operated under the laws of the Commonwealth of Virginia, United States.
+**General inquiries:** [hello@aegis-constitution.com](mailto:hello@aegis-constitution.com)  
+**Legal & trademark:** [legal@aegis-constitution.com](mailto:legal@aegis-constitution.com)  
+**Privacy requests:** [privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com)  
+**DMCA / takedown:** [dmca@aegis-constitution.com](mailto:dmca@aegis-constitution.com)  
 
----
-
-## Intellectual Property
-
-The AEGIS™ name, marks, and associated content are the intellectual property of Finnoybu IP LLC d/b/a AEGIS Initiative. All rights reserved. Content on this site is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) unless otherwise noted.
-
----
-
-## Disclaimer
-
-For the full disclaimer applicable to this site, please see our [Disclaimer](/legal/disclaimer).
+**Mailing address:**  
+AEGIS Operations LLC  
+P.O. Box 235  
+Lovettsville, VA 20180-0235  
+United States
 
 ---
 
-*AEGIS™* | *"Capability without constraint is not intelligence"™*  
+## Jurisdiction
+
+This site is operated under the laws of the Commonwealth of Virginia, United States. For dispute resolution details, see [Terms of Use](/legal/terms/).
+
+---
+
+*AEGIS™* | *"Capability without constraint is not intelligence"™*
 *AEGIS Initiative — Finnoybu IP LLC*

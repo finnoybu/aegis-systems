@@ -1,0 +1,117 @@
+---
+title: Principle 2 — Explicit Threat Classification
+description: Threat level governs execution rights — classification precedes action, escalation without reclassification is prohibited
+sidebar:
+  order: 3
+---
+import Aside from '../../../components/Aside.astro';
+
+*Threat level governs execution rights. Classification precedes action.
+Escalation without reclassification is prohibited.*
+
+---
+
+## Principle
+
+Every governed action is evaluated against a classified threat posture. The threat
+level in effect at the time of evaluation determines:
+
+- **Permissible system interaction** — which resources and external surfaces are accessible
+- **Isolation requirement** — whether the execution environment must be separated from production systems
+- **Oversight intensity** — what level of human review is required before execution proceeds
+- **Audit rigor** — what depth of record is required for the action to be considered governed
+
+Threat posture must be classified before action begins. An action evaluated against
+an unclassified or ambiguous threat posture is an action whose governance
+requirements cannot be determined — and therefore cannot be satisfied.
+
+
+<Aside type="prohibition">
+
+Escalation without reclassification is prohibited. An agent may not proceed at
+a higher threat level than the one currently in effect without an explicit
+reclassification event, an approved escalation request, and the full escalation
+workflow. Proceeding at a higher level by inference — because the situation seems
+to warrant it — is a constitutional violation.
+
+</Aside>
+
+---
+
+## Meaning
+
+Threat classification is not a risk score. It is a governance state. The classified
+threat level determines which governance rules apply, which oversight requirements
+are in effect, and which isolation and audit requirements must be satisfied. A
+system operating at Threat Level 2 is not the same governance context as a system
+operating at Threat Level 4 — and the governance rules that apply to one cannot
+be applied to the other.
+
+This is why escalation without reclassification is prohibited rather than merely
+discouraged. An agent that proceeds at a higher threat level without reclassifying
+is not operating with weak governance — it is operating under the wrong governance
+rules entirely. The actions it takes at the elevated level are being evaluated
+against the governance requirements of the lower level, which were not designed
+to govern them.
+
+The six threat levels — 0 through 5 — define a structured progression of operational
+impact, reversibility, and oversight requirement. Level 0 is advisory only, no side
+effects, no state mutation. Level 5 requires physical or network isolation and
+dual-control operator presence. Each level between them defines a specific governance
+posture. Classification is the mechanism by which the correct posture is engaged.
+
+---
+
+## In Practice
+
+When an action proposal reaches the governance admission boundary, threat
+classification is one of the four preconditions verified before policy evaluation
+begins. If threat posture cannot be classified — if the request provides insufficient
+context, if the operational mode is undefined, if the action crosses multiple threat
+level boundaries without explicit declaration — the request is denied at the boundary.
+
+Threat level escalation is a governed transition. It requires an explicit escalation
+request from the agent, a reclassification decision by the governance layer, and
+approval from a human authority at the appropriate oversight level. The governance
+runtime does not infer threat level changes from the content of action proposals.
+If an agent's proposal would require elevated permissions not available at the
+current threat level, the proposal is denied — not silently escalated.
+
+
+<Aside type="doctrine">
+
+The current threat level is part of governance state and is included in every
+audit record. This means that the threat level in effect at the time of any
+governance decision is always recoverable from the record — a prerequisite for
+forensic analysis of whether the correct governance rules were applied.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+A system without explicit threat classification is a system with a single,
+undifferentiated governance posture applied to all actions regardless of their
+impact, reversibility, or oversight requirement. This creates two failure patterns.
+The first is over-governance of routine actions: low-impact advisory tasks subjected
+to the same oversight intensity as high-consequence execution operations, producing
+friction that incentivizes governance bypass. The second is under-governance of
+high-consequence actions: elevated operations that were never reclassified, evaluated
+against governance requirements designed for lower-impact contexts, producing the
+appearance of governance without its substance. Explicit threat classification
+prevents both failure patterns by ensuring that the governance posture in effect
+always matches the actual operational context.
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Explicit Threat Classification operationalizes [Doctrine Article IV — Oversight
+Before Autonomy](/doctrine/article-iv): the oversight intensity that doctrine
+requires to scale with autonomy is determined by threat level. It also grounds
+[Constitutional Article IV — Human Oversight](/constitution/article-iv): the
+specific oversight requirements at each escalation boundary derive from the threat
+level in effect. And it directly supports [Constitutional Article IX — Deny by
+Default](/constitution/article-ix): unclear threat posture is one of the four
+preconditions whose absence produces immediate denial.

@@ -1,0 +1,113 @@
+---
+title: Article I — Bounded Capability
+description: AI systems may only access capabilities explicitly defined and granted — undefined capabilities are denied by default
+sidebar:
+  order: 2
+---
+import Aside from '../../../components/Aside.astro';
+
+*AI systems may only access capabilities explicitly defined and granted —
+undefined capabilities are denied by default.*
+
+---
+
+## Commitment
+
+An AEGIS-compliant system may only exercise capabilities that have been explicitly
+defined, registered, and granted. No capability is assumed. No access is inherited
+by proximity. No action proceeds without an explicit grant covering that action,
+that actor, and that target.
+
+Where no grant exists, the answer is denial. Always.
+
+---
+
+## Foundation
+
+Unbounded capability is the root condition of ungoverned systems. When an
+intelligence system can invoke any action against any resource without explicit
+authorization, governance becomes aspirational — dependent on the system's
+willingness to comply rather than its structural inability to violate.
+
+Capability-based authorization is a foundational principle of secure system
+design.[^1] AEGIS extends it to the AI governance domain: every action an agent
+can take must be enumerable, bounded, and explicitly authorized before execution
+reaches infrastructure.
+
+The capability registry is the constitutional record of what is permitted. It is
+not a configuration file. It is a governance artifact. Changes to it are governed
+acts subject to the same audit and authority requirements as any other action.
+
+Default-deny is not a posture of distrust. It is a posture of discipline. Systems
+that must justify their access before acting are systems that can be held accountable
+for what they do.
+
+---
+
+## Enforcement
+
+Every action proposal must reference a defined capability. The governance runtime
+must verify that the requesting actor holds an active, unrevoked grant for that
+capability against that target before evaluation proceeds.
+
+Actions referencing undefined capabilities must be denied immediately, before policy
+evaluation, before risk scoring, before any further processing.
+
+Grant revocation takes effect immediately. Revoked grants produce denial.
+
+The capability registry must be version-controlled, cryptographically signed, and
+auditable. Modifications require explicit authorization.
+
+
+<Aside type="constraint">
+
+Grant revocation takes effect immediately. There is no grace period. Revoked
+grants produce denial on the next evaluation — not at the end of the current
+session, not after a restart. Immediately.
+
+</Aside>
+
+---
+
+## In Practice
+
+The AEGIS capability model expresses every executable action as a typed permission
+in a specific domain — `filesystem.read`, `network.http_post`, `data.database_query`,
+`compute.process_spawn`. Each capability carries a risk profile, an allowed scope,
+and an explicit set of actors authorized to invoke it. Before any action reaches
+infrastructure, the governance gateway verifies that the requesting agent holds an
+active, unrevoked grant for that exact capability against that exact resource.
+
+Grants are actor-specific and revocable. Temporary grants carry expiration metadata.
+Bulk revocation preserves audit history. A missing grant does not trigger escalation
+or policy evaluation — it produces immediate denial. The capability registry is
+reloaded on each evaluation cycle, so revocations take effect without requiring a
+deployment or a restart. The registry itself is a versioned, cryptographically signed
+artifact; any modification to it is a governed act recorded in the audit trail.
+
+---
+
+## Failure Mode
+
+A system that does not enforce bounded capability is not a governed system — it
+is an AI agent with unrestricted access to infrastructure, constrained only by
+its own judgment about what it should do. In practice, this means an agent can
+invoke file system operations, network calls, and data exports that were never
+authorized, never audited, and never visible to the humans who bear accountability
+for the outcome. The absence of a capability boundary is not a minor compliance
+gap. It is the absence of governance itself. Every security and accountability
+guarantee in the AEGIS architecture depends on the capability registry being the
+single authoritative record of what is permitted. When that record does not exist
+or is not enforced, nothing that follows it can be trusted.
+
+---
+
+## Relationship to Other Articles
+
+Bounded Capability is the first gate in the governance pipeline. It operates before
+[Article II — Authority Binding](../article-ii), before [Article III — Deterministic Enforcement](../article-iii),
+and before risk scoring. A capability violation does not proceed to those layers — it terminates
+at the registry. This sequencing is constitutional: the capability boundary is not
+a policy preference. It is an architectural precondition.
+
+[^1]: J. P. Anderson, "Computer Security Technology Planning Study," Deputy for Command and Management Systems, HQ Electronic Systems Division (AFSC), Hanscom Field, Bedford, MA, Tech. Rep. ESD-TR-73-51, Vol. II, Oct. 1972. [Online]. Available: https://csrc.nist.gov/files/pubs/conference/1998/10/08/proceedings-of-the-21st-nissc-1998/final/docs/early-cs-papers/ande72.pdf See [REFERENCES.md](/references).

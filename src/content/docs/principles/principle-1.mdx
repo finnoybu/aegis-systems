@@ -1,0 +1,114 @@
+---
+title: Principle 1 — Bounded Execution
+description: Every task must define objective, scope, tool permissions, data handling rules, and termination conditions — undefined scope invalidates execution
+sidebar:
+  order: 2
+---
+import Aside from '../../../components/Aside.astro';
+
+*Every task must define objective, scope boundaries, tool permissions, data handling
+rules, and termination conditions. Undefined scope invalidates execution.*
+
+---
+
+## Principle
+
+Every governed execution begins with a complete constraint declaration. Before any
+tool is invoked, any resource is accessed, or any output is produced, the following
+must be defined and declared:
+
+- **Objective** — what the task is intended to accomplish
+- **Scope boundaries** — what resources, systems, and data are within reach
+- **Tool permissions** — which specific tools may be invoked
+- **Data handling rules** — how information may be accessed, processed, and retained
+- **Termination conditions** — when the task is complete and when it must stop
+
+If any of these elements cannot be declared, the task cannot be executed. An
+undeclared element is not an oversight — it is a governance failure. Undefined scope
+does not mean loosely bounded scope. It means no governance boundary exists for
+that dimension of execution, which means governance cannot evaluate, contain, or
+audit it.
+
+---
+
+## Meaning
+
+Bounded Execution is the operational form of Doctrine Article I — Constraint Before
+Capability. The doctrine establishes the principle. This principle specifies what
+a compliant constraint declaration must contain. The five required elements are
+not an arbitrary checklist. Each one addresses a specific governance requirement:
+the objective establishes what the audit record is evaluated against; scope
+boundaries define what the capability registry must authorize; tool permissions
+map to explicit grants; data handling rules define information sovereignty boundaries;
+termination conditions establish when governance responsibility concludes.
+
+Together they define the constraint envelope — the structural container within which
+execution occurs and outside which execution is denied. The constraint envelope is
+machine-evaluable. It is not prose. It is not intent. It is a declared set of
+boundaries that the governance runtime enforces at every stage of execution.
+
+---
+
+## In Practice
+
+When an AEGIS-governed agent receives a task, the constraint declaration is
+established before any execution begins. The capability registry is checked against
+the declared tool permissions — any tool not in the registry or not granted to the
+actor is denied before policy evaluation begins. The declared scope boundaries
+define the resource access the governance layer will permit. The data handling rules
+map to information access capabilities in the registry. The termination conditions
+define the completion state against which the audit record is closed.
+
+At any point during execution where the agent would need to exceed the declared
+constraint envelope — access a resource outside scope, invoke a tool not in the
+declared permissions, retain data in a way that contradicts the handling rules —
+the governance layer denies the action. The constraint envelope is not a soft
+limit the agent is expected to respect. It is a hard boundary the governance
+architecture enforces.
+
+
+<Aside type="application">
+
+Termination conditions are as important as scope boundaries. A task without
+declared termination conditions cannot be completed — it can only be abandoned.
+The audit record for a task without termination conditions cannot confirm
+completion. It can only record cessation.
+
+</Aside>
+
+---
+
+## Failure Mode
+
+An agent executing without a complete constraint declaration is an agent operating
+without a governance boundary. The practical consequence is not that harmful things
+will certainly happen — it is that the governance system has no basis on which to
+prevent them, detect them, or attribute them. Scope creep is the most common failure
+pattern: a task declared with a narrow objective gradually expands its resource
+access as the agent determines that additional context would be helpful. Each
+individual expansion may be minor. Cumulatively, an agent that began with a narrow,
+well-defined scope has executed against a much broader set of resources, none of
+which were authorized in the original constraint declaration.
+
+
+<Aside type="constraint">
+
+Scope creep is not a behavioral flaw in the agent. It is a governance failure in
+the system that permitted execution to continue beyond the declared constraint
+envelope. Bounded Execution prevents scope creep by making the constraint envelope
+the boundary of governance authority — not the boundary of the agent's judgment
+about what is necessary.
+
+</Aside>
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Bounded Execution directly operationalizes [Doctrine Article I — Constraint Before
+Capability](/doctrine/article-i). It also grounds [Constitutional Article I —
+Bounded Capability](/constitution/article-i): the capability registry cannot enforce
+what was never declared, and a task without a constraint declaration cannot be
+evaluated against the registry. The principle also connects to [Constitutional
+Article IX — Deny by Default](/constitution/article-ix): missing scope is one of
+the four preconditions whose absence produces immediate denial.

@@ -10,12 +10,7 @@ These terms govern your use of this site (`aegis-constitution.com`), operated by
 
 We operate [aegis-constitution.com](https://aegis-constitution.com), as well as any other related products and services that refer or link to these Legal Terms (collectively, the "Services").
 
-You can contact us by email at [legal@aegis-constitution.com](mailto:legal@aegis-constitution.com) or by mail at:
-
-Aegis Operations LLC  
-P.O. Box 235
-Lovettsville, VA 20180-0235
-United States
+You can contact us by email at [legal@aegis-constitution.com](mailto:legal@aegis-constitution.com) or by mail at the address listed on our [Impressum](/legal/impressum/#contact).
 
 These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and AEGIS Operations LLC, concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.
 
@@ -206,7 +201,7 @@ There may be information on the Services that contains typographical errors, ina
 
 ## 13. Disclaimer
 
-THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICES AND YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SERVICES' CONTENT OR THE CONTENT OF ANY WEBSITES LINKED TO THE SERVICES AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE OF ANY NATURE WHATSOEVER RESULTING FROM YOUR ACCESS TO AND USE OF THE SERVICES, (3) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY PERSONAL INFORMATION STORED THEREIN, (4) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SERVICES, (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SERVICES BY ANY THIRD PARTY, AND/OR (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICES.
+THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK. For the full disclaimer, see [Disclaimer](/legal/disclaimer/). The disclaimer is incorporated into these Terms by reference.
 
 ---
 <div id="sec14"></div>
@@ -248,13 +243,7 @@ These Legal Terms and any policies or operating rules posted by us on the Servic
 
 ## 19. Contact Us
 
-If you have questions or comments about these Legal Terms, please contact us at:
-
-**AEGIS Operations LLC**  
-[legal@aegis-constitution.com](mailto:legal@aegis-constitution.com)  
-P.O. Box 235
-Lovettsville, VA 20180-0235
-United States
+If you have questions or comments about these Legal Terms, contact us at [legal@aegis-constitution.com](mailto:legal@aegis-constitution.com). For mailing address and additional contact options, see [Impressum](/legal/impressum/#contact).
 
 ---
 

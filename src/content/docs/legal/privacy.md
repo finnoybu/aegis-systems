@@ -123,7 +123,7 @@ We may need to share your personal information in the following situations:
 
 ## 5. Do we use cookies and other tracking technologies?
 
-This site does not set any first-party cookies or operate behavioral tracking or advertising systems. Cloudflare Pages may set cookies as part of their infrastructure and security services. These are governed by the [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/).
+This site does not set first-party cookies or operate behavioral tracking. For full details on cookie usage, see [Cookie Policy](/legal/cookies/).
 
 ---
 <div id="sec6"></div>
@@ -231,19 +231,14 @@ We may update this Privacy Notice from time to time. The updated version will be
 
 ## 12. How can you contact us about this notice?
 
-If you have questions or comments about this notice, you may email us at [privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com) or contact us by post at:
-
-Aegis Operations LLC  
-P.O. Box 235
-Lovettsville, VA 20180-0235
-United States
+If you have questions or comments about this notice, you may email us at [privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com). For mailing address and additional contact options, see [Impressum](/legal/impressum/#contact).
 
 ---
 <div id="sec13"></div>
 
 ## 13. How can you review, update, or delete the data we collect from you?
 
-Based on the applicable laws of your country or state of residence, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. These rights may be limited in some circumstances by applicable law. To submit a request, please contact us using the details provided in section 12 above.
+Based on the applicable laws of your country or state of residence, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. These rights may be limited in some circumstances by applicable law. To submit a request, contact us at [privacy@aegis-constitution.com](mailto:privacy@aegis-constitution.com).
 
 ---
 

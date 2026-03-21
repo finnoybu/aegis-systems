@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocLayout from '../layouts/DocLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PrevNext from '../components/PrevNext.astro';
+
+// Flat navigation order — matches sidebar
+const navOrder = [
+  { slug: 'constitution', label: 'Preamble', section: 'Constitution' },
+  { slug: 'constitution/article-i', label: 'Art. I — Bounded Capability', section: 'Constitution' },
+  { slug: 'constitution/article-ii', label: 'Art. II — Authority Binding', section: 'Constitution' },
+  { slug: 'constitution/article-iii', label: 'Art. III — Deterministic Enforcement', section: 'Constitution' },
+  { slug: 'constitution/article-iv', label: 'Art. IV — Human Oversight', section: 'Constitution' },
+  { slug: 'constitution/article-v', label: 'Art. V — Information Sovereignty', section: 'Constitution' },
+  { slug: 'constitution/article-vi', label: 'Art. VI — Governance Transparency', section: 'Constitution' },
+  { slug: 'constitution/article-vii', label: 'Art. VII — Auditability', section: 'Constitution' },
+  { slug: 'constitution/article-viii', label: 'Art. VIII — Collective Defense', section: 'Constitution' },
+  { slug: 'constitution/article-ix', label: 'Art. IX — Deny by Default', section: 'Constitution' },
+  { slug: 'constitution/article-x', label: 'Art. X — Constitutional Supremacy', section: 'Constitution' },
+  { slug: 'constitution/article-xi', label: 'Art. XI — Escalation Discipline', section: 'Constitution' },
+  { slug: 'constitution/compliance', label: 'Constitutional Compliance', section: 'Constitution' },
+  { slug: 'constitution/amendments', label: 'Amendments', section: 'Constitution' },
+  { slug: 'constitution/interpretation', label: 'Interpretation', section: 'Constitution' },
+  { slug: 'doctrine', label: 'Overview', section: 'Doctrine' },
+  { slug: 'doctrine/article-i', label: 'Art. I — Constraint Before Capability', section: 'Doctrine' },
+  { slug: 'doctrine/article-ii', label: 'Art. II — Governance Before Execution', section: 'Doctrine' },
+  { slug: 'doctrine/article-iii', label: 'Art. III — Transparency Before Trust', section: 'Doctrine' },
+  { slug: 'doctrine/article-iv', label: 'Art. IV — Oversight Before Autonomy', section: 'Doctrine' },
+  { slug: 'doctrine/article-v', label: 'Art. V — Deny by Default', section: 'Doctrine' },
+  { slug: 'principles', label: 'Overview', section: 'Principles' },
+  { slug: 'principles/principle-1', label: 'Prin. 1 — Bounded Execution', section: 'Principles' },
+  { slug: 'principles/principle-2', label: 'Prin. 2 — Explicit Threat Classification', section: 'Principles' },
+  { slug: 'principles/principle-3', label: 'Prin. 3 — Versioned Authority', section: 'Principles' },
+  { slug: 'principles/principle-4', label: 'Prin. 4 — Deterministic Transitions', section: 'Principles' },
+  { slug: 'principles/principle-5', label: 'Prin. 5 — Structured Persistence', section: 'Principles' },
+  { slug: 'principles/principle-6', label: 'Prin. 6 — Audit as Completion Condition', section: 'Principles' },
+  { slug: 'principles/principle-7', label: 'Prin. 7 — Separation of Layers', section: 'Principles' },
+  { slug: 'principles/principle-8', label: 'Prin. 8 — Escalation Discipline', section: 'Principles' },
+  { slug: 'protocols', label: 'Overview', section: 'Protocols' },
+  { slug: 'protocols/protocol-1', label: 'Prot. 1 — State Dump', section: 'Protocols' },
+  { slug: 'protocols/protocol-2', label: 'Prot. 2 — Mode Transition', section: 'Protocols' },
+  { slug: 'protocols/protocol-3', label: 'Prot. 3 — Threat Escalation', section: 'Protocols' },
+  { slug: 'protocols/protocol-4', label: 'Prot. 4 — Constraint Declaration', section: 'Protocols' },
+  { slug: 'protocols/protocol-5', label: 'Prot. 5 — Authority Binding', section: 'Protocols' },
+  { slug: 'protocols/protocol-6', label: 'Prot. 6 — Audit Integrity', section: 'Protocols' },
+  { slug: 'protocols/protocol-7', label: 'Prot. 7 — Isolation', section: 'Protocols' },
+];
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = entry.id;
+
+// Build breadcrumbs
+const parts = slug.split('/');
+const section = parts[0];
+const sectionLabels: Record<string, string> = {
+  constitution: 'Constitution',
+  doctrine: 'Doctrine',
+  principles: 'Principles',
+  protocols: 'Protocols',
+  about: 'About',
+  contact: 'Contact',
+  legal: 'Legal',
+  releases: 'Releases',
+};
+
+const breadcrumbs = [];
+if (sectionLabels[section]) {
+  // Section index pages show just the section name
+  if (parts.length === 1 || (parts.length === 2 && parts[1] === 'index')) {
+    breadcrumbs.push({ label: sectionLabels[section] });
+  } else {
+    breadcrumbs.push({ label: sectionLabels[section], href: `/${section}/` });
+    breadcrumbs.push({ label: entry.data.title });
+  }
+}
+
+// Compute prev/next
+const navIdx = navOrder.findIndex((n) => n.slug === slug);
+const prev = navIdx > 0 ? { label: navOrder[navIdx - 1].label, href: `/${navOrder[navIdx - 1].slug}/` } : undefined;
+const next = navIdx >= 0 && navIdx < navOrder.length - 1 ? { label: navOrder[navIdx + 1].label, href: `/${navOrder[navIdx + 1].slug}/` } : undefined;
+---
+
+<DocLayout title={entry.data.title} description={entry.data.description}>
+  {breadcrumbs.length > 0 && <Breadcrumb items={breadcrumbs} slot="breadcrumb" />}
+  <h1>{entry.data.title}</h1>
+  <Content />
+  <PrevNext prev={prev} next={next} />
+</DocLayout>
