@@ -1,0 +1,120 @@
+---
+title: Article III — Deterministic Enforcement
+description: Governance decisions are enforced by architecture, not by model compliance or voluntary adherence
+sidebar:
+  order: 4
+---
+import Aside from '../../../components/Aside.astro';
+
+*Governance decisions are enforced by architecture, not by model compliance
+or voluntary adherence.*
+
+---
+
+## Commitment
+
+Governance in AEGIS-compliant systems is an architectural property, not a
+behavioral one. The governance layer enforces policy independently of the AI
+system it governs. An AI system's willingness to comply is irrelevant. Its
+inability to bypass governance is the requirement.
+
+Same inputs. Same policy version. Same context. Same decision. Always.
+
+---
+
+## Foundation
+
+AI models are probabilistic systems. Their outputs are influenced by training,
+context, and inference conditions that are not fully controllable or predictable.
+Governance that depends on a model's cooperative adherence is governance that
+fails precisely when it is most needed — under adversarial conditions, under
+prompt injection, under novel inputs the model was not trained to handle.
+
+The formal theory of security automata establishes that only safety policies
+are inline-enforceable by a runtime monitor.[^2] AEGIS is constituted as that
+monitor. It does not negotiate with the systems it governs. It evaluates them.
+
+Determinism is not a performance characteristic. It is a governance requirement.
+A system that produces different decisions for identical inputs is a system that
+cannot be audited, cannot be trusted, and cannot be compliant.
+
+Complete mediation — every action passes through the governance layer, without
+exception — is the structural guarantee that makes architectural enforcement
+meaningful.[^1] A single bypass path nullifies the architecture.
+
+---
+
+## Enforcement
+
+The governance runtime must be positioned between AI agents and all operational
+infrastructure. No direct execution path from agent to infrastructure is permitted.
+
+The decision pipeline must be deterministic: identical inputs, policy version,
+and context must produce identical decisions on any compliant node, at any time.
+
+All error paths must fail closed. A governance subsystem that fails must produce
+denial or escalation, never implicit allow.
+
+The governance runtime must be structurally external to the AI systems it governs.
+It must not share execution context, memory space, or compute boundary with the
+agent under governance.
+
+<Aside type="prohibition">
+This is constitutionally prohibited. A single bypass path from agent to
+infrastructure nullifies the entire governance architecture. Complete mediation
+is not a design preference — it is the structural guarantee that makes every
+other constitutional requirement enforceable.
+</Aside>
+---
+
+## In Practice
+
+The AEGIS system stack places the governance layer (L3) between the agent
+reasoning layer (L2) and the tool proxy execution layer (L4). No direct path
+from L2 to L5 (operating system) or L4 (infrastructure) is permitted. The agent
+produces candidate actions — proposals only. It cannot authorize or execute
+privileged capability directly. Every proposal crosses the governance admission
+boundary, where schema validation, identity authentication, and capability
+normalization occur before evaluation begins.
+
+The policy engine evaluates proposals using a deterministic first-match algorithm:
+policies are sorted by priority, evaluated in order, and the first matching rule
+determines the outcome. If no rule matches, default-deny fires. The evaluation
+trace — which rule matched, why it matched, what inputs produced the outcome —
+is recorded in the audit artifact for every decision. Decision replay must
+produce the same outcome given the same inputs and the same policy version.
+Variation across nodes or evaluation time is not permitted.
+
+---
+
+## Failure Mode
+
+A governed system whose enforcement is contingent on the AI model's cooperation
+is not governed — it is monitored. Monitoring detects violations after the fact.
+Governance prevents them structurally. The distinction matters most at the
+boundary conditions: under adversarial prompting, under novel input distributions,
+under operational stress, or when the model has been fine-tuned in ways that
+shift its behavioral baseline. A model that has been instructed — or induced —
+to bypass a governance layer it controls cannot be stopped by its own willingness
+to comply. The architectural separation between agent and governance is not a
+belt-and-suspenders redundancy. It is the only structural guarantee that holds
+when the model cannot be trusted to enforce its own constraints.
+
+---
+
+## Relationship to Other Articles
+
+Deterministic Enforcement is the structural backbone of the entire constitutional
+architecture. Auditability [(Article VII)](../article-vii) depends on it — a non-deterministic
+decision pipeline cannot produce reproducible audit records. Constitutional
+Supremacy [(Article X)](../article-x) depends on it — a governance layer that the governed
+system can influence is not supreme. Deny by Default [(Article IX)](../article-ix) depends on
+it — a fail-open error path is a non-deterministic enforcement path. Every
+article in this constitution assumes that enforcement is architectural. If it
+is not, the constitution describes intentions, not requirements.
+
+---
+
+[^1]: J. P. Anderson, "Computer Security Technology Planning Study," Deputy for Command and Management Systems, HQ Electronic Systems Division (AFSC), Hanscom Field, Bedford, MA, Tech. Rep. ESD-TR-73-51, Vol. II, Oct. 1972. [Online]. Available: https://csrc.nist.gov/files/pubs/conference/1998/10/08/proceedings-of-the-21st-nissc-1998/final/docs/early-cs-papers/ande72.pdf See [REFERENCES.md](/references).
+
+[^2]: F. B. Schneider, "Enforceable Security Policies," *ACM Transactions on Information and System Security*, vol. 3, no. 1, pp. 30–50, Feb. 2000, doi: 10.1145/353323.353382. See [REFERENCES.md](/references).

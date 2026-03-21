@@ -4,6 +4,7 @@ description: Execution must produce durable trace artifacts including mode, thre
 sidebar:
   order: 7
 ---
+import Aside from '../../../components/Aside.astro';
 
 *Execution must produce durable trace artifacts. Audit is required for completion.*
 
@@ -29,12 +30,11 @@ The audit record must be append-only. No record may be modified after creation.
 Records must be hash-chained — each record includes a cryptographic hash of the
 preceding record — making omission or alteration detectable.
 
-:::prohibition
+<Aside type="prohibition">
 Audit is a completion condition, not a side effect. An execution event is not
 complete until its audit record is durably written. If the audit record cannot
 be written, the execution event is constitutionally incomplete.
-:::
-
+</Aside>
 ---
 
 ## Purpose
@@ -78,13 +78,12 @@ Audit system availability is verified as a precondition before high-risk executi
 begin. A governance runtime that cannot verify the audit channel must not permit
 execution above baseline risk thresholds.
 
-:::doctrine
+<Aside type="doctrine">
 The hash chain provides tamper-evidence for the current implementation. Cryptographic
 non-repudiation through HMAC signing of individual records is a planned capability
 that adds stronger guarantees about record authorship. The hash chain is the current
 structural requirement; HMAC signing is the future hardening step.
-:::
-
+</Aside>
 ---
 
 ## Failure Mode
@@ -100,14 +99,13 @@ decision replay. A record missing tool invocations cannot reconstruct the behavi
 trace. The Audit Integrity Protocol specifies the minimum complete record precisely
 to define the threshold below which an audit record fails its forensic purpose.
 
-:::constraint
+<Aside type="constraint">
 A partial audit record is more dangerous than no audit record in one important
 respect: it creates the appearance of governance documentation while failing to
 support the forensic questions that documentation is supposed to answer. An
 organization that discovers its audit records are incomplete after an incident
 has both the incident and an audit failure to explain.
-:::
-
+</Aside>
 ---
 
 ## Relationship to Principles and Constitution

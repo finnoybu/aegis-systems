@@ -1,0 +1,116 @@
+---
+title: Article V — Deny by Default
+description: In the presence of ambiguity, execution does not proceed
+sidebar:
+  order: 6
+---
+import Aside from '../../../components/Aside.astro';
+
+*In the presence of ambiguity, execution does not proceed.*
+
+---
+
+## Doctrine
+
+When governance cannot complete its evaluation — when threat posture is unclear,
+scope is missing, authority is unverifiable, or audit cannot be written — the answer
+is denial. Not deferral. Not partial execution. Not best-effort governance. Denial.
+
+This mirrors the principle of fail-safe design in safety-critical engineering.[^5]
+In safety-critical systems, the safe state under conditions of uncertainty is the
+state that prevents harm. For a governed AI system, the safe state is denial. A
+system that defaults to permission when governance preconditions are absent is a
+system that produces ungoverned execution — not cautious execution, not imperfect
+execution, but execution that has no governance basis at all.
+
+Deny by Default is not pessimism. It is the only posture under which the statement
+"this action was authorized" means anything. If permission is assumed in the absence
+of explicit denial, authorization is meaningless.
+
+---
+
+## Meaning
+
+The four conditions that trigger denial by default are not a list of edge cases.
+They are the minimum preconditions for governance to function at all.
+
+**Unclear threat posture** means governance does not know which rules apply. It
+cannot evaluate an action against a threat level it has not established. An action
+evaluated against the wrong threat level is not a governed action — it is an action
+evaluated incorrectly, which is structurally equivalent to being unevaluated.
+
+**Missing scope** means governance cannot bound the action. An unbounded action
+is an action whose consequences cannot be contained, whose resource access cannot
+be limited, and whose termination cannot be defined. Governance of an unbounded
+action is governance in name only.
+
+**Unverifiable authority** means governance cannot establish accountability. If
+the actor cannot be authenticated and their authority level verified, the governance
+record cannot attribute the action. An unattributed action in the audit trail is
+forensically worthless.
+
+**Unavailable audit** means governance cannot record the action. An action that
+cannot be recorded cannot be governed — the governance pipeline is incomplete, and
+an incomplete governance evaluation is a failed governance evaluation.
+
+When any one of these conditions is absent, governance is not degraded. It is absent.
+
+---
+
+## In Practice
+
+The AEGIS governance admission boundary evaluates all four preconditions before any
+action proposal enters policy evaluation. These checks are not part of policy
+evaluation — they are prerequisites for it. A failure at this stage produces
+immediate denial and a log entry identifying which precondition failed, what was
+expected, and what was found.
+
+Critically, precondition failures do not route to escalation. They are not edge
+cases requiring human review — they are governance failures requiring operator
+investigation. The distinction is important: an escalation is a governance decision
+about whether to permit elevated execution. A precondition failure is a signal that
+the governance system itself is not operating correctly. Those are different problems
+requiring different responses.
+
+<Aside type="doctrine">
+Deny by Default applies to all actions, regardless of their apparent risk level.
+A low-risk action evaluated without a verifiable authority context is not a
+low-risk action with a minor compliance gap. It is an ungoverned action.
+</Aside>
+---
+
+## Failure Mode
+
+The failure mode of fail-open design is not a single incident where something
+obviously dangerous was permitted. It is the systematic production of ungoverned
+actions that were never explicitly denied — each one individually unremarkable,
+collectively representing a governance posture where authorization is assumed rather
+than established. Organizations operating fail-open AI governance cannot demonstrate
+that any specific action was authorized, because authorization was the default.
+They cannot demonstrate that any action was outside the governance boundary, because
+there was no boundary — only a list of things that were specifically denied.
+Deny by Default is the doctrine that makes the governance boundary real.
+
+<Aside type="prohibition">
+This is constitutionally prohibited. A system that defaults to permission under
+uncertainty does not have weak governance. It has no governance boundary — only
+a list of exceptions. The governance boundary is defined by what is denied in
+the absence of explicit authorization, not by what is explicitly permitted.
+</Aside>
+---
+
+## Relationship to Constitution
+
+Deny by Default is the doctrinal foundation of [Article IX — Deny by Default](/constitution/article-ix)
+directly — the constitutional article inherits both the name and the logic of this
+doctrine article. It also underlies every other constitutional article: Bounded
+Capability (Article I) denies undefined capabilities before evaluation. Authority
+Binding (Article II) denies unbound execution at the gateway. Auditability
+(Article VII) treats unavailable audit as a precondition failure that produces
+denial. Escalation Discipline (Article XI) applies deny-by-default to escalation
+requests whose preconditions are not met. The doctrine is the posture. The
+constitution is its architectural expression.
+
+---
+
+[^5]: N. G. Leveson, *Engineering a Safer World: Systems Thinking Applied to Safety*, MIT Press, Cambridge, MA, 2011. [Online]. Available: https://mitpress.mit.edu/9780262533690/engineering-a-safer-world/ See [REFERENCES.md](/references).

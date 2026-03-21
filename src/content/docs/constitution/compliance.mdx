@@ -1,0 +1,66 @@
+---
+title: Constitutional Compliance
+description: How compliance is established, verified, and enforced in AEGIS-compliant systems
+sidebar:
+  order: 13
+---
+import Aside from '../../../components/Aside.astro';
+
+AEGIS-compliant systems are defined by architectural enforcement, not declared intent.
+
+---
+
+## Compliance Mechanisms
+
+Compliance is established through seven structural requirements:
+
+**Gateway Enforcement** — All action proposals must pass through the governance
+gateway. No execution path from agent to infrastructure exists outside the
+governance boundary.
+
+**Capability Registry Validation** — Every action must reference a defined,
+granted capability. Undefined capabilities are denied before evaluation begins.
+
+**Authority Binding** — Every action must be bound to a verified, authorized
+actor before evaluation proceeds. Unbound actions are denied at the gateway.
+
+**Policy Engine Evaluation** — All actions undergo deterministic policy
+evaluation. First-match semantics with default-deny baseline. The policy
+version in effect must be recorded in the audit artifact.
+
+**Risk Scoring** — All actions are scored against the five-factor risk model.
+Risk score informs but does not replace policy evaluation. Risk thresholds
+are governance artifacts subject to audit and version control.
+
+**Audit System Logging** — Every governance decision produces an audit record
+regardless of outcome. Audit failure blocks execution above baseline risk thresholds.
+
+**Tool Proxy Layer** — Only decisions resulting in ALLOW proceed to execution.
+DENY, ESCALATE, and REQUIRE_CONFIRMATION decisions never reach infrastructure.
+
+---
+
+## Verification
+
+Organizations may verify constitutional compliance through:
+
+- Schema validation of capability registry against canonical definitions
+- Policy engine response testing across boundary conditions and edge cases
+- Audit trail review confirming record production for all decision outcomes
+- Penetration testing attempting governance bypass via direct infrastructure access
+- Determinism testing confirming identical decisions for identical inputs
+- Federation attestation publishing cryptographic compliance proofs to GFN-1
+- Governance architecture review confirming runtime interposition between agents and infrastructure
+
+---
+
+## Non-Compliance
+
+A system that does not enforce these constitutional requirements is not an
+AEGIS-compliant system, regardless of what it claims about itself.
+
+<Aside type="prohibition">
+Partial compliance is non-compliance. A system that enforces nine articles and
+bypasses two is a non-compliant system with nine compliant features. Compliance
+is binary. The governance boundary either holds or it does not.
+</Aside>

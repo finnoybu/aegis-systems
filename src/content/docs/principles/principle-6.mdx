@@ -1,0 +1,106 @@
+---
+title: Principle 6 — Audit as Completion Condition
+description: Execution without a durable audit artifact is incomplete — if audit cannot be written, execution cannot conclude
+sidebar:
+  order: 7
+---
+import Aside from '../../../components/Aside.astro';
+
+*Execution without a durable audit artifact is incomplete. If audit cannot be
+written, execution cannot conclude.*
+
+---
+
+## Principle
+
+A task is not complete when the agent has finished its work. A task is complete
+when the governance record of that work is durably written. Completion requires:
+
+- **Artifact labeling** — every output carries its governance context
+- **Authority binding** — the authorized actor and their authority level are recorded
+- **Threat posture logging** — the threat level in effect during execution is captured
+- **State reproducibility** — the governance state can be reconstructed from the record
+
+If audit cannot be written — if the audit channel is unavailable, if the minimum
+audit fields cannot be captured, if the record cannot be durably stored — execution
+does not conclude. The task is not complete. The governance pipeline is open.
+
+<Aside type="prohibition">
+This is constitutionally required, not operationally configurable. Audit is a
+completion condition, not a logging side effect. The governance pipeline is not
+complete when a decision is issued. It is complete when the decision, the context
+that produced it, and the execution result that followed it are durably recorded.
+A task that cannot be audited did not happen within the governance boundary.
+</Aside>
+---
+
+## Meaning
+
+The framing of audit as a completion condition rather than a logging requirement
+is deliberate and consequential. A logging requirement can be satisfied by writing
+a record after the fact. A completion condition means that the execution event is
+not complete until the record exists. If the record cannot be written, the execution
+event is not complete — which means it should not have concluded in the way it did.
+
+This reframes the governance relationship to audit in a fundamental way. Audit is
+not what happens after governance — it is part of governance. The governance pipeline
+ends when the audit record is durably written, not when the action is executed. An
+action that executes and then fails to write an audit record is not an action that
+executed successfully with a logging failure. It is an action whose governance
+pipeline did not complete — which means, constitutionally, the action was incomplete.
+
+This principle is also the structural mechanism that enforces Article IX — Deny by
+Default with respect to audit. The unavailability of the audit channel is one of
+the four preconditions whose absence produces immediate denial. Audit as Completion
+Condition explains why: an action that cannot be audited cannot be completed, so
+the governance precondition for permitting it — the ability to produce a durable
+record — does not exist.
+
+---
+
+## In Practice
+
+The AEGIS governance pipeline includes audit record creation as a non-negotiable
+final stage. Before an execution event is considered complete, the following must
+be written to the audit log: action identifier, actor identity, capability referenced,
+governance decision, decision rationale, risk score, policy version evaluated, and
+timestamp. The audit record is hash-chained to its predecessor, making omission
+or alteration detectable.
+
+For operations above baseline risk thresholds, audit system failure blocks execution
+entirely — not just audit record creation. A governance runtime that cannot verify
+the availability of the audit channel must not permit high-risk actions to begin,
+because it cannot satisfy the completion condition that would allow them to conclude.
+
+<Aside type="doctrine">
+The minimum audit record fields are defined in the sub-specifications. Implementations
+may capture additional fields, but may not omit required ones. An audit record
+missing required fields is an incomplete audit record — which means the execution
+it documents is an incompletely governed execution.
+</Aside>
+---
+
+## Failure Mode
+
+Treating audit as a logging side effect rather than a completion condition produces
+a governance system where audit is the first thing to fail under load. When a system
+is under stress — high volume, degraded infrastructure, incident conditions — logging
+pipelines are among the first components to fall behind or fail. A system designed
+to treat audit as a completion condition will stop executing high-risk actions when
+the audit channel is unavailable. A system designed to treat audit as a side effect
+will continue executing and produce an incomplete record of what happened — precisely
+when a complete record is most needed.
+
+---
+
+## Relationship to Doctrine and Constitution
+
+Audit as Completion Condition directly operationalizes [Constitutional Article VII —
+Auditability](/constitution/article-vii): the constitutional article's statement
+that "if audit cannot be written, execution does not proceed" is the constitutional
+expression of this principle. It also connects to [Doctrine Article II — Governance
+Before Execution](/doctrine/article-ii): governance does not end when a decision is
+issued. The governance pipeline — evaluation, decision, execution, and audit — is
+complete only when the record is written. And it grounds [Constitutional Article IX —
+Deny by Default](/constitution/article-ix): unavailable audit is a precondition
+failure, not a logging failure, precisely because audit is a completion condition.
