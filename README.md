@@ -71,7 +71,7 @@ The Constitution is versioned using semantic versioning. Each ratified version i
 | Version | Status | Date | Notes |
 |---|---|---|---|
 | v0.1.1 | Archived — superseded by v0.2.0 for new citations | 2026-03-19 | Initial eight-article constitution; canonical snapshot at [doi:10.5281/zenodo.19112564](https://doi.org/10.5281/zenodo.19112564) |
-| v0.2.0 | Current | 2026-03-19 | Eleven articles; four renamed; three added; constitutional register adopted |
+| v0.2.0 | Current | 2026-03-21 | Eleven articles; four renamed; three added; constitutional register adopted; [doi:10.5281/zenodo.19154731](https://doi.org/10.5281/zenodo.19154731) |
 
 To propose an amendment, open a pull request with your proposed changes and a rationale statement in the PR description. See [AMENDMENTS.md](AMENDMENTS.md) for the amendment process.
 
