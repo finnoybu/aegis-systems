@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Determine target date
         id: date
@@ -71,10 +72,10 @@ jobs:
           # Now run the nightly rollup to add release recap + update monthly + index
           python3 scripts/nightly-release.py
 
-      - name: Create PR
+      - name: Create and merge PR
         if: steps.branch.outputs.found == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           TARGET="${{ steps.date.outputs.target }}"
           PR_BRANCH="docs/nightly-rollup-${TARGET}"
@@ -94,16 +95,23 @@ jobs:
           git checkout -b "$PR_BRANCH"
           git push origin "$PR_BRANCH"
 
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "docs: release notes for ${TARGET}" \
-            --body "Daily release rollup — dev log, monthly summary, and index update for ${TARGET}. Merge to publish." \
+            --body "Daily release rollup — dev log, monthly summary, and index update for ${TARGET}." \
             --base main \
-            --head "$PR_BRANCH"
+            --head "$PR_BRANCH")
 
-          echo "Created PR for $TARGET"
+          echo "Created PR: $PR_URL"
+
+          # Auto-merge using PAT (inherits org admin bypass)
+          gh pr merge "$PR_URL" --squash --delete-branch
+
+          echo "Merged and cleaned up PR"
 
       - name: Clean up daily branch
         if: steps.branch.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           BRANCH="${{ steps.branch.outputs.branch }}"
           git push origin --delete "$BRANCH" 2>/dev/null || echo "Branch already deleted"
