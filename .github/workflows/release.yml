@@ -11,8 +11,10 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Skip if the commit was made by this workflow (prevent infinite loop)
-    if: github.actor != 'github-actions[bot]'
+    # Skip if this is a release notes commit (prevent infinite loop)
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      !startsWith(github.event.head_commit.message, 'docs: release notes for')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
