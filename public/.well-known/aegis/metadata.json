@@ -1,0 +1,48 @@
+{
+  "site": "AEGIS Constitution",
+  "url": "https://aegis-constitution.com",
+  "updated": "2026-03-25",
+  "constitution": {
+    "version": "v26.03.22",
+    "article_count": 11,
+    "doctrine_count": 5,
+    "principle_count": 8,
+    "protocol_count": 7,
+    "canon": "Capability without constraint is not intelligence."
+  },
+  "publication": {
+    "doi": "10.5281/zenodo.19112564",
+    "doi_url": "https://doi.org/10.5281/zenodo.19112564",
+    "version_archived": "v0.1.1",
+    "archive": "Zenodo"
+  },
+  "license": {
+    "spdx": "Apache-2.0",
+    "url": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  "repository": {
+    "url": "https://github.com/aegis-initiative/aegis-constitution",
+    "branch": "main",
+    "discussions": "https://github.com/aegis-initiative/aegis-constitution/discussions",
+    "issues": "https://github.com/aegis-initiative/aegis-constitution/issues"
+  },
+  "organization": {
+    "name": "AEGIS Initiative",
+    "legal_entity": "Finnoybu IP LLC",
+    "parent": "Finnoybu Holdings LLC",
+    "domain": "aegis-platform.net",
+    "github": "https://github.com/aegis-initiative"
+  },
+  "downloads": {
+    "pdf_full": "https://aegis-constitution.com/aegis-constitution.pdf",
+    "print_view": "https://aegis-constitution.com/print"
+  },
+  "related_sites": {
+    "initiative": "https://aegis-initiative.com",
+    "documentation": "https://aegis-docs.com",
+    "governance_data": "https://aegis-governance.com",
+    "federation": "https://aegis-federation.com",
+    "platform": "https://aegis-platform.net",
+    "repository": "https://github.com/aegis-initiative"
+  }
+}

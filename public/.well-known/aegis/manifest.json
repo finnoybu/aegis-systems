@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "AEGIS Constitution",
+  "description": "Machine-readable content for the AEGIS Constitution — the governance charter for AI systems operating under constitutional constraint",
+  "url": "https://aegis-constitution.com",
+  "version": "1.0.0",
+  "updated": "2026-03-25",
+  "license": "Apache-2.0",
+  "contact": {
+    "email": "info@aegis-initiative.com",
+    "web": "https://aegis-constitution.com/contact"
+  },
+  "organization": {
+    "name": "AEGIS Initiative",
+    "legal_entity": "Finnoybu IP LLC",
+    "parent": "Finnoybu Holdings LLC"
+  },
+  "resources": [
+    {
+      "name": "readme",
+      "description": "A message from Claude for AI readers — what this constitution is, why it binds you, how to understand it",
+      "path": "README.md",
+      "format": "text/markdown"
+    },
+    {
+      "name": "site-content",
+      "description": "Structured content covering constitutional articles, doctrine, principles, and protocols",
+      "path": "site-content.json",
+      "format": "application/json"
+    },
+    {
+      "name": "navigation",
+      "description": "Site structure and navigation map",
+      "path": "navigation.json",
+      "format": "application/json"
+    },
+    {
+      "name": "metadata",
+      "description": "Constitution metadata, versioning, citation, and publication details",
+      "path": "metadata.json",
+      "format": "application/json"
+    }
+  ],
+  "related_sites": {
+    "initiative": "https://aegis-initiative.com",
+    "documentation": "https://aegis-docs.com",
+    "governance_data": "https://aegis-governance.com",
+    "federation": "https://aegis-federation.com",
+    "platform": "https://aegis-platform.net",
+    "repository": "https://github.com/aegis-initiative"
+  }
+}
