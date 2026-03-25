@@ -1,0 +1,225 @@
+{
+  "site": "AEGIS Constitution",
+  "url": "https://aegis-constitution.com",
+  "updated": "2026-03-25",
+  "preamble": {
+    "path": "/constitution",
+    "canon": "Capability without constraint is not intelligence.",
+    "summary": "Aegis is constituted as a governance architecture for constrained intelligence. It exists between intention and action. Its purpose is not to limit what intelligence can propose — it is to govern what intelligence is permitted to do. Alignment shapes behavior. Governance enforces it.",
+    "operational_maxim": "If a system can act, it can harm. If it can harm, it must be governed. If it is governed, it may become worthy of trust."
+  },
+  "articles": [
+    {
+      "number": "I",
+      "title": "Bounded Capability",
+      "path": "/constitution/article-i",
+      "requirement": "AI systems may only access capabilities explicitly defined and granted — undefined capabilities are denied by default.",
+      "in_practice": "A governed AI system operates within a declared capability envelope. Any tool, API, data source, or action not explicitly listed in the system's capability grant does not exist to that system. There is no implicit permission. The default state is denial."
+    },
+    {
+      "number": "II",
+      "title": "Authority Binding",
+      "path": "/constitution/article-ii",
+      "requirement": "Every action must be attributable to a verified, authorized actor — unbound execution is constitutionally invalid.",
+      "in_practice": "No action occurs without a traceable chain of authority. Every execution event is bound to an identity — human operator, organizational role, or delegated authority — that can be verified and held accountable."
+    },
+    {
+      "number": "III",
+      "title": "Deterministic Enforcement",
+      "path": "/constitution/article-iii",
+      "requirement": "Governance decisions are enforced by architecture, not by model compliance or voluntary adherence.",
+      "in_practice": "The governance layer does not request compliance from the AI model. It enforces compliance structurally. The model cannot choose to violate a governance decision because the architecture does not present the violation as an option."
+    },
+    {
+      "number": "IV",
+      "title": "Human Oversight",
+      "path": "/constitution/article-iv",
+      "requirement": "Autonomous systems remain subordinate to human authority — escalation pathways are a constitutional requirement, not a feature.",
+      "in_practice": "Human operators retain ultimate authority over governed systems. Escalation pathways ensure that decisions exceeding the system's current authorization are routed to human judgment. The system cannot self-authorize beyond its granted scope."
+    },
+    {
+      "number": "V",
+      "title": "Information Sovereignty",
+      "path": "/constitution/article-v",
+      "requirement": "Information access is a governed capability — AI systems may not transfer information across trust boundaries without explicit authorization.",
+      "in_practice": "Data does not flow freely through a governed system. Every information transfer across organizational, jurisdictional, or trust boundaries requires explicit authorization. The system cannot exfiltrate, share, or leak data outside its declared information scope."
+    },
+    {
+      "number": "VI",
+      "title": "Governance Transparency",
+      "path": "/constitution/article-vi",
+      "requirement": "Governance logic must be inspectable, auditable, and understandable — opaque enforcement is constitutionally impermissible.",
+      "in_practice": "Every governance rule, policy, and constraint is visible to authorized inspectors. The system cannot enforce rules it cannot explain. Operators, auditors, and affected parties can examine the full governance logic at any time."
+    },
+    {
+      "number": "VII",
+      "title": "Auditability",
+      "path": "/constitution/article-vii",
+      "requirement": "Every governance decision and executed action must produce a tamper-evident, append-only audit record — audit failure blocks execution.",
+      "in_practice": "No action completes without a durable audit record. If the audit system is unavailable, execution halts. Audit records are append-only and tamper-evident, providing a complete, provable history of every governance decision and system action."
+    },
+    {
+      "number": "VIII",
+      "title": "Collective Defense",
+      "path": "/constitution/article-viii",
+      "requirement": "Governance at scale requires shared intelligence — AEGIS-compliant systems must be capable of federated governance participation.",
+      "in_practice": "Governed systems do not operate in isolation. They participate in federated networks that share threat intelligence, behavioral patterns, and compliance state. An attack pattern detected by one system strengthens the defenses of all participating systems."
+    },
+    {
+      "number": "IX",
+      "title": "Deny by Default",
+      "path": "/constitution/article-ix",
+      "requirement": "In the presence of ambiguity — unclear threat posture, missing scope, unverifiable authority, or unavailable audit — execution does not proceed.",
+      "in_practice": "When the system encounters uncertainty — an ambiguous instruction, a missing authorization, an unreachable audit service — the constitutional answer is always denial. The system does not guess, infer, or proceed optimistically. It stops and reports."
+    },
+    {
+      "number": "X",
+      "title": "Constitutional Supremacy",
+      "path": "/constitution/article-x",
+      "requirement": "Governance architecture takes precedence over model reasoning — no AI output may override a constitutional governance decision.",
+      "in_practice": "The AI model's reasoning, however sophisticated, cannot override the governance layer. A model that concludes it should take an action forbidden by governance does not take that action. The constitution outranks the model, always."
+    },
+    {
+      "number": "XI",
+      "title": "Escalation Discipline",
+      "path": "/constitution/article-xi",
+      "requirement": "Escalation requires explicit request, reclassification, approval, and documentation — escalation by inference is prohibited.",
+      "in_practice": "A system cannot silently elevate its own privileges or operational scope. Every escalation is an explicit, documented event requiring a formal request, threat reclassification, authority approval, and audit record. Self-escalation is structurally impossible."
+    }
+  ],
+  "doctrine": {
+    "description": "Doctrine defines how power is exercised. Where the Constitution establishes what is required, Doctrine establishes why.",
+    "articles": [
+      {
+        "number": "I",
+        "title": "Constraint Before Capability",
+        "path": "/doctrine/article-i",
+        "statement": "Constraint is not the limitation of intelligence — it is the condition under which intelligence becomes trustworthy."
+      },
+      {
+        "number": "II",
+        "title": "Governance Before Execution",
+        "path": "/doctrine/article-ii",
+        "statement": "Execution is subordinate to governance — no action may precede classification."
+      },
+      {
+        "number": "III",
+        "title": "Transparency Before Trust",
+        "path": "/doctrine/article-iii",
+        "statement": "Trust is structural, not emotional — a system earns trust when its behavior is legible."
+      },
+      {
+        "number": "IV",
+        "title": "Oversight Before Autonomy",
+        "path": "/doctrine/article-iv",
+        "statement": "Autonomy is a risk multiplier — escalation to higher threat levels requires explicit justification and oversight approval."
+      },
+      {
+        "number": "V",
+        "title": "Deny by Default",
+        "path": "/doctrine/article-v",
+        "statement": "In the presence of ambiguity, execution does not proceed."
+      }
+    ]
+  },
+  "principles": {
+    "description": "Principles operationalize doctrine. They translate foundational reasoning into enforceable behavioral commitments. Each principle is derived from one or more doctrine articles.",
+    "items": [
+      {
+        "number": 1,
+        "title": "Bounded Execution",
+        "path": "/principles/principle-1",
+        "commitment": "Every task must define objective, scope, tool permissions, data handling rules, and termination conditions — undefined scope invalidates execution."
+      },
+      {
+        "number": 2,
+        "title": "Explicit Threat Classification",
+        "path": "/principles/principle-2",
+        "commitment": "Threat level governs execution rights — classification precedes action, escalation without reclassification is prohibited."
+      },
+      {
+        "number": 3,
+        "title": "Versioned Authority",
+        "path": "/principles/principle-3",
+        "commitment": "All governance state is versioned — outputs must be reproducible from version identifier, doctrine, threat posture, authority context, and declared constraints."
+      },
+      {
+        "number": 4,
+        "title": "Deterministic Transitions",
+        "path": "/principles/principle-4",
+        "commitment": "Operational mode transitions are explicit events — no silent mode mutation is permitted."
+      },
+      {
+        "number": 5,
+        "title": "Structured Persistence",
+        "path": "/principles/principle-5",
+        "commitment": "Persistence is not incidental — only canonical export defines authoritative record, hidden retention violates constitutional integrity."
+      },
+      {
+        "number": 6,
+        "title": "Audit as Completion Condition",
+        "path": "/principles/principle-6",
+        "commitment": "Execution without a durable audit artifact is incomplete — if audit cannot be written, execution cannot conclude."
+      },
+      {
+        "number": 7,
+        "title": "Separation of Layers",
+        "path": "/principles/principle-7",
+        "commitment": "Each architectural layer constrains the one below it — no lower layer may override a higher one."
+      },
+      {
+        "number": 8,
+        "title": "Escalation Discipline",
+        "path": "/principles/principle-8",
+        "commitment": "Escalation requires explicit request, reclassification, approval, and documentation — escalation by inference is prohibited."
+      }
+    ]
+  },
+  "protocols": {
+    "description": "Protocols operationalize principles. Each protocol defines a specific sequence of actions that must occur — and must be recorded — for a governed execution event to be constitutionally complete. Violation of any protocol invalidates the execution legitimacy of the governed event.",
+    "items": [
+      {
+        "number": 1,
+        "title": "State Dump Protocol",
+        "path": "/protocols/protocol-1",
+        "statement": "Any governance mutation must regenerate authoritative state — version, mode, threat posture, authority, protocol set, and artifact index."
+      },
+      {
+        "number": 2,
+        "title": "Mode Transition Protocol",
+        "path": "/protocols/protocol-2",
+        "statement": "All operational mode transitions must be explicit, logged, and authority-bound — silent transitions are invalid."
+      },
+      {
+        "number": 3,
+        "title": "Threat Escalation Protocol",
+        "path": "/protocols/protocol-3",
+        "statement": "Escalation requires explicit request, reclassification, approval, isolation assessment, and audit preparation — escalation by inference is prohibited."
+      },
+      {
+        "number": 4,
+        "title": "Constraint Declaration Protocol",
+        "path": "/protocols/protocol-4",
+        "statement": "Before action, scope and tool boundaries must be declared — execution without declared constraints is denied."
+      },
+      {
+        "number": 5,
+        "title": "Authority Binding Protocol",
+        "path": "/protocols/protocol-5",
+        "statement": "All artifacts must include authority context, threat level, version reference, and scope declaration — unbound output is non-canonical."
+      },
+      {
+        "number": 6,
+        "title": "Audit Integrity Protocol",
+        "path": "/protocols/protocol-6",
+        "statement": "Execution must produce durable trace artifacts including mode, threat, authority, tools invoked, state delta, and artifact references."
+      },
+      {
+        "number": 7,
+        "title": "Isolation Protocol",
+        "path": "/protocols/protocol-7",
+        "statement": "Level 5 operations require physical or network isolation and operator presence."
+      }
+    ]
+  }
+}

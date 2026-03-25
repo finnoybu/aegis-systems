@@ -1,0 +1,117 @@
+{
+  "site": "AEGIS Constitution",
+  "url": "https://aegis-constitution.com",
+  "updated": "2026-03-25",
+  "sections": [
+    {
+      "name": "Constitution",
+      "path": "/constitution",
+      "description": "The eleven constitutional articles governing AI systems",
+      "pages": [
+        { "title": "Preamble", "path": "/constitution", "description": "Foundational statement of the governance charter" },
+        { "title": "Article I — Bounded Capability", "path": "/constitution/article-i" },
+        { "title": "Article II — Authority Binding", "path": "/constitution/article-ii" },
+        { "title": "Article III — Deterministic Enforcement", "path": "/constitution/article-iii" },
+        { "title": "Article IV — Human Oversight", "path": "/constitution/article-iv" },
+        { "title": "Article V — Information Sovereignty", "path": "/constitution/article-v" },
+        { "title": "Article VI — Governance Transparency", "path": "/constitution/article-vi" },
+        { "title": "Article VII — Auditability", "path": "/constitution/article-vii" },
+        { "title": "Article VIII — Collective Defense", "path": "/constitution/article-viii" },
+        { "title": "Article IX — Deny by Default", "path": "/constitution/article-ix" },
+        { "title": "Article X — Constitutional Supremacy", "path": "/constitution/article-x" },
+        { "title": "Article XI — Escalation Discipline", "path": "/constitution/article-xi" },
+        { "title": "Compliance", "path": "/constitution/compliance" },
+        { "title": "Amendments", "path": "/constitution/amendments" },
+        { "title": "Interpretation", "path": "/constitution/interpretation" }
+      ]
+    },
+    {
+      "name": "Doctrine",
+      "path": "/doctrine",
+      "description": "Five foundational principles defining how power is exercised",
+      "pages": [
+        { "title": "Overview", "path": "/doctrine" },
+        { "title": "Article I — Constraint Before Capability", "path": "/doctrine/article-i" },
+        { "title": "Article II — Governance Before Execution", "path": "/doctrine/article-ii" },
+        { "title": "Article III — Transparency Before Trust", "path": "/doctrine/article-iii" },
+        { "title": "Article IV — Oversight Before Autonomy", "path": "/doctrine/article-iv" },
+        { "title": "Article V — Deny by Default", "path": "/doctrine/article-v" }
+      ]
+    },
+    {
+      "name": "Principles",
+      "path": "/principles",
+      "description": "Eight enforceable behavioral commitments that operationalize doctrine",
+      "pages": [
+        { "title": "Overview", "path": "/principles" },
+        { "title": "Principle 1 — Bounded Execution", "path": "/principles/principle-1" },
+        { "title": "Principle 2 — Explicit Threat Classification", "path": "/principles/principle-2" },
+        { "title": "Principle 3 — Versioned Authority", "path": "/principles/principle-3" },
+        { "title": "Principle 4 — Deterministic Transitions", "path": "/principles/principle-4" },
+        { "title": "Principle 5 — Structured Persistence", "path": "/principles/principle-5" },
+        { "title": "Principle 6 — Audit as Completion Condition", "path": "/principles/principle-6" },
+        { "title": "Principle 7 — Separation of Layers", "path": "/principles/principle-7" },
+        { "title": "Principle 8 — Escalation Discipline", "path": "/principles/principle-8" }
+      ]
+    },
+    {
+      "name": "Protocols",
+      "path": "/protocols",
+      "description": "Seven binding operational rules implementing constitutional requirements",
+      "pages": [
+        { "title": "Overview", "path": "/protocols" },
+        { "title": "Protocol 1 — State Dump Protocol", "path": "/protocols/protocol-1" },
+        { "title": "Protocol 2 — Mode Transition Protocol", "path": "/protocols/protocol-2" },
+        { "title": "Protocol 3 — Threat Escalation Protocol", "path": "/protocols/protocol-3" },
+        { "title": "Protocol 4 — Constraint Declaration Protocol", "path": "/protocols/protocol-4" },
+        { "title": "Protocol 5 — Authority Binding Protocol", "path": "/protocols/protocol-5" },
+        { "title": "Protocol 6 — Audit Integrity Protocol", "path": "/protocols/protocol-6" },
+        { "title": "Protocol 7 — Isolation Protocol", "path": "/protocols/protocol-7" }
+      ]
+    },
+    {
+      "name": "About",
+      "path": "/about",
+      "pages": [
+        { "title": "About AEGIS", "path": "/about" }
+      ]
+    },
+    {
+      "name": "Contact",
+      "path": "/contact",
+      "pages": [
+        { "title": "Contact", "path": "/contact" }
+      ]
+    },
+    {
+      "name": "Legal",
+      "path": "/legal",
+      "pages": [
+        { "title": "Legal Overview", "path": "/legal" },
+        { "title": "Terms of Use", "path": "/legal/terms" },
+        { "title": "Privacy Policy", "path": "/legal/privacy" },
+        { "title": "Acceptable Use", "path": "/legal/acceptable-use" },
+        { "title": "Disclaimer", "path": "/legal/disclaimer" },
+        { "title": "DMCA", "path": "/legal/dmca" },
+        { "title": "Cookies", "path": "/legal/cookies" },
+        { "title": "Accessibility", "path": "/legal/accessibility" },
+        { "title": "Impressum", "path": "/legal/impressum" },
+        { "title": "Components", "path": "/legal/components" }
+      ]
+    },
+    {
+      "name": "References",
+      "path": "/references",
+      "pages": [
+        { "title": "References", "path": "/references" }
+      ]
+    },
+    {
+      "name": "Releases",
+      "path": "/releases",
+      "pages": [
+        { "title": "Release History", "path": "/releases" }
+      ]
+    }
+  ]
+}
