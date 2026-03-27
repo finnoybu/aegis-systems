@@ -17,7 +17,7 @@
 <p align="center">
   <a href="https://doi.org/10.5281/zenodo.19112564"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.19112564-blue?style=flat-square" alt="DOI"></a>
   <img src="https://img.shields.io/github/v/tag/aegis-initiative/aegis-constitution?label=version&style=flat-square&color=C9A84C" alt="Version">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC--BY--SA--4.0-blue?style=flat-square" alt="License"></a>
 </p>
 
 ---
@@ -99,7 +99,7 @@ On March 7, 2026, AEGIS™ was submitted as an **unsolicited position statement*
 
 ## License & Trademark
 
-Licensed under the [Apache License 2.0](LICENSE).
+Licensed under [CC-BY-SA-4.0](LICENSE).
 
 AEGIS™ and **"Capability without constraint is not intelligence™"** are trademarks of **Finnoybu IP LLC**.\
 Use of AEGIS™ marks in derivative works must not imply endorsement without explicit written permission.
