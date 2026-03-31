@@ -92,8 +92,10 @@ On March 7, 2026, AEGIS™ was submitted as an **unsolicited position statement*
 
 | Resource | Relationship |
 |---|---|
-| [doi:10.5281/zenodo.19112564](https://doi.org/10.5281/zenodo.19112564) | Canonical snapshot — v0.1.1 constitution as cited in the March 7, 2026 NIST submission |
-| [finnoybu/aegis-governance](https://github.com/finnoybu/aegis-governance) | Full governance specification corpus — AGP-1, GFN-1, ATM-1, RFCs |
+| [doi:10.5281/zenodo.19154731](https://doi.org/10.5281/zenodo.19154731) | Canonical snapshot — v0.2.0 constitution (current, eleven articles) |
+| [doi:10.5281/zenodo.19112564](https://doi.org/10.5281/zenodo.19112564) | Archived snapshot — v0.1.1 constitution as cited in the March 7, 2026 NIST submission |
+| [aegis-initiative/aegis-governance](https://github.com/aegis-initiative/aegis-governance) | Full governance specification corpus — AGP-1, GFN-1, ATM-1, RFCs |
+| [aegis-initiative/aegis](https://github.com/aegis-initiative/aegis) | Central authority — ADRs, schemas, doctrine, roadmap |
 
 ---
 

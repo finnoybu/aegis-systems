@@ -103,8 +103,8 @@ jobs:
 
           echo "Created PR: $PR_URL"
 
-          # Auto-merge using PAT (inherits org admin bypass)
-          gh pr merge "$PR_URL" --squash --delete-branch
+          # Auto-merge using PAT with admin bypass for branch protection
+          gh pr merge "$PR_URL" --squash --delete-branch --admin
 
           echo "Merged and cleaned up PR"
 
