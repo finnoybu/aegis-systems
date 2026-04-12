@@ -10,6 +10,7 @@ sidebar:
 
 ### [April](/releases/26/4/)
 
+- [v26.4.11](/releases/26/4/#release--v26411) — docs: release notes for 2026-04-10 (#71)
 - [v26.4.10](/releases/26/4/#release--v26410) — docs: release notes for 2026-04-09 (#69) (4006ad4)
 - [v26.4.3](/releases/26/4/#release--v2643) — docs: dev log entry for v26.4.2 (#59) (47ac54f)
 
