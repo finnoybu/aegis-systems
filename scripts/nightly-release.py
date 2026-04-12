@@ -5,13 +5,18 @@ the previous day's development work as a release.
 
 Steps:
   1. Read the previous day's daily development log
-  2. Extract dev log entries verbatim (the dev log IS the release summary)
-  3. Prepend a release recap to the top of the daily log
-  4. Add/update the release entry in the monthly release file
-  5. Add/update the entry in the release index
-  6. Create the 3-part release tag (vYY.M.D) pointing at the commit of
-     the last 4-part dev log tag of that day
-  7. Push the release tag to origin
+  2. Extract substantive dev log entries (filter out meta rollup
+     commits and Dependabot dependency bumps)
+  3. Rewrite the entries into publication-form release notes via the
+     Claude API — natural language, past tense, hash-stripped
+  4. Skip the release entirely if no substantive entries remain
+  5. Prepend a release recap to the top of the daily log
+  6. Add/update the release entry in the monthly release file
+  7. Add/update the entry in the release index
+  8. Write the VERSION file at the repo root
+  9. Create the 3-part release tag (vYY.M.D) pointing at the commit
+     of the last 4-part dev log tag of that day
+ 10. Push the release tag to origin
 
 Version scheme:
   vYY.M.D.N  (4-part) — development log snapshot, created on every push
@@ -19,6 +24,11 @@ Version scheme:
 
 The rollup is idempotent — existing release entries and tags are
 preserved and re-runs on the same date are safe.
+
+Environment:
+  ANTHROPIC_API_KEY — optional. If set, release summaries are rewritten
+  into public-facing prose via the Claude API. If not set, the script
+  falls back to using the raw (but filtered) dev log entries.
 
 CLI:
   --year YY   (required) two-digit year, e.g. 26
@@ -142,29 +152,173 @@ def get_builds_range(tags):
     return first_hash, last_hash
 
 
-def extract_dev_log_entries(dev_log_content):
-    """Extract bullet entries from the day's development log.
+# Commit-message patterns that indicate a commit is out of scope for
+# the public-facing release notes. Used as a safety net when reading
+# historical dev logs that were populated before the workflow-level
+# filters were in place.
+_META_PREFIXES = (
+    "docs: release notes for ",
+    "docs: dev log entry for ",
+    "docs: nightly release rollup",
+)
+_DEPS_PREFIXES = (
+    "chore(deps",
+    "build(deps",
+)
 
-    The development log IS the release summary — we copy its entries
-    verbatim into the release rollup. No AI summarization, no rewriting.
-    What the user committed is what gets published.
+
+def _is_substantive(entry):
+    """Return True if a dev log entry represents real user-facing work.
+
+    Strips the leading dash and any surrounding whitespace, then rejects
+    the entry if it matches a known meta rollup commit or a dependency
+    bump. Used to filter both new and historical dev logs.
     """
-    entries = [l.strip() for l in dev_log_content.split("\n") if l.strip().startswith("- ")]
-    return entries or ["- No substantive changes"]
+    body = entry.lstrip("- ").strip()
+    if any(body.startswith(p) for p in _META_PREFIXES):
+        return False
+    if any(body.startswith(p) for p in _DEPS_PREFIXES):
+        return False
+    return True
 
 
-def derive_index_summary(release_entries):
-    """Derive a one-line index summary from the first release entry.
+def extract_dev_log_entries(dev_log_content):
+    """Extract substantive bullet entries from the day's development log.
 
-    Strips the leading dash and any trailing commit hash in parens,
-    then truncates to 80 chars.
+    Drops meta rollup commits (e.g. "docs: release notes for ...") and
+    Dependabot dependency bumps. Returns an empty list if nothing
+    substantive remains — the caller should skip release creation
+    rather than cut an empty release.
+    """
+    raw = [l.strip() for l in dev_log_content.split("\n") if l.strip().startswith("- ")]
+    return [e for e in raw if _is_substantive(e)]
+
+
+def generate_release_summary(raw_entries):
+    """Rewrite raw dev log entries into publication-form release notes.
+
+    Calls the Claude API to convert conventional-commit messages into
+    natural-language bullets suitable for a public release changelog.
+    Falls back to the raw (but filtered) entries if ANTHROPIC_API_KEY
+    is not set or the API call fails.
+    """
+    if not raw_entries:
+        return []
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return raw_entries[:20]
+
+    import json
+    import urllib.request
+
+    joined = "\n".join(raw_entries)
+
+    payload = {
+        "model": "claude-sonnet-4-5",
+        "max_tokens": 1024,
+        "messages": [
+            {
+                "role": "user",
+                "content": (
+                    "You are writing release notes for the AEGIS Constitution "
+                    "governance documentation site. Convert these development "
+                    "log entries into clear, public-facing release note "
+                    "bullet points.\n\n"
+                    "Rules:\n"
+                    "- Write in natural language, past tense, user-facing.\n"
+                    "- Drop commit hashes, PR numbers, and conventional commit "
+                    "prefixes (feat:, fix:, chore:, docs:, etc.).\n"
+                    "- Group related changes together under a single bullet.\n"
+                    "- Skip internal plumbing that doesn't affect users "
+                    "(Cloudflare redeploy triggers, lockfile regenerations, "
+                    "CI config tweaks) unless they're the whole point of the "
+                    "release.\n"
+                    "- Emphasize what the reader can now do or see that they "
+                    "couldn't before.\n"
+                    "- Return ONLY a markdown bulleted list, nothing else.\n\n"
+                    "Dev log entries:\n" + joined
+                ),
+            }
+        ],
+    }
+
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            text = data["content"][0]["text"].strip()
+            bullets = [l.strip() for l in text.split("\n") if l.strip().startswith("- ")]
+            return bullets or raw_entries[:20]
+    except Exception as exc:
+        print(f"Warning: Claude API call failed ({exc}), using raw entries", file=sys.stderr)
+        return raw_entries[:20]
+
+
+def generate_index_summary(release_entries):
+    """Derive a one-line index summary from the release entries.
+
+    Calls the Claude API for a concise headline phrase. Falls back to
+    the first entry (hash-stripped, truncated) if the API is unavailable.
     """
     if not release_entries:
         return "Updates"
-    first = release_entries[0].lstrip("- ").strip()
-    # Strip trailing " (abc1234)" commit hash marker
-    first = re.sub(r"\s*\([a-f0-9]{7,}\)\s*$", "", first)
-    return first[:80]
+
+    def _fallback():
+        first = release_entries[0].lstrip("- ").strip()
+        first = re.sub(r"\s*\([a-f0-9]{7,}\)\s*$", "", first)
+        return first[:80]
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return _fallback()
+
+    import json
+    import urllib.request
+
+    joined = "\n".join(release_entries)
+
+    payload = {
+        "model": "claude-sonnet-4-5",
+        "max_tokens": 100,
+        "messages": [
+            {
+                "role": "user",
+                "content": (
+                    "Summarize these release notes into a single concise "
+                    "phrase (under 80 chars) for a release index. No period "
+                    "at the end. Return ONLY the phrase, no quotes.\n\n"
+                    + joined
+                ),
+            }
+        ],
+    }
+
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            return data["content"][0]["text"].strip().strip('"')[:80]
+    except Exception:
+        return _fallback()
 
 
 def update_daily_log(file_path, tag, builds_str, release_entries):
@@ -335,12 +489,22 @@ def main():
         print(f"No daily log at {daily_path}")
         dev_log_content = ""
 
-    # The dev log IS the release summary — extract entries verbatim
-    release_entries = extract_dev_log_entries(dev_log_content)
-    print(f"Extracted {len(release_entries)} release entries from dev log")
+    # Extract substantive dev log entries (meta rollup commits and
+    # Dependabot bumps are filtered out).
+    raw_entries = extract_dev_log_entries(dev_log_content)
+    print(f"Extracted {len(raw_entries)} substantive dev log entries")
 
-    # Derive index summary from the first entry
-    index_summary = derive_index_summary(release_entries)
+    if not raw_entries:
+        print("No substantive entries to release. Skipping release creation.")
+        sys.exit(0)
+
+    # Rewrite into publication-form release notes via Claude API
+    # (falls back to raw entries if no API key / API failure).
+    release_entries = generate_release_summary(raw_entries)
+    print(f"Generated {len(release_entries)} release bullets")
+
+    # Derive a one-line headline for the release index.
+    index_summary = generate_index_summary(release_entries)
     print(f"Index summary: {index_summary}")
 
     # Update all three release-notes files

@@ -10,16 +10,27 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Skip self-initiated runs (prevent loops) and Dependabot pushes
-    # (out of scope for the development log — they're dependency
-    # maintenance, not substantive changes). Dependabot-style commit
-    # messages (chore(deps...) / build(deps...)) are skipped regardless
-    # of who merged the PR.
+    # Skip out-of-scope pushes so they don't pollute the development log:
+    #
+    # 1. Self-initiated runs (github-actions[bot]) — prevents loops where a
+    #    workflow commit triggers another workflow run.
+    # 2. Dependabot — dependency bumps are maintenance, not substantive
+    #    user-facing changes. Dependabot-style commit messages
+    #    (chore(deps...) / build(deps...)) are skipped regardless of who
+    #    merged the PR.
+    # 3. Meta rollup commits — the nightly release-index workflow creates
+    #    commits like "docs: release notes for YYYY-MM-DD", "docs: dev log
+    #    entry for vYY.M.D", and "docs: nightly release rollup for ...".
+    #    These are the workflow writing to its own output; including them
+    #    in the dev log creates a feedback loop of meaningless entries.
     if: >-
       github.actor != 'github-actions[bot]' &&
       github.actor != 'dependabot[bot]' &&
       !startsWith(github.event.head_commit.message, 'chore(deps') &&
-      !startsWith(github.event.head_commit.message, 'build(deps')
+      !startsWith(github.event.head_commit.message, 'build(deps') &&
+      !startsWith(github.event.head_commit.message, 'docs: release notes for ') &&
+      !startsWith(github.event.head_commit.message, 'docs: dev log entry for ') &&
+      !startsWith(github.event.head_commit.message, 'docs: nightly release rollup')
     steps:
       - name: Checkout
         uses: actions/checkout@v6

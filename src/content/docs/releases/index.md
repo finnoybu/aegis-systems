@@ -10,15 +10,15 @@ sidebar:
 
 ### [April](/releases/26/4/)
 
-- [v26.4.11](/releases/26/4/#release--v26411) — docs: release notes for 2026-04-10 (#71)
-- [v26.4.10](/releases/26/4/#release--v26410) — docs: release notes for 2026-04-09 (#69) (4006ad4)
-- [v26.4.3](/releases/26/4/#release--v2643) — docs: dev log entry for v26.4.2 (#59) (47ac54f)
+- [v26.4.11](/releases/26/4/#release--v26411) — Shared design system adoption and ecosystem nav bar
 
 ### [March](/releases/26/3/)
 
-- [v26.3.27](/releases/26/3/#release--v26327) — chore: switch license from Apache 2.0 to CC-BY-SA-4.0 (23e9272)
-- [v26.3.24](/releases/26/3/#release--v26324) — fix: add v0.1.1 to amendments history and resolve v0.2.0 date conflict (ba8334f)
-- [v26.3.23](/releases/26/3/#release--v26323) — chore: add bug report template (4d7ac06)
+- [v26.3.31](/releases/26/3/#release--v26331) — Nightly rollup merge fix and README link updates
+- [v26.3.28](/releases/26/3/#release--v26328) — Site-specific branded Open Graph image
+- [v26.3.27](/releases/26/3/#release--v26327) — License switch from Apache 2.0 to CC-BY-SA-4.0
+- [v26.3.24](/releases/26/3/#release--v26324) — Amendments history fix and ecosystem navigation bar
+- [v26.3.23](/releases/26/3/#release--v26323) — GitHub issue templates, Dependabot config, LICENSE
 - [v26.3.22](/releases/26/3/#release--v26322) — Legal pages, splash page, PDF pipeline, accessibility, CI automation
 - [v26.3.21](/releases/26/3/#release--v26321) — Footnotes, ToC refinements, search integration
 - [v26.3.20](/releases/26/3/#release--v26320) — Native Astro rebuild, design system, custom asides
