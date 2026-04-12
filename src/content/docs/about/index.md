@@ -62,7 +62,7 @@ Claude's role was not to generate content and walk away. It was to participate a
 
 ---
 
-For copyright, trademark, and licensing information, see [Copyright, Trademark & License](/legal/).
+For copyright, trademark, and licensing information, see [Copyright, Trademark & License](https://aegis-initiative.com/legal/).
 
 ---
 

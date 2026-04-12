@@ -11,18 +11,6 @@ if (isCalVer) {
 }
 
 const pathname = Astro.url.pathname;
-const isLegal = pathname.startsWith('/legal');
-
-const legalNav = [
-  { label: 'Terms', slug: 'legal/terms' },
-  { label: 'Privacy', slug: 'legal/privacy' },
-  { label: 'Acceptable Use', slug: 'legal/acceptable-use' },
-  { label: 'Accessibility', slug: 'legal/accessibility' },
-  { label: 'DMCA & Takedown', slug: 'legal/dmca' },
-  { label: 'Disclaimer', slug: 'legal/disclaimer' },
-  { label: 'Cookies', slug: 'legal/cookies' },
-  { label: 'Impressum', slug: 'legal/impressum' },
-];
 
 const nav = [
   {
@@ -101,33 +89,23 @@ function isGroupActive(items: { slug: string }[]): boolean {
 <nav class="sidebar" id="sidebar" aria-label="Documentation navigation">
   <div class="sidebar-inner">
 
-    {isLegal ? (
-      <ul class="nav-items legal-nav">
-        {legalNav.map((item) => (
-          <li>
-            <a href={`/${item.slug}/`} class={`nav-link ${isActive(item.slug) ? 'active' : ''}`} aria-current={isActive(item.slug) ? 'page' : undefined}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      nav.map((group) => (
-        <details class="nav-group" open={isGroupActive(group.items)}>
-          <summary class="nav-group-label">
-            <span>{group.label}</span>
-            <svg class="caret" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </summary>
-          <ul class="nav-items">
-            {group.items.map((item) => (
-              <li>
-                <a href={`/${item.slug}/`} class={`nav-link ${isActive(item.slug) ? 'active' : ''}`} aria-current={isActive(item.slug) ? 'page' : undefined}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </details>
-      ))
-    )}
+    {nav.map((group) => (
+      <details class="nav-group" open={isGroupActive(group.items)}>
+        <summary class="nav-group-label">
+          <span>{group.label}</span>
+          <svg class="caret" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </summary>
+        <ul class="nav-items">
+          {group.items.map((item) => (
+            <li>
+              <a href={`/${item.slug}/`} class={`nav-link ${isActive(item.slug) ? 'active' : ''}`} aria-current={isActive(item.slug) ? 'page' : undefined}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
   </div>
 
   <!-- Version badge — mobile only, shown in sidebar footer -->
@@ -207,10 +185,6 @@ function isGroupActive(items: { slug: string }[]): boolean {
     padding: 0.25rem 0 0.75rem;
     margin-left: 1.25rem;
     border-left: 1px solid var(--color-border);
-  }
-
-  .legal-nav {
-    padding-top: 0.75rem;
   }
 
   .nav-link {
