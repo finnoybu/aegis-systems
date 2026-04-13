@@ -5,6 +5,8 @@ sidebar:
   hidden: true
 ---
 
+For the broader project timeline — pre-release milestones, publication history, and key dates — see [Milestones](https://aegis-initiative.com/press/milestones/).
+
 ## 2026
 
 
