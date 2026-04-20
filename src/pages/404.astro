@@ -42,7 +42,11 @@ import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astr
         <p class="suggestions-label">Did you mean:</p>
         <ul class="suggestions-list" id="suggestions-list"></ul>
       </div>
-      <a href="/" class="error-link">Return to Home</a>
+      <div class="error-actions">
+        <a href="/" class="error-link">Return to Home</a>
+        <a href="#" id="report-link" class="error-report">Report this broken link</a>
+      </div>
+      <p class="error-path" id="error-path"></p>
     </main>
 
     <div class="error-footer">
@@ -110,7 +114,29 @@ import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astr
           return d[m][n];
         }
 
-        var current = window.location.pathname.toLowerCase().replace(/\/+$/, '').replace(/\/+/g, '/');
+        var requested = window.location.pathname;
+        var pathEl = document.getElementById('error-path');
+        if (pathEl) pathEl.textContent = 'Requested: ' + requested;
+
+        try {
+          var body = JSON.stringify({
+            domain: window.location.host,
+            path: requested,
+            referrer: document.referrer || null,
+            userAgent: navigator.userAgent,
+            timestamp: new Date().toISOString(),
+          });
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon('https://notify.aegis-initiative.com/404', body);
+          }
+        } catch (_e) { /* best-effort */ }
+
+        var reportLink = document.getElementById('report-link');
+        if (reportLink) {
+          reportLink.href = 'mailto:ken@aegis-initiative.com?subject=Broken%20link%20on%20' + encodeURIComponent(window.location.host) + '&body=' + encodeURIComponent('Requested: ' + requested + '\nReferrer: ' + (document.referrer || '(none)'));
+        }
+
+        var current = requested.toLowerCase().replace(/\/+$/, '').replace(/\/+/g, '/');
         if (!current) return;
 
         var scored = routes.map(function (r) {
@@ -296,9 +322,17 @@ import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astr
     color: var(--color-accent-high);
   }
 
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .error-link {
     display: inline-block;
-    margin-top: 1rem;
     padding: 0.625rem 1.5rem;
     border-radius: 999px;
     background-color: var(--color-accent);
@@ -313,6 +347,21 @@ import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astr
   .error-link:hover {
     background-color: var(--color-accent-high);
     color: #ffffff;
+  }
+
+  .error-report {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: underline;
+  }
+
+  .error-path {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-family: monospace;
+    word-break: break-all;
+    max-width: 640px;
   }
 
   .error-footer {
