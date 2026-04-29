@@ -40,4 +40,4 @@ Disallow: /
 Allow: /.well-known/aegis/
 
 # Sitemap
-Sitemap: https://aegis-constitution.com/sitemap.xml
+Sitemap: https://aegis-constitution.com/sitemap-index.xml
